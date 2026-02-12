@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
-import Image from "next/image";
+import ReviewCarousel from "@/components/ReviewCarousel";
+import ReviewsSection from "@/components/ReviewsSection";
+import StatsBar from "@/components/StatsBar";
+import Footer from "@/components/Footer";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -95,12 +98,14 @@ export default function MinnetonkaPressureWashingPage() {
       <main>
         {/* Hero */}
         <section className="relative min-h-[85dvh] flex items-center pt-20 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628] via-[#0f1f3d] to-[#0a1628]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(37,99,235,0.15),_transparent_60%)]" />
+          <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+            <source src="/videos/fullhousejob.MOV" type="video/quicktime" />
+            <source src="/videos/fullhousejob.MOV" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-[#0a1628]/80" />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
+            <div>
                 <span className="inline-block bg-[#2563eb]/10 border border-[#2563eb]/20 text-[#3b82f6] text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
                   Serving Minnetonka, MN
                 </span>
@@ -125,21 +130,12 @@ export default function MinnetonkaPressureWashingPage() {
                     (612) 554-8106
                   </a>
                 </div>
-              </div>
-              <div className="hidden lg:block">
-                <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-2xl">
-                  <Image
-                    src="/images/projects/bafrontstepsgood.webp"
-                    alt="Pressure washing results in Minnetonka"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
-              </div>
+                <ReviewCarousel />
             </div>
           </div>
         </section>
+
+        <StatsBar />
 
         {/* Services */}
         <section className="py-20 bg-slate-50">
@@ -193,45 +189,7 @@ export default function MinnetonkaPressureWashingPage() {
           </div>
         </section>
 
-        {/* Before & After */}
-        <section className="py-20 bg-slate-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-14">
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">
-                Real Results in Minnetonka
-              </h2>
-              <p className="text-lg text-slate-500">See the difference professional pressure washing makes.</p>
-            </div>
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-md">
-                <Image
-                  src="/images/projects/bafrontstepsgood.webp"
-                  alt="Before and after pressure washing front steps in Minnetonka"
-                  width={600}
-                  height={450}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-md">
-                <Image
-                  src="/images/projects/badeck6good.webp"
-                  alt="Before and after deck cleaning in Minnetonka"
-                  width={600}
-                  height={450}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-            </div>
-            <div className="text-center mt-10">
-              <Link
-                href="/portfolio"
-                className="inline-block border-2 border-[#2563eb] text-[#2563eb] hover:bg-[#2563eb] hover:text-white font-semibold px-8 py-3 rounded-lg transition-colors"
-              >
-                View Full Portfolio
-              </Link>
-            </div>
-          </div>
-        </section>
+        <ReviewsSection />
 
         {/* CTA */}
         <section className="py-20 bg-[#0a1628]">
@@ -259,69 +217,7 @@ export default function MinnetonkaPressureWashingPage() {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="bg-slate-900 py-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-3 gap-8 mb-8">
-              <div>
-                <span className="text-xl font-heading font-bold text-white mb-4 block">
-                  Pressure<span className="text-[#3b82f6]">Titans</span>
-                </span>
-                <p className="text-slate-400 text-sm">
-                  Professional exterior cleaning services in the Minneapolis metro.
-                  Licensed &amp; insured.
-                </p>
-              </div>
-              <div>
-                <h3 className="font-bold text-slate-300 mb-4">Services</h3>
-                <ul className="space-y-2 text-slate-400 text-sm">
-                  <li>Pressure Washing</li>
-                  <li>Soft Washing</li>
-                  <li>House Washing</li>
-                  <li>Gutter Cleaning</li>
-                  <li>Ice Dam Removal</li>
-                  <li>Stain Removal</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-bold text-slate-300 mb-4">Contact</h3>
-                <ul className="space-y-2 text-slate-400 text-sm">
-                  <li>
-                    <a href="tel:6125548106" className="hover:text-white transition-colors">
-                      (612) 554-8106
-                    </a>
-                  </li>
-                  <li>
-                    <a href="mailto:pressuretitans@gmail.com" className="hover:text-white transition-colors">
-                      pressuretitans@gmail.com
-                    </a>
-                  </li>
-                  <li>Minneapolis, MN</li>
-                </ul>
-              </div>
-            </div>
-            <div className="border-t border-slate-800 pt-8 text-center">
-              <p className="text-slate-400 text-sm">
-                &copy; {new Date().getFullYear()} Pressure Titans. All rights reserved.
-              </p>
-            </div>
-          </div>
-        </footer>
-
-        {/* Agency Credit */}
-        <div className="bg-slate-950 py-3">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-2">
-            <span className="text-slate-500 text-xs">Website &amp; SEO by</span>
-            <a
-              href="https://www.steadyscaling.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:opacity-80 transition-opacity"
-            >
-              <span className="text-slate-400 text-xs font-medium">Steady Scaling</span>
-            </a>
-          </div>
-        </div>
+        <Footer />
       </main>
     </>
   );

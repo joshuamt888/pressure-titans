@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -74,7 +75,7 @@ const differentiators = [
   {
     title: "On-Time Guaranteed",
     description:
-      "We show up when we say we will. If we&apos;re late, we&apos;ll make it right. Punctuality isn&apos;t optional — it&apos;s how we do business.",
+      "We show up when we say we will. If we're late, we'll make it right. Punctuality isn't optional — it's how we do business.",
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path
@@ -95,11 +96,11 @@ const values = [
   },
   {
     name: "Quality",
-    text: "We don&apos;t leave until it&apos;s right. Period. Every surface gets the attention it deserves.",
+    text: "We don't leave until it's right. Period. Every surface gets the attention it deserves.",
   },
   {
     name: "Communication",
-    text: "You&apos;ll always know what&apos;s happening, when it&apos;s happening, and what to expect next.",
+    text: "You'll always know what's happening, when it's happening, and what to expect next.",
   },
 ];
 
@@ -110,8 +111,12 @@ export default function AboutPage() {
 
       <main>
         {/* Hero */}
-        <section className="relative bg-navy pt-20">
-          <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-light to-titan-blue" />
+        <section className="relative bg-navy pt-20 overflow-hidden">
+          <video autoPlay muted loop playsInline poster="/images/projects/bastoneflooramazing.webp" className="absolute inset-0 w-full h-full object-cover">
+            <source src="/videos/fullhousejob.MOV" type="video/quicktime" />
+            <source src="/videos/fullhousejob.MOV" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-navy/80" />
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 leading-tight">
@@ -154,26 +159,35 @@ export default function AboutPage() {
                   Our Story
                 </span>
                 <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-6 leading-tight">
-                  A Pressure Washer, a Truck, and a Dream
+                  Locally Owned. Driven by Excellence.
                 </h2>
                 <div className="space-y-5 text-lg text-slate-600 leading-relaxed">
                   <p>
-                    Pressure Titans didn&apos;t start in a boardroom. It started with a young
-                    entrepreneur, a used pressure washer, and one goal: build something real.
-                    While others were waiting for opportunity, we went out and created it —
-                    one driveway, one deck, one satisfied customer at a time.
+                    Pressure Titans is a locally owned and operated pressure washing and exterior
+                    home services company based in Chanhassen, Minnesota, proudly serving Carver
+                    County and surrounding areas. Founded by a 22-year-old entrepreneur, we bring
+                    fresh energy and a strong commitment to excellence in every project.
                   </p>
                   <p>
-                    From day one, every single job has been done personally. No subcontractors.
-                    No faceless crews. When you hire Pressure Titans, you get the person whose
-                    name is on the business — and whose reputation is on the line.
+                    Our focus is on building lasting customer relationships through clear, constant
+                    communication — listening carefully to your needs, addressing concerns upfront,
+                    and ensuring you&apos;re completely satisfied from the free estimate to the
+                    final walkthrough.
                   </p>
                   <p>
-                    What started as a side hustle quickly turned into something bigger. Word
-                    spread. Neighbors called. Referrals poured in. Not because of flashy ads,
-                    but because the results spoke for themselves. We built this company the
-                    old-school way — through hard work, honest pricing, and results you can
-                    actually see.
+                    We deliver top-quality services like pressure washing, soft washing, gutter
+                    cleaning, holiday lighting installations, and more, using professional equipment
+                    and techniques to safely remove dirt, mold, mildew, algae, and buildup from
+                    driveways, decks, fences, siding, roofs, patios, and beyond — all at
+                    competitive, great-value prices.
+                  </p>
+                  <p>
+                    As a leader in the exterior home service industry, we partner with local
+                    landscapers, construction companies, and pest control experts to offer
+                    comprehensive, one-stop solutions for anything on the outside of your home.
+                    Whether it&apos;s a one-time deep clean or ongoing maintenance, Pressure
+                    Titans is dedicated to spotless results, reliability, and making every
+                    customer a raving fan.
                   </p>
                 </div>
 
@@ -231,13 +245,13 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
               {stats.map((stat) => (
                 <div
                   key={stat.label}
                   className="text-center bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8"
                 >
-                  <div className="text-3xl md:text-5xl font-heading font-bold text-titan-light mb-2">
+                  <div className="text-3xl md:text-4xl font-heading font-bold text-titan-light mb-2 whitespace-nowrap">
                     {stat.value}
                   </div>
                   <div className="text-slate-400 font-medium text-sm uppercase tracking-wide">
@@ -312,72 +326,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="bg-slate-900 py-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-3 gap-8 mb-8">
-              <div>
-                <span className="text-xl font-heading font-bold text-white mb-4 block">
-                  Pressure<span className="text-titan-light">Titans</span>
-                </span>
-                <p className="text-slate-400 text-sm">
-                  Professional exterior cleaning services in Minneapolis, MN.
-                  Licensed & insured.
-                </p>
-              </div>
-              <div>
-                <h3 className="font-bold text-slate-300 mb-4">Services</h3>
-                <ul className="space-y-2 text-slate-400 text-sm">
-                  <li>Pressure Washing</li>
-                  <li>Soft Washing</li>
-                  <li>Ice Dam Removal</li>
-                  <li>Gutter Cleaning</li>
-                  <li>Holiday Lighting</li>
-                  <li>Stain Removal</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-bold text-slate-300 mb-4">Contact</h3>
-                <ul className="space-y-2 text-slate-400 text-sm">
-                  <li>
-                    <a href="tel:6125548106" className="hover:text-white transition-colors">
-                      (612) 554-8106
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="mailto:pressuretitans@gmail.com"
-                      className="hover:text-white transition-colors"
-                    >
-                      pressuretitans@gmail.com
-                    </a>
-                  </li>
-                  <li>Minneapolis, MN</li>
-                </ul>
-              </div>
-            </div>
-            <div className="border-t border-slate-800 pt-8 text-center">
-              <p className="text-slate-400 text-sm">
-                &copy; {new Date().getFullYear()} Pressure Titans. All rights reserved.
-              </p>
-            </div>
-          </div>
-        </footer>
-
-        {/* Agency Credit */}
-        <div className="bg-slate-950 py-3">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-2">
-            <span className="text-slate-500 text-xs">Website & SEO by</span>
-            <a
-              href="https://www.steadyscaling.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:opacity-80 transition-opacity"
-            >
-              <span className="text-slate-400 text-xs font-medium">Steady Scaling</span>
-            </a>
-          </div>
-        </div>
+        <Footer />
       </main>
     </>
   );

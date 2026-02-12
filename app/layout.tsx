@@ -33,6 +33,25 @@ export const metadata: Metadata = {
     siteName: "Pressure Titans",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/images/logos/pressure-titans-icon.webp",
+        width: 800,
+        height: 800,
+        alt: "Pressure Titans - Pressure Washing Service",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pressure Titans | Minneapolis Pressure Washing & Exterior Cleaning",
+    description:
+      "Professional pressure washing, soft washing, ice dam removal, gutter cleaning, and holiday lighting in Minneapolis, MN.",
+    images: ["/images/logos/pressure-titans-icon.webp"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
   },
 };
 

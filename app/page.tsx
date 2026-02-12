@@ -3,6 +3,11 @@ import Link from "next/link";
 import Script from "next/script";
 import Header from "@/components/Header";
 import MobileCallBar from "@/components/MobileCallBar";
+import ReviewCarousel from "@/components/ReviewCarousel";
+import ReviewsSection from "@/components/ReviewsSection";
+import StatsBar from "@/components/StatsBar";
+import BeforeAfterCarousel from "@/components/BeforeAfterCarousel";
+import Footer from "@/components/Footer";
 
 const faqs = [
   {
@@ -69,37 +74,22 @@ const services = [
     title: "Pressure Washing",
     description: "Driveways, sidewalks, patios, pavers, and concrete restored to like-new condition.",
     href: "/services/pressure-washing",
-    image: "/images/projects/bastoneflooramazing.webp",
+    image: "/images/projects/guysprayingthefrontdoorsteps.webp",
   },
   {
     title: "House Washing",
     description: "Gentle soft washing for siding, stucco, and exterior walls. Safe for every surface.",
     href: "/services/house-washing",
-    image: "/images/projects/bahouseoutsidewallsgood.webp",
+    image: "/images/projects/bahouseoutsidewallsgood2.webp",
   },
   {
     title: "Gutter Cleaning",
     description: "Full debris removal and downspout flushing. Prevent water damage before it starts.",
     href: "/services/gutter-cleaning",
-    image: "/images/projects/bagutterclean.webp",
+    image: "/images/projects/baguttercleaned.webp",
   },
 ];
 
-const beforeAfterShowcase = [
-  { src: "/images/projects/bafrontstepsgood.webp", label: "Front Steps" },
-  { src: "/images/projects/badeck6good.webp", label: "Deck Restoration" },
-  { src: "/images/projects/bastoneflooramazing.webp", label: "Stone Patio" },
-  { src: "/images/projects/bawalkwaygood.webp", label: "Walkway" },
-  { src: "/images/projects/bahouseoutsidewallsgood2.webp", label: "Exterior Walls" },
-  { src: "/images/projects/baguttercleaned.webp", label: "Gutter Cleaning" },
-];
-
-const stats = [
-  { value: "500+", label: "Properties Cleaned" },
-  { value: "5.0", label: "Google Rating" },
-  { value: "100%", label: "Satisfaction Rate" },
-  { value: "Same Day", label: "Quotes Available" },
-];
 
 const areas = [
   { name: "Eden Prairie", slug: "eden-prairie" },
@@ -145,10 +135,10 @@ export default function HomePage() {
             loop
             playsInline
             className="absolute inset-0 w-full h-full object-cover"
-            poster="/images/projects/bafrontstepsgood.webp"
+            poster="/images/projects/bastoneflooramazing.webp"
           >
-            <source src="/videos/pressurewashingjob1.mov" type="video/quicktime" />
-            <source src="/videos/pressurewashingjob1.mov" type="video/mp4" />
+            <source src="/videos/fullhousejob.MOV" type="video/quicktime" />
+            <source src="/videos/fullhousejob.MOV" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-navy/80" />
 
@@ -183,70 +173,81 @@ export default function HomePage() {
                   (612) 554-8106
                 </a>
               </div>
+
+              {/* Rotating Reviews */}
+              <ReviewCarousel />
             </div>
           </div>
 
-          {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
-              <div className="w-1 h-3 bg-white/60 rounded-full animate-bounce" />
-            </div>
-          </div>
+          {/* Scroll arrow */}
+          <a
+            href="#stats"
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 w-10 h-10 flex items-center justify-center text-white/50 hover:text-white transition-colors"
+            aria-label="Scroll down"
+          >
+            <svg className="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
         </section>
 
         {/* Stats Bar */}
-        <section className="bg-white border-b border-slate-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-              {stats.map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <div className="text-4xl md:text-5xl font-heading font-bold text-titan-accent mb-2">
-                    {stat.value}
-                  </div>
-                  <div className="text-slate-500 font-medium text-sm uppercase tracking-widest">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <div id="stats">
+          <StatsBar />
+        </div>
 
-        {/* Services — Large image cards */}
+        {/* Services — Peregrine style cards */}
         <section className="py-24 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <p className="text-titan-accent font-semibold uppercase tracking-widest text-sm mb-3">What We Do</p>
               <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-900">
-                Our Services
+                Everything Your Home&apos;s{" "}
+                <span className="text-titan-accent">Exterior Needs</span>
               </h2>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {services.map((service) => (
                 <Link
                   key={service.title}
                   href={service.href}
-                  className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl hover:border-titan-accent/20 transition-all"
+                  className="group relative rounded-2xl overflow-hidden aspect-square flex flex-col justify-center"
                 >
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-700"
-                      sizes="(max-width: 1024px) 100vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  </div>
-                  <div className="p-8">
-                    <h3 className="text-2xl font-heading font-bold text-slate-900 mb-3 group-hover:text-titan-accent transition-colors">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-titan-accent/60 group-hover:bg-titan-accent/70 transition-colors" />
+                  <div className="relative z-10 p-8 text-center">
+                    <div className="w-14 h-14 mx-auto bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-5">
+                      {service.title === "Pressure Washing" && (
+                        <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                      )}
+                      {service.title === "House Washing" && (
+                        <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4" />
+                        </svg>
+                      )}
+                      {service.title === "Gutter Cleaning" && (
+                        <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                        </svg>
+                      )}
+                    </div>
+                    <h3 className="text-2xl font-heading font-bold text-white mb-2">
                       {service.title}
                     </h3>
-                    <p className="text-slate-500 leading-relaxed mb-4">{service.description}</p>
-                    <span className="inline-flex items-center gap-2 text-titan-accent font-semibold">
+                    <p className="text-white/80 text-sm leading-relaxed mb-4">
+                      {service.description}
+                    </p>
+                    <span className="inline-flex items-center gap-1 text-white font-semibold text-sm group-hover:gap-2 transition-all">
                       Learn More
-                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
                     </span>
@@ -257,56 +258,11 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Before & After Showcase */}
-        <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <p className="text-titan-accent font-semibold uppercase tracking-widest text-sm mb-3">Real Results</p>
-              <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-900 mb-4">
-                Before & After
-              </h2>
-              <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-                Every image tells the story. See the difference professional cleaning makes.
-              </p>
-            </div>
+        {/* Google Reviews */}
+        <ReviewsSection />
 
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              {beforeAfterShowcase.map((item) => (
-                <div
-                  key={item.label}
-                  className="group relative rounded-2xl overflow-hidden"
-                >
-                  <div className="relative aspect-square">
-                    <Image
-                      src={item.src}
-                      alt={`${item.label} before and after pressure washing`}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 768px) 50vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform">
-                      <span className="text-white font-semibold text-sm">{item.label}</span>
-                      <span className="block text-white/70 text-xs">Before & After</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="text-center mt-12">
-              <Link
-                href="/portfolio"
-                className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
-              >
-                View Full Portfolio
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </div>
-          </div>
-        </section>
+        {/* Before & After Carousel */}
+        <BeforeAfterCarousel />
 
         {/* Video Showcase */}
         <section className="py-24 bg-navy">
@@ -324,7 +280,7 @@ export default function HomePage() {
                 muted
                 playsInline
                 preload="none"
-                poster="/images/projects/badriveway.webp"
+                poster="/images/projects/bastoneflooramazing.webp"
               >
                 <source src="/videos/fullhousejob.MOV" type="video/quicktime" />
                 <source src="/videos/fullhousejob.MOV" type="video/mp4" />
@@ -496,86 +452,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="bg-slate-900 py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-4 gap-10 mb-12">
-              <div className="md:col-span-1">
-                <div className="flex items-center gap-3 mb-4">
-                  <Image
-                    src="/images/logos/pressure-titans-logo.webp"
-                    alt="Pressure Titans"
-                    width={40}
-                    height={40}
-                    className="rounded-lg"
-                  />
-                  <span className="text-lg font-heading font-bold text-white">Pressure Titans</span>
-                </div>
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  Professional exterior cleaning in Minneapolis. Results you can see, service you can trust.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="font-heading font-bold text-slate-300 mb-4">Services</h3>
-                <ul className="space-y-2 text-slate-400 text-sm">
-                  <li><Link href="/services/pressure-washing" className="hover:text-white transition-colors">Pressure Washing</Link></li>
-                  <li><Link href="/services/house-washing" className="hover:text-white transition-colors">House Washing</Link></li>
-                  <li><Link href="/services/gutter-cleaning" className="hover:text-white transition-colors">Gutter Cleaning</Link></li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="font-heading font-bold text-slate-300 mb-4">Company</h3>
-                <ul className="space-y-2 text-slate-400 text-sm">
-                  <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
-                  <li><Link href="/portfolio" className="hover:text-white transition-colors">Our Work</Link></li>
-                  <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
-                  <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="font-heading font-bold text-slate-300 mb-4">Contact</h3>
-                <ul className="space-y-2 text-slate-400 text-sm">
-                  <li>
-                    <a href="tel:6125548106" className="hover:text-white transition-colors">(612) 554-8106</a>
-                  </li>
-                  <li>
-                    <a href="mailto:pressuretitans@gmail.com" className="hover:text-white transition-colors">pressuretitans@gmail.com</a>
-                  </li>
-                  <li>Minneapolis, MN</li>
-                  <li>Mon–Sat: 7AM–7PM</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="border-t border-slate-800 pt-8 text-center">
-              <p className="text-slate-400 text-sm">
-                &copy; {new Date().getFullYear()} Pressure Titans. All rights reserved.
-                {" · "}
-                <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-                {" · "}
-                <Link href="/sitemap-page" className="hover:text-white transition-colors">Sitemap</Link>
-              </p>
-            </div>
-          </div>
-        </footer>
-
-        {/* Agency Credit */}
-        <div className="bg-slate-950 py-3">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-2">
-            <span className="text-slate-500 text-xs">Website & SEO by</span>
-            <a
-              href="https://www.steadyscaling.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:opacity-80 transition-opacity"
-            >
-              <span className="text-slate-400 text-xs font-medium">Steady Scaling</span>
-            </a>
-          </div>
-        </div>
+        <Footer />
       </main>
 
       <MobileCallBar />

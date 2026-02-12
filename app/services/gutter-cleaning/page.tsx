@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
+import ReviewCarousel from "@/components/ReviewCarousel";
+import StatsBar from "@/components/StatsBar";
+import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -154,13 +157,15 @@ export default function GutterCleaningPage() {
 
       <main>
         {/* Hero */}
-        <section className="relative min-h-[70dvh] flex items-center bg-navy pt-20">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0d1f3c] via-navy to-navy" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(37,99,235,0.12),_transparent_60%)]" />
+        <section className="relative min-h-[70dvh] flex items-center bg-navy pt-20 overflow-hidden">
+          <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+            <source src="/videos/fullhousejob.MOV" type="video/quicktime" />
+            <source src="/videos/fullhousejob.MOV" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-navy/80" />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
+            <div>
                 <span className="inline-block bg-titan-accent/20 text-titan-light text-sm font-semibold px-4 py-1.5 rounded-full mb-6 tracking-wide uppercase">
                   Protect Your Home
                 </span>
@@ -186,22 +191,12 @@ export default function GutterCleaningPage() {
                     (612) 554-8106
                   </a>
                 </div>
-              </div>
-              <div className="hidden lg:block relative">
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                  <Image
-                    src="/images/projects/bagutterclean.webp"
-                    alt="Professional gutter cleaning before and after in Minneapolis"
-                    width={600}
-                    height={450}
-                    className="w-full h-auto object-cover"
-                    priority
-                  />
-                </div>
-              </div>
+                <ReviewCarousel />
             </div>
           </div>
         </section>
+
+        <StatsBar />
 
         {/* Why Gutter Cleaning Matters */}
         <section className="py-16 bg-titan-accent">
@@ -474,69 +469,7 @@ export default function GutterCleaningPage() {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="bg-slate-900 py-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-3 gap-8 mb-8">
-              <div>
-                <span className="text-xl font-heading font-bold text-white mb-4 block">
-                  Pressure<span className="text-titan-light">Titans</span>
-                </span>
-                <p className="text-slate-400 text-sm">
-                  Professional exterior cleaning services in Minneapolis, MN.
-                  Licensed &amp; insured.
-                </p>
-              </div>
-              <div>
-                <h3 className="font-bold text-slate-300 mb-4">Services</h3>
-                <ul className="space-y-2 text-slate-400 text-sm">
-                  <li><Link href="/services/pressure-washing" className="hover:text-white transition-colors">Pressure Washing</Link></li>
-                  <li><Link href="/services/house-washing" className="hover:text-white transition-colors">House Washing</Link></li>
-                  <li><Link href="/services/gutter-cleaning" className="hover:text-white transition-colors">Gutter Cleaning</Link></li>
-                  <li>Soft Washing</li>
-                  <li>Ice Dam Removal</li>
-                  <li>Holiday Lighting</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-bold text-slate-300 mb-4">Contact</h3>
-                <ul className="space-y-2 text-slate-400 text-sm">
-                  <li>
-                    <a href="tel:6125548106" className="hover:text-white transition-colors">
-                      (612) 554-8106
-                    </a>
-                  </li>
-                  <li>
-                    <a href="mailto:pressuretitans@gmail.com" className="hover:text-white transition-colors">
-                      pressuretitans@gmail.com
-                    </a>
-                  </li>
-                  <li>Minneapolis, MN</li>
-                </ul>
-              </div>
-            </div>
-            <div className="border-t border-slate-800 pt-8 text-center">
-              <p className="text-slate-400 text-sm">
-                &copy; {new Date().getFullYear()} Pressure Titans. All rights reserved.
-              </p>
-            </div>
-          </div>
-        </footer>
-
-        {/* Agency Credit */}
-        <div className="bg-slate-950 py-3">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-2">
-            <span className="text-slate-500 text-xs">Website &amp; SEO by</span>
-            <a
-              href="https://www.steadyscaling.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:opacity-80 transition-opacity"
-            >
-              <span className="text-slate-400 text-xs font-medium">Steady Scaling</span>
-            </a>
-          </div>
-        </div>
+        <Footer />
       </main>
     </>
   );
