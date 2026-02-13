@@ -8,8 +8,19 @@ export const metadata: Metadata = {
   title: "About Us",
   description:
     "Learn the story behind Pressure Titans — a young entrepreneur built this Minneapolis pressure washing company from the ground up with hard work, integrity, and a relentless drive for quality.",
+  keywords:
+    "about Pressure Titans, Minneapolis pressure washing company, local pressure washing, Chanhassen pressure washing, exterior cleaning company Minnesota",
   alternates: {
     canonical: "https://pressuretitans.com/about",
+  },
+  openGraph: {
+    title: "About Pressure Titans | Minneapolis Pressure Washing",
+    description:
+      "Learn the story behind Pressure Titans — a young entrepreneur built this Minneapolis pressure washing company from the ground up.",
+    url: "https://pressuretitans.com/about",
+    siteName: "Pressure Titans",
+    locale: "en_US",
+    type: "website",
   },
 };
 
@@ -113,8 +124,7 @@ export default function AboutPage() {
         {/* Hero */}
         <section className="relative bg-navy pt-20 overflow-hidden">
           <video autoPlay muted loop playsInline poster="/images/projects/bastoneflooramazing.webp" className="absolute inset-0 w-full h-full object-cover">
-            <source src="/videos/fullhousejob.MOV" type="video/quicktime" />
-            <source src="/videos/fullhousejob.MOV" type="video/mp4" />
+            <source src="/videos/fullhousejob.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-navy/80" />
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
@@ -144,10 +154,16 @@ export default function AboutPage() {
         <section className="py-20 md:py-28 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-              {/* Photo placeholder */}
+              {/* Owner photo */}
               <div className="relative">
-                <div className="bg-slate-100 rounded-2xl aspect-[4/5] flex items-center justify-center text-slate-400 border border-slate-200">
-                  <span className="text-sm font-medium">Owner photo</span>
+                <div className="rounded-2xl aspect-[4/5] overflow-hidden">
+                  <Image
+                    src="/images/team/owner.webp"
+                    alt="Michael, owner of Pressure Titans"
+                    fill
+                    className="object-cover rounded-2xl"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
                 </div>
                 {/* Decorative accent */}
                 <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-titan-accent/20 rounded-2xl -z-10" />

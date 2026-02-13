@@ -8,7 +8,7 @@ const photos = [
   { src: "/images/projects/bafrontstepsgood.webp", label: "Front Steps" },
   { src: "/images/projects/badeck6good.webp", label: "Deck Restoration" },
   { src: "/images/projects/bawalkwaygood.webp", label: "Walkway" },
-  { src: "/images/projects/bahouseoutsidewallsgood2.webp", label: "Exterior Walls" },
+  { src: "/images/projects/bafrontstepsgood.webp", label: "Exterior Walls" },
   { src: "/images/projects/baguttercleaned.webp", label: "Gutter Cleaning" },
   { src: "/images/projects/bagutterclean.webp", label: "Gutter Before & After" },
   { src: "/images/projects/badriveway.webp", label: "Driveway" },
@@ -44,7 +44,7 @@ function getCardStyle(offset: number): React.CSSProperties {
   }
   if (Math.abs(offset) === 1) {
     return {
-      transform: `translateX(${offset > 0 ? "110%" : "-110%"}) scale(0.75)`,
+      transform: `translateX(${offset > 0 ? "100%" : "-100%"}) scale(0.75)`,
       zIndex: 10,
       opacity: 0.5,
       visibility: "visible" as const,
@@ -52,8 +52,8 @@ function getCardStyle(offset: number): React.CSSProperties {
   }
   return {
     transform: offset > 0
-      ? "translateX(140%) scale(0.6)"
-      : "translateX(-140%) scale(0.6)",
+      ? "translateX(110%) scale(0.6)"
+      : "translateX(-110%) scale(0.6)",
     zIndex: 0,
     opacity: 0,
     visibility: "hidden" as const,
@@ -79,16 +79,16 @@ export default function BeforeAfterCarousel() {
   }, []);
 
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section className="py-16 sm:py-24 bg-navy overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <p className="text-titan-accent font-semibold uppercase tracking-widest text-sm mb-3">
+          <p className="text-titan-light font-semibold uppercase tracking-widest text-sm mb-3">
             Real Results
           </p>
-          <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
             Before &amp; After
           </h2>
-          <p className="text-lg text-slate-500 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
             Every image tells the story. See the difference professional cleaning makes.
           </p>
         </div>
@@ -133,19 +133,25 @@ export default function BeforeAfterCarousel() {
             })}
           </div>
 
-          {/* Arrows */}
+        </div>
+
+        {/* Arrows + Counter */}
+        <div className="flex items-center justify-center gap-6 mt-8">
           <button
             onClick={() => go(-1)}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-40 w-12 h-12 bg-slate-900/60 hover:bg-titan-accent border border-white/20 hover:border-titan-accent rounded-full flex items-center justify-center text-white transition-all"
+            className="w-12 h-12 bg-white/10 hover:bg-titan-accent border border-white/20 hover:border-titan-accent rounded-full flex items-center justify-center text-white transition-all"
             aria-label="Previous photo"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
+          <p className="text-white/40 text-sm">
+            {current + 1} / {photos.length}
+          </p>
           <button
             onClick={() => go(1)}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-40 w-12 h-12 bg-slate-900/60 hover:bg-titan-accent border border-white/20 hover:border-titan-accent rounded-full flex items-center justify-center text-white transition-all"
+            className="w-12 h-12 bg-white/10 hover:bg-titan-accent border border-white/20 hover:border-titan-accent rounded-full flex items-center justify-center text-white transition-all"
             aria-label="Next photo"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -154,14 +160,10 @@ export default function BeforeAfterCarousel() {
           </button>
         </div>
 
-        <p className="text-center text-slate-400 text-sm mt-8">
-          {current + 1} / {photos.length}
-        </p>
-
         <div className="text-center mt-6">
           <a
             href="/portfolio"
-            className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
+            className="inline-flex items-center gap-2 bg-white/10 hover:bg-titan-accent border border-white/20 hover:border-titan-accent text-white font-semibold px-8 py-4 rounded-xl transition-all"
           >
             View Full Portfolio
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

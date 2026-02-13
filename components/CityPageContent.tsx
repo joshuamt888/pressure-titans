@@ -1,27 +1,6 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import Script from "next/script";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Pressure Washing Minneapolis | Pressure Titans",
-  description:
-    "Professional pressure washing, soft washing, gutter cleaning, and exterior cleaning in Minneapolis, MN. Licensed & insured. Free estimates. Call (612) 554-8106.",
-  keywords:
-    "pressure washing Minneapolis, power washing Minneapolis, soft washing, gutter cleaning Minneapolis, exterior cleaning, house washing Minneapolis, driveway cleaning, deck cleaning",
-  alternates: {
-    canonical: "https://pressuretitans.com",
-  },
-  openGraph: {
-    title: "Pressure Washing Minneapolis | Pressure Titans",
-    description:
-      "Professional pressure washing, soft washing, gutter cleaning, and exterior cleaning in Minneapolis, MN. Licensed & insured. Free estimates.",
-    url: "https://pressuretitans.com",
-    siteName: "Pressure Titans",
-    locale: "en_US",
-    type: "website",
-  },
-};
-import Header from "@/components/Header";
+import Link from "next/link";
 import ReviewCarousel from "@/components/ReviewCarousel";
 import ReviewsSection from "@/components/ReviewsSection";
 import StatsBar from "@/components/StatsBar";
@@ -30,144 +9,58 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import ParallaxImage from "@/components/ParallaxImage";
 import FaqAccordion from "@/components/FaqAccordion";
-import VideoCarousel from "@/components/VideoCarousel";
+import Header from "@/components/Header";
 
-const faqs = [
-  {
-    question: "How much does pressure washing cost in Minneapolis?",
-    answer:
-      "Pricing depends on the surface type, size, and condition. Most residential driveways run $150-$300, and house washes typically range $200-$500. We provide free on-site quotes with no hidden fees.",
-  },
-  {
-    question: "Is pressure washing safe for all surfaces?",
-    answer:
-      "We adjust our methods for every surface. Hard surfaces like concrete and brick get high-pressure cleaning, while siding, roofs, and delicate surfaces get soft washed with low pressure and eco-friendly solutions.",
-  },
-  {
-    question: "How often should I have my house washed?",
-    answer:
-      "We recommend annual exterior cleaning for most Minneapolis homes. Gutters should be cleaned twice a year — spring and fall. Driveways and walkways benefit from yearly cleaning to prevent algae and staining.",
-  },
-  {
-    question: "Do you offer free estimates?",
-    answer:
-      "Yes! Every quote is free with no obligation. We can often provide estimates same-day. Call us at (612) 554-8106 or fill out our contact form.",
-  },
-  {
-    question: "What areas do you serve?",
-    answer:
-      "We serve the entire Minneapolis metro including Eden Prairie, Chanhassen, Chaska, Shakopee, Prior Lake, Savage, Minnetonka, Victoria, Waconia, Excelsior, and surrounding areas.",
-  },
-];
+interface FaqItem {
+  question: string;
+  answer: string;
+}
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
-
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Pressure Titans",
-  description: "Professional pressure washing, soft washing, and exterior cleaning services in Minneapolis, MN.",
-  telephone: "612-554-8106",
-  email: "pressuretitans@gmail.com",
-  url: "https://pressuretitans.com",
-  areaServed: {
-    "@type": "City",
-    name: "Minneapolis",
-    containedIn: {
-      "@type": "State",
-      name: "Minnesota",
-    },
-  },
-  priceRange: "$$",
-};
+interface CityPageContentProps {
+  cityName: string;
+  faqs: FaqItem[];
+}
 
 const services = [
   {
     title: "Pressure Washing",
     description: "Driveways, sidewalks, patios, and concrete restored to like-new condition.",
-    href: "/services/pressure-washing",
     icon: "bolt",
   },
   {
     title: "House Washing",
     description: "Gentle soft washing for siding, stucco, and exterior walls.",
-    href: "/services/house-washing",
     icon: "home",
   },
   {
     title: "Gutter Cleaning",
     description: "Full debris removal and downspout flushing to prevent damage.",
-    href: "/services/gutter-cleaning",
     icon: "gutter",
   },
   {
     title: "Ice Dam Removal",
     description: "Safe low-pressure steam removal that protects your roof.",
-    href: "/services/ice-dam-removal",
     icon: "ice",
   },
   {
     title: "Holiday Lighting",
     description: "Full-service design, installation, maintenance, and takedown.",
-    href: "/services/holiday-lighting",
     icon: "light",
   },
   {
     title: "Stain Removal",
     description: "Rust, oil, tire marks — professional-grade treatments.",
-    href: "/services/stain-removal",
     icon: "stain",
   },
 ];
 
-const areas = [
-  { name: "Eden Prairie", slug: "eden-prairie" },
-  { name: "Chanhassen", slug: "chanhassen" },
-  { name: "Chaska", slug: "chaska" },
-  { name: "Shakopee", slug: "shakopee" },
-  { name: "Prior Lake", slug: "prior-lake" },
-  { name: "Savage", slug: "savage" },
-  { name: "Minnetonka", slug: "minnetonka" },
-  { name: "Victoria", slug: "victoria" },
-  { name: "Waconia", slug: "waconia" },
-  { name: "Excelsior", slug: "excelsior" },
-  { name: "Shorewood", slug: "shorewood" },
-  { name: "Deephaven", slug: "deephaven" },
-  { name: "Tonka Bay", slug: "tonka-bay" },
-  { name: "Greenwood", slug: "greenwood" },
-  { name: "Mound", slug: "mound" },
-  { name: "Carver", slug: "carver" },
-];
-
-export default function HomePage() {
+export default function CityPageContent({ cityName, faqs }: CityPageContentProps) {
   return (
     <>
-      <Script
-        id="faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <Script
-        id="local-business-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
-
       <Header />
 
       <main>
-        {/* Hero — Full-screen with video background */}
+        {/* Hero */}
         <section className="relative min-h-[100dvh] flex items-center pt-24 sm:pt-32 bg-navy">
           <video
             autoPlay
@@ -187,13 +80,13 @@ export default function HomePage() {
                   <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
-                  Licensed & Insured in Minnesota
+                  Serving {cityName}, MN
                 </div>
               </ScrollReveal>
 
               <ScrollReveal animation="fade-up" delay={400}>
                 <h1 className="text-3xl sm:text-5xl lg:text-7xl font-heading font-bold text-white mb-6 leading-[1.1]">
-                  Minneapolis
+                  {cityName}
                   <span className="block text-titan-light">Pressure Washing</span>
                 </h1>
               </ScrollReveal>
@@ -221,14 +114,12 @@ export default function HomePage() {
                 </div>
               </ScrollReveal>
 
-              {/* Rotating Reviews */}
               <ScrollReveal animation="fade-up" delay={1000}>
                 <ReviewCarousel />
               </ScrollReveal>
             </div>
           </div>
 
-          {/* Scroll arrow */}
           <a
             href="#stats"
             className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 w-10 h-10 flex items-center justify-center text-white/50 hover:text-white transition-colors"
@@ -263,10 +154,7 @@ export default function HomePage() {
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {services.map((service, i) => (
                 <ScrollReveal key={service.title} animation="fade-up" delay={i * 100}>
-                  <Link
-                    href={service.href}
-                    className="group block bg-slate-50 border border-slate-200 hover:border-titan-accent/50 hover:shadow-lg rounded-2xl p-5 sm:p-8 transition-all duration-300 hover:-translate-y-1 h-full"
-                  >
+                  <div className="group block bg-slate-50 border border-slate-200 hover:border-titan-accent/50 hover:shadow-lg rounded-2xl p-5 sm:p-8 transition-all duration-300 hover:-translate-y-1 h-full">
                     <div className="w-11 h-11 sm:w-14 sm:h-14 bg-titan-accent/10 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-titan-accent/20 transition-colors">
                       {service.icon === "bolt" && (
                         <svg className="w-5 h-5 sm:w-7 sm:h-7 text-titan-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -302,16 +190,10 @@ export default function HomePage() {
                     <h3 className="text-base sm:text-xl font-heading font-bold text-slate-900 mb-1 sm:mb-2">
                       {service.title}
                     </h3>
-                    <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
+                    <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
                       {service.description}
                     </p>
-                    <span className="inline-flex items-center gap-1 text-titan-accent font-semibold text-xs sm:text-sm group-hover:gap-2 transition-all duration-300">
-                      Learn More
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </span>
-                  </Link>
+                  </div>
                 </ScrollReveal>
               ))}
             </div>
@@ -323,21 +205,6 @@ export default function HomePage() {
 
         {/* Before & After */}
         <BeforeAfterCarousel />
-
-        {/* Video Showcase */}
-        <section className="py-16 sm:py-24 bg-navy overflow-hidden">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <ScrollReveal animation="fade-up" className="text-center mb-12">
-              <p className="text-titan-light font-semibold uppercase tracking-widest text-sm mb-3">Watch Us Work</p>
-              <h2 className="text-3xl md:text-5xl font-heading font-bold text-white">
-                See Us in Action
-              </h2>
-            </ScrollReveal>
-            <ScrollReveal animation="scale-up" delay={200}>
-              <VideoCarousel />
-            </ScrollReveal>
-          </div>
-        </section>
 
         {/* Why Choose Us */}
         <section className="py-16 sm:py-24 bg-slate-50 overflow-hidden">
@@ -447,37 +314,12 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Service Areas */}
-        <section className="py-20 bg-white overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <ScrollReveal animation="fade-up" className="text-center mb-10">
-              <p className="text-titan-accent font-semibold uppercase tracking-widest text-sm mb-3">Coverage</p>
-              <h2 className="text-3xl font-heading font-bold text-slate-900 mb-4">Service Areas</h2>
-              <p className="text-slate-500">Proudly serving the Minneapolis west metro</p>
-            </ScrollReveal>
-            <ScrollReveal animation="fade-up" delay={200}>
-              <div className="flex flex-wrap justify-center gap-3">
-                {areas.map((city, i) => (
-                  <Link
-                    key={city.slug}
-                    href={`/${city.slug}-pressure-washing`}
-                    className="bg-slate-100 hover:bg-titan-accent hover:text-white text-slate-700 px-5 py-2.5 rounded-full text-sm font-medium transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-titan-accent/20"
-                    style={{ animationDelay: `${i * 30}ms` }}
-                  >
-                    {city.name}
-                  </Link>
-                ))}
-              </div>
-            </ScrollReveal>
-          </div>
-        </section>
-
         {/* CTA */}
         <section className="py-16 sm:py-24 bg-navy overflow-hidden">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <ScrollReveal animation="blur-in">
               <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6">
-                Ready for a Cleaner Property?
+                Ready for a Cleaner Property in {cityName}?
               </h2>
             </ScrollReveal>
             <ScrollReveal animation="fade-up" delay={200}>

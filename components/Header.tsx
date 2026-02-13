@@ -4,10 +4,16 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const services = [
+const coreServices = [
   { label: "Pressure Washing", href: "/services/pressure-washing" },
   { label: "House Washing", href: "/services/house-washing" },
   { label: "Gutter Cleaning", href: "/services/gutter-cleaning" },
+];
+
+const additionalServices = [
+  { label: "Ice Dam Removal", href: "/services/ice-dam-removal" },
+  { label: "Holiday Lighting", href: "/services/holiday-lighting" },
+  { label: "Stain Removal", href: "/services/stain-removal" },
 ];
 
 const areas = [
@@ -61,7 +67,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-28">
+        <div className="flex items-center justify-between h-20 sm:h-28">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-4">
             <Image
@@ -69,7 +75,7 @@ export default function Header() {
               alt="Pressure Titans"
               width={96}
               height={96}
-              className="rounded-lg"
+              className="rounded-lg w-16 h-16 sm:w-24 sm:h-24"
             />
             <div className="hidden sm:block">
               <span className="text-2xl font-heading font-bold text-slate-900 leading-tight block">
@@ -109,7 +115,19 @@ export default function Header() {
 
               {servicesOpen && (
                 <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-slate-200 py-2">
-                  {services.map((s) => (
+                  {coreServices.map((s) => (
+                    <Link
+                      key={s.href}
+                      href={s.href}
+                      onClick={() => setServicesOpen(false)}
+                      className="block px-4 py-3 text-slate-600 hover:bg-titan-accent/5 hover:text-titan-accent transition-colors"
+                    >
+                      {s.label}
+                    </Link>
+                  ))}
+                  <div className="border-t border-slate-100 my-1" />
+                  <p className="px-4 pt-2 pb-1 text-xs font-semibold text-slate-400 uppercase tracking-wider">Additional</p>
+                  {additionalServices.map((s) => (
                     <Link
                       key={s.href}
                       href={s.href}
@@ -222,7 +240,18 @@ export default function Header() {
               </button>
               {mobileServicesOpen && (
                 <div className="pl-4 flex flex-col gap-1 mb-2">
-                  {services.map((s) => (
+                  {coreServices.map((s) => (
+                    <Link
+                      key={s.href}
+                      href={s.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="text-slate-500 hover:text-titan-accent py-2"
+                    >
+                      {s.label}
+                    </Link>
+                  ))}
+                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider pt-2 pb-1">Additional</p>
+                  {additionalServices.map((s) => (
                     <Link
                       key={s.href}
                       href={s.href}

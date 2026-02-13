@@ -3,136 +3,129 @@ import Header from "@/components/Header";
 import ReviewCarousel from "@/components/ReviewCarousel";
 import StatsBar from "@/components/StatsBar";
 import Footer from "@/components/Footer";
-import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Gutter Cleaning Minneapolis | Professional Gutter & Downspout Service",
+  title: "Stain Removal Minneapolis | Driveways, Patios & Exterior Surfaces",
   description:
-    "Professional gutter cleaning in Minneapolis. Debris removal, downspout flushing & gutter maintenance. Prevent water damage. Call (612) 554-8106.",
+    "Professional stain removal for driveways, patios, and exterior surfaces in Minneapolis, MN. Rust, oil, tire marks, and more. Licensed & insured. Free estimates.",
   keywords:
-    "gutter cleaning Minneapolis, gutter maintenance, downspout cleaning, gutter debris removal, gutter service Minneapolis, gutter flushing Minnesota",
+    "stain removal Minneapolis, oil stain removal, rust stain removal, driveway stain cleaning, concrete stain removal Minneapolis, patio stain treatment Minnesota",
   alternates: {
-    canonical: "https://pressuretitans.com/services/gutter-cleaning",
+    canonical: "https://pressuretitans.com/services/stain-removal",
   },
   openGraph: {
-    title: "Gutter Cleaning Minneapolis | Professional Gutter & Downspout Service",
+    title: "Stain Removal Minneapolis | Driveways, Patios & Exterior Surfaces",
     description:
-      "Professional gutter cleaning in Minneapolis. Debris removal, downspout flushing & gutter maintenance. Prevent water damage.",
-    url: "https://pressuretitans.com/services/gutter-cleaning",
+      "Professional stain removal for driveways, patios, and exterior surfaces in Minneapolis, MN. Rust, oil, tire marks, and more. Licensed & insured. Free estimates.",
+    url: "https://pressuretitans.com/services/stain-removal",
     siteName: "Pressure Titans",
     locale: "en_US",
     type: "website",
   },
 };
 
-const includedItems = [
+const serviceItems = [
   {
-    name: "Full Debris Removal",
-    detail: "Hand-removal of leaves, twigs, shingle grit, and compacted sludge from all gutters",
+    name: "Rust & Mineral Stains",
+    detail: "Targeted treatment for iron, rust, and mineral deposits that discolor concrete, pavers, and stone surfaces",
   },
   {
-    name: "Downspout Flushing",
-    detail: "High-pressure water flush through every downspout to clear blockages and verify flow",
+    name: "Oil & Grease Stains",
+    detail: "Professional-grade degreasers break down and lift automotive oil, hydraulic fluid, and cooking grease from driveways and garage floors",
   },
   {
-    name: "Gutter Inspection",
-    detail: "Visual check for sagging, loose brackets, rust spots, and seam separation",
+    name: "Tire Mark Removal",
+    detail: "Eliminate dark tire marks and rubber scuffs from driveways, parking areas, and concrete surfaces",
   },
   {
-    name: "Roof Edge Check",
-    detail: "Inspect drip edge and fascia boards for signs of water intrusion or rot",
+    name: "Organic Stain Cleanup",
+    detail: "Remove algae, mold, mildew, leaf tannin, and berry stains that darken and discolor exterior surfaces",
   },
   {
-    name: "Ground Cleanup",
-    detail: "All debris bagged and removed from your property — we leave it cleaner than we found it",
+    name: "Paint & Coating Removal",
+    detail: "Safely strip paint overspray, sealer drips, and accidental spills from concrete and stone without surface damage",
   },
   {
-    name: "Flow Testing",
-    detail: "Run water through the entire system to confirm proper drainage after cleaning",
+    name: "Hard Water & Efflorescence",
+    detail: "Treat white mineral deposits and hard water stains on concrete, brick, and natural stone surfaces",
   },
+];
+
+const benefits = [
+  "Rust and mineral stain removal",
+  "Oil and grease treatment",
+  "Tire mark elimination",
+  "Organic stain cleanup (algae, mold, mildew)",
+  "Safe for concrete, pavers, and stone",
 ];
 
 const processSteps = [
   {
     step: 1,
-    title: "Free Estimate",
+    title: "Send Us Photos",
     description:
-      "Tell us about your home and gutter setup. Photos help, but we can also schedule a quick on-site look. You will receive a clear quote with no hidden fees.",
+      "Snap a few pictures of the stained area and send them our way. We identify the stain type and recommend the right treatment plan with a clear, upfront quote.",
   },
   {
     step: 2,
-    title: "Schedule",
+    title: "Schedule Service",
     description:
-      "Choose a day that works for your schedule. We confirm the appointment and send a reminder so you always know when we are coming.",
+      "Pick a date that works for you. We confirm the appointment and show up on time with the correct solutions and equipment for your specific stain type.",
   },
   {
     step: 3,
-    title: "We Clean",
+    title: "Targeted Treatment",
     description:
-      "Our crew arrives on time, sets up safely, and works section by section. Every gutter run and downspout gets attention. Debris goes into bags, not your yard.",
+      "We apply professional-grade solutions matched to the stain type, allow proper dwell time, and then use the appropriate cleaning method to lift and remove the stain completely.",
   },
   {
     step: 4,
-    title: "You Inspect",
+    title: "Final Inspection",
     description:
-      "We walk you through what we found and what we cleaned. If there are any gutter issues worth noting, we let you know so you can plan ahead.",
+      "Walk the area with us when we finish. We point out the results, address any remaining spots, and make sure you are satisfied before we leave.",
   },
 ];
 
 const pricingFactors = [
-  "Total linear footage of gutters on your home",
-  "Number of stories (single-story vs. multi-story)",
-  "Volume of debris and level of buildup",
-  "Number and condition of downspouts",
-  "Presence of gutter guards or screens",
-  "Accessibility challenges (steep roof pitch, landscaping)",
+  "Type of stain (oil, rust, organic, tire marks, etc.)",
+  "Size and number of stained areas",
+  "Surface material (concrete, pavers, brick, stone)",
+  "Age and severity of the staining",
+  "Whether pre-treatment or multiple applications are needed",
+  "Residential vs. commercial property",
 ];
 
 const faqs = [
   {
-    question: "How often should I have my gutters cleaned in Minneapolis?",
+    question: "Can you remove old oil stains from my driveway?",
     answer:
-      "We recommend at least twice a year for most Minneapolis homes — once in late spring after seed pods and pollen, and once in late fall after leaves have dropped. If you have large trees overhanging your roofline, a third cleaning in mid-summer can prevent mid-season clogs.",
+      "Yes. Oil stain removal is one of our most common requests. We use professional-grade degreasing agents that penetrate deep into the pores of concrete and pavers to break down and lift oil deposits. Very old or deeply penetrated stains may lighten significantly rather than disappear completely, but most customers are very satisfied with the results.",
   },
   {
-    question: "What happens if I do not clean my gutters regularly?",
+    question: "Will stain removal damage my concrete or pavers?",
     answer:
-      "Clogged gutters cause water to overflow and pool around your foundation, which can lead to basement flooding, soil erosion, and foundation cracking. In winter, blocked gutters contribute to ice dams that can damage your roof and cause interior water damage. The cost of gutter cleaning is a fraction of what these repairs would run.",
+      "No. We match our treatment solutions and methods to the specific surface material. Concrete, pavers, brick, and natural stone each require a different approach. Our technicians are trained to remove stains effectively without causing etching, discoloration, or surface damage.",
   },
   {
-    question: "Do you clean gutters with gutter guards installed?",
+    question: "How much does professional stain removal cost?",
     answer:
-      "Yes. Gutter guards reduce the amount of large debris that enters your gutters, but fine particles like shingle grit, pine needles, and seed pods still get through. We carefully remove or work around the guards, clean the gutters, and reinstall everything properly.",
+      "Pricing depends on the stain type, size of the area, and how deeply the stain has penetrated. We provide free estimates with clear pricing before starting any work. Most residential stain removal jobs are affordable and cost far less than replacing the stained surface.",
   },
   {
-    question: "Will you let me know if my gutters need repairs?",
+    question: "What types of stains can you remove?",
     answer:
-      "Absolutely. During every cleaning, we inspect for sagging sections, loose or missing brackets, rust, seam separation, and fascia board issues. We document what we find and give you honest recommendations. We never pressure you into unnecessary repairs.",
+      "We treat a wide range of stains including automotive oil, hydraulic fluid, rust, mineral deposits, tire marks, algae, mold, mildew, leaf tannin, berry stains, paint overspray, and hard water deposits. If you have a stain you are not sure about, send us a photo and we will let you know what we can do.",
   },
   {
-    question: "Can gutter cleaning be done in winter or early spring?",
+    question: "How long does stain removal take?",
     answer:
-      "We can clean gutters in early spring once ice has cleared and temperatures are consistently above freezing. For winter months, if you are experiencing ice dam issues or emergency overflow, we offer targeted solutions to address the immediate problem and schedule a full cleaning when conditions allow.",
+      "Most residential stain removal jobs are completed in one visit. Depending on the stain type and severity, the process typically takes one to three hours including solution dwell time. Severe or multi-layer stains may require a second application, which we schedule at no additional trip charge.",
   },
 ];
 
-const galleryImages = [
-  {
-    src: "/images/projects/bagutterclean.webp",
-    alt: "Before and after gutter cleaning showing debris removal in Minneapolis",
-  },
-  {
-    src: "/images/projects/baguttercleaned.webp",
-    alt: "Before and after gutter cleaned with downspout flushing",
-  },
-  {
-    src: "/images/projects/bagutter3.webp",
-    alt: "Before and after gutter maintenance and debris removal results",
-  },
-];
 
-export default function GutterCleaningPage() {
+export default function StainRemovalPage() {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -146,11 +139,39 @@ export default function GutterCleaningPage() {
     })),
   };
 
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Stain Removal",
+    provider: {
+      "@type": "LocalBusiness",
+      name: "Pressure Titans",
+      telephone: "(612) 554-8106",
+      email: "pressuretitans@gmail.com",
+      areaServed: {
+        "@type": "City",
+        name: "Minneapolis",
+        addressRegion: "MN",
+      },
+    },
+    areaServed: {
+      "@type": "City",
+      name: "Minneapolis",
+      addressRegion: "MN",
+    },
+    description:
+      "Professional stain removal for driveways, patios, and exterior surfaces. Rust, oil, tire marks, organic stains, and more. Safe for concrete, pavers, and stone.",
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
 
       <Header />
@@ -159,22 +180,23 @@ export default function GutterCleaningPage() {
         {/* Hero */}
         <section className="relative min-h-[70dvh] flex items-center bg-navy pt-20 overflow-hidden">
           <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
-            <source src="/videos/fullhousejob.mp4" type="video/mp4" />
+            <source src="/videos/removingstainoffthecement.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-navy/80" />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
             <div>
                 <span className="inline-block bg-titan-accent/20 text-titan-light text-sm font-semibold px-4 py-1.5 rounded-full mb-6 tracking-wide uppercase">
-                  Protect Your Home
+                  Specialized Surface Treatment
                 </span>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 leading-tight">
-                  Gutter Cleaning
+                  Stain Removal
                   <span className="block text-titan-light">Minneapolis, MN</span>
                 </h1>
                 <p className="text-lg sm:text-xl text-slate-300 mb-8 leading-relaxed max-w-xl">
-                  Clogged gutters cause foundation damage, basement flooding, and ice dams.
-                  We keep your gutters flowing so your home stays protected year-round.
+                  Specialized removal of tough stains — rust, oil, tire marks, and organic
+                  buildup — using professional-grade solutions. Targeted treatments that break
+                  down and lift stubborn stains without damaging surfaces.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
@@ -197,21 +219,21 @@ export default function GutterCleaningPage() {
 
         <StatsBar />
 
-        {/* What's Included */}
+        {/* What We Treat */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">
-                What&apos;s Included in Every Gutter Cleaning
+                Stains We Remove
               </h2>
               <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-                We do not cut corners. Every gutter cleaning includes a thorough, multi-step
-                process to make sure your system is working properly.
+                From automotive fluids to organic growth, we have the right solution
+                for every type of exterior stain.
               </p>
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {includedItems.map((item) => (
+              {serviceItems.map((item) => (
                 <div
                   key={item.name}
                   className="bg-slate-50 border border-slate-200 rounded-xl p-6 hover:border-titan-accent/40 hover:shadow-md transition-all"
@@ -241,39 +263,6 @@ export default function GutterCleaningPage() {
           </div>
         </section>
 
-        {/* Before & After Gallery */}
-        <section className="py-20 bg-slate-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">
-                Before &amp; After Results
-              </h2>
-              <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-                See the difference professional gutter cleaning makes. These are real
-                Minneapolis homes we have serviced.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {galleryImages.map((image) => (
-                <div
-                  key={image.src}
-                  className="relative rounded-2xl overflow-hidden shadow-lg group"
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    width={500}
-                    height={400}
-                    className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Our Process */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -282,8 +271,8 @@ export default function GutterCleaningPage() {
                 Our Process
               </h2>
               <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-                Booking gutter cleaning should be easy. Here is exactly what to expect
-                when you work with Pressure Titans.
+                Every stain is different, so we tailor our approach. Here is how we handle
+                stain removal from start to finish.
               </p>
             </div>
 
@@ -312,16 +301,16 @@ export default function GutterCleaningPage() {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-6">
-                  Honest, Upfront Pricing
+                  Transparent Pricing, No Surprises
                 </h2>
                 <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                  Gutter cleaning costs vary based on your home, but we make the pricing
-                  simple and predictable. No surprise charges, no upselling. You get a clear
-                  quote before we start, and that is the price you pay.
+                  Every stain and surface is different, so we do not use cookie-cutter pricing.
+                  We assess the stain type, surface material, and severity, then give you a
+                  straightforward quote that reflects the actual work involved.
                 </p>
                 <p className="text-slate-600 mb-8 leading-relaxed">
-                  Here is what we take into account when building your quote so you understand
-                  exactly where the number comes from.
+                  Here are the factors we consider when building your stain removal quote
+                  so you always understand where the number comes from.
                 </p>
                 <Link
                   href="/contact"
@@ -364,11 +353,11 @@ export default function GutterCleaningPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">
-                Gutter Cleaning FAQs
+                Stain Removal FAQs
               </h2>
               <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-                Answers to the most common gutter cleaning questions we hear from
-                Minneapolis homeowners.
+                Common questions Minneapolis homeowners ask about our professional
+                stain removal services.
               </p>
             </div>
 
@@ -392,11 +381,11 @@ export default function GutterCleaningPage() {
         <section className="py-20 bg-navy">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
-              Get Your Free Gutter Cleaning Quote
+              Get Your Free Stain Removal Quote
             </h2>
             <p className="text-xl text-slate-300 mb-4">
-              Do not wait for the next rainstorm to find out your gutters are clogged.
-              Schedule your cleaning today and protect your home.
+              That stain does not have to be permanent. Send us a photo and we will tell
+              you exactly what we can do — and what it will cost.
             </p>
             <p className="text-slate-400 mb-8">
               Call, text, or fill out our form. We respond within 24 hours — usually sooner.

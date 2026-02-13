@@ -147,8 +147,7 @@ export default function PressureWashingPage() {
         {/* Hero */}
         <section className="relative min-h-[70dvh] flex items-center bg-navy pt-20 overflow-hidden">
           <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
-            <source src="/videos/fullhousejob.MOV" type="video/quicktime" />
-            <source src="/videos/fullhousejob.MOV" type="video/mp4" />
+            <source src="/videos/fullhousejob.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-navy/80" />
 

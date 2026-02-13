@@ -10,6 +10,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://pressuretitans.com/sitemap-page",
   },
+  openGraph: {
+    title: "Sitemap | Pressure Titans",
+    description:
+      "Browse all pages on the Pressure Titans website. Find pressure washing services, city pages, and more.",
+    url: "https://pressuretitans.com/sitemap-page",
+    siteName: "Pressure Titans",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 const mainPages = [
@@ -24,6 +33,9 @@ const servicePages = [
   { label: "Pressure Washing", href: "/services/pressure-washing" },
   { label: "House Washing", href: "/services/house-washing" },
   { label: "Gutter Cleaning", href: "/services/gutter-cleaning" },
+  { label: "Ice Dam Removal", href: "/services/ice-dam-removal" },
+  { label: "Holiday Lighting", href: "/services/holiday-lighting" },
+  { label: "Stain Removal", href: "/services/stain-removal" },
 ];
 
 const cityPages = [
@@ -54,8 +66,7 @@ export default function SitemapPage() {
         {/* Hero */}
         <section className="relative bg-navy pt-20 overflow-hidden">
           <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
-            <source src="/videos/fullhousejob.MOV" type="video/quicktime" />
-            <source src="/videos/fullhousejob.MOV" type="video/mp4" />
+            <source src="/videos/fullhousejob.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-navy/80" />
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">

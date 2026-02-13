@@ -3,136 +3,129 @@ import Header from "@/components/Header";
 import ReviewCarousel from "@/components/ReviewCarousel";
 import StatsBar from "@/components/StatsBar";
 import Footer from "@/components/Footer";
-import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Gutter Cleaning Minneapolis | Professional Gutter & Downspout Service",
+  title: "Ice Dam Removal Minneapolis | Safe Low-Pressure Steam Method",
   description:
-    "Professional gutter cleaning in Minneapolis. Debris removal, downspout flushing & gutter maintenance. Prevent water damage. Call (612) 554-8106.",
+    "Professional ice dam removal in Minneapolis, MN. Safe low-pressure steam method that protects your shingles, gutters, and roofing. Licensed & insured. Free estimates.",
   keywords:
-    "gutter cleaning Minneapolis, gutter maintenance, downspout cleaning, gutter debris removal, gutter service Minneapolis, gutter flushing Minnesota",
+    "ice dam removal Minneapolis, ice dam steaming, roof ice removal, ice dam prevention, ice dam service Minneapolis, steam ice dam removal Minnesota",
   alternates: {
-    canonical: "https://pressuretitans.com/services/gutter-cleaning",
+    canonical: "https://pressuretitans.com/services/ice-dam-removal",
   },
   openGraph: {
-    title: "Gutter Cleaning Minneapolis | Professional Gutter & Downspout Service",
+    title: "Ice Dam Removal Minneapolis | Safe Low-Pressure Steam Method",
     description:
-      "Professional gutter cleaning in Minneapolis. Debris removal, downspout flushing & gutter maintenance. Prevent water damage.",
-    url: "https://pressuretitans.com/services/gutter-cleaning",
+      "Professional ice dam removal in Minneapolis, MN. Safe low-pressure steam method that protects your shingles, gutters, and roofing. Licensed & insured. Free estimates.",
+    url: "https://pressuretitans.com/services/ice-dam-removal",
     siteName: "Pressure Titans",
     locale: "en_US",
     type: "website",
   },
 };
 
-const includedItems = [
+const serviceItems = [
   {
-    name: "Full Debris Removal",
-    detail: "Hand-removal of leaves, twigs, shingle grit, and compacted sludge from all gutters",
+    name: "Roof Ice Dam Removal",
+    detail: "Low-pressure steam safely melts ice ridges along eaves without damaging shingles or flashing",
   },
   {
-    name: "Downspout Flushing",
-    detail: "High-pressure water flush through every downspout to clear blockages and verify flow",
+    name: "Gutter Ice Clearing",
+    detail: "Remove ice blockages from gutters and downspouts to restore proper drainage",
   },
   {
-    name: "Gutter Inspection",
-    detail: "Visual check for sagging, loose brackets, rust spots, and seam separation",
+    name: "Valley Ice Removal",
+    detail: "Clear dangerous ice buildup in roof valleys where water naturally channels",
   },
   {
-    name: "Roof Edge Check",
-    detail: "Inspect drip edge and fascia boards for signs of water intrusion or rot",
+    name: "Icicle Removal",
+    detail: "Safely remove large icicles hanging from eaves, gutters, and overhangs before they cause injury or damage",
   },
   {
-    name: "Ground Cleanup",
-    detail: "All debris bagged and removed from your property — we leave it cleaner than we found it",
+    name: "Emergency Response",
+    detail: "Same-day service available when ice dams are actively causing leaks or interior water damage",
   },
   {
-    name: "Flow Testing",
-    detail: "Run water through the entire system to confirm proper drainage after cleaning",
+    name: "Prevention Assessment",
+    detail: "Identify problem areas on your roof and provide recommendations to reduce future ice dam formation",
   },
+];
+
+const benefits = [
+  "Prevents water damage to interior walls and ceilings",
+  "Protects shingles and gutters from cracking",
+  "Safe low-pressure steam method (no hammering or chipping)",
+  "Licensed and insured professionals",
+  "Emergency same-day service available",
 ];
 
 const processSteps = [
   {
     step: 1,
-    title: "Free Estimate",
+    title: "Call or Text Us",
     description:
-      "Tell us about your home and gutter setup. Photos help, but we can also schedule a quick on-site look. You will receive a clear quote with no hidden fees.",
+      "Describe the situation and send photos if you can. We assess the severity and schedule your service — often the same day for emergencies.",
   },
   {
     step: 2,
-    title: "Schedule",
+    title: "On-Site Assessment",
     description:
-      "Choose a day that works for your schedule. We confirm the appointment and send a reminder so you always know when we are coming.",
+      "Our crew arrives, inspects the ice dam from the ground and roof level, and confirms the plan of action before starting any work.",
   },
   {
     step: 3,
-    title: "We Clean",
+    title: "Steam Removal",
     description:
-      "Our crew arrives on time, sets up safely, and works section by section. Every gutter run and downspout gets attention. Debris goes into bags, not your yard.",
+      "Using commercial low-pressure steam equipment, we methodically melt the ice dam. No hammering, no chipping, no chemicals — just controlled steam that is safe for your roof.",
   },
   {
     step: 4,
-    title: "You Inspect",
+    title: "Flow Verification",
     description:
-      "We walk you through what we found and what we cleaned. If there are any gutter issues worth noting, we let you know so you can plan ahead.",
+      "Once the ice dam is removed, we verify that water can drain freely through your gutters and downspouts. We also check for any visible damage that may need attention.",
   },
 ];
 
 const pricingFactors = [
-  "Total linear footage of gutters on your home",
-  "Number of stories (single-story vs. multi-story)",
-  "Volume of debris and level of buildup",
-  "Number and condition of downspouts",
-  "Presence of gutter guards or screens",
-  "Accessibility challenges (steep roof pitch, landscaping)",
+  "Length and thickness of the ice dam",
+  "Roof height and pitch (accessibility)",
+  "Number of ice dams or problem areas",
+  "Emergency vs. scheduled service",
+  "Whether gutters and downspouts also need clearing",
+  "Residential vs. commercial property",
 ];
 
 const faqs = [
   {
-    question: "How often should I have my gutters cleaned in Minneapolis?",
+    question: "When should I call for ice dam removal in Minneapolis?",
     answer:
-      "We recommend at least twice a year for most Minneapolis homes — once in late spring after seed pods and pollen, and once in late fall after leaves have dropped. If you have large trees overhanging your roofline, a third cleaning in mid-summer can prevent mid-season clogs.",
+      "Call as soon as you notice ice building up along your eaves, large icicles forming, or — most urgently — water stains on your interior ceilings or walls. Ice dams can cause thousands of dollars in water damage if left untreated. The sooner we remove them, the less risk to your home.",
   },
   {
-    question: "What happens if I do not clean my gutters regularly?",
+    question: "How much does ice dam removal cost in Minneapolis?",
     answer:
-      "Clogged gutters cause water to overflow and pool around your foundation, which can lead to basement flooding, soil erosion, and foundation cracking. In winter, blocked gutters contribute to ice dams that can damage your roof and cause interior water damage. The cost of gutter cleaning is a fraction of what these repairs would run.",
+      "Ice dam removal pricing depends on the size and number of ice dams, roof accessibility, and whether it is an emergency call. We provide honest, upfront quotes before starting work. Most residential jobs fall within a range that homeowners find reasonable given the damage ice dams can cause if ignored.",
   },
   {
-    question: "Do you clean gutters with gutter guards installed?",
+    question: "Is steam ice dam removal safe for my roof?",
     answer:
-      "Yes. Gutter guards reduce the amount of large debris that enters your gutters, but fine particles like shingle grit, pine needles, and seed pods still get through. We carefully remove or work around the guards, clean the gutters, and reinstall everything properly.",
+      "Yes. Low-pressure steam is the safest method available for ice dam removal. Unlike hammering, chipping, or using salt, steam melts the ice without any physical impact to your shingles, flashing, or gutters. It is the method recommended by roofing professionals and insurance companies.",
   },
   {
-    question: "Will you let me know if my gutters need repairs?",
+    question: "Can I remove an ice dam myself?",
     answer:
-      "Absolutely. During every cleaning, we inspect for sagging sections, loose or missing brackets, rust, seam separation, and fascia board issues. We document what we find and give you honest recommendations. We never pressure you into unnecessary repairs.",
+      "We strongly advise against it. Climbing on an icy roof is extremely dangerous, and using tools like hammers, picks, or heat cables can damage your shingles and void your roofing warranty. Salt and chemical melters can corrode gutters and harm landscaping. Professional steam removal is the only method that is both safe for you and safe for your roof.",
   },
   {
-    question: "Can gutter cleaning be done in winter or early spring?",
+    question: "Do you offer emergency same-day ice dam removal?",
     answer:
-      "We can clean gutters in early spring once ice has cleared and temperatures are consistently above freezing. For winter months, if you are experiencing ice dam issues or emergency overflow, we offer targeted solutions to address the immediate problem and schedule a full cleaning when conditions allow.",
+      "Yes. If an ice dam is actively causing leaking inside your home, we prioritize your call and do everything we can to get a crew to you the same day. Call us at (612) 554-8106 and let us know it is an emergency so we can respond as quickly as possible.",
   },
 ];
 
-const galleryImages = [
-  {
-    src: "/images/projects/bagutterclean.webp",
-    alt: "Before and after gutter cleaning showing debris removal in Minneapolis",
-  },
-  {
-    src: "/images/projects/baguttercleaned.webp",
-    alt: "Before and after gutter cleaned with downspout flushing",
-  },
-  {
-    src: "/images/projects/bagutter3.webp",
-    alt: "Before and after gutter maintenance and debris removal results",
-  },
-];
 
-export default function GutterCleaningPage() {
+export default function IceDamRemovalPage() {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -146,11 +139,39 @@ export default function GutterCleaningPage() {
     })),
   };
 
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Ice Dam Removal",
+    provider: {
+      "@type": "LocalBusiness",
+      name: "Pressure Titans",
+      telephone: "(612) 554-8106",
+      email: "pressuretitans@gmail.com",
+      areaServed: {
+        "@type": "City",
+        name: "Minneapolis",
+        addressRegion: "MN",
+      },
+    },
+    areaServed: {
+      "@type": "City",
+      name: "Minneapolis",
+      addressRegion: "MN",
+    },
+    description:
+      "Professional ice dam removal using safe low-pressure steam method. Protects shingles, gutters, and roofing materials. Emergency same-day service available.",
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
 
       <Header />
@@ -166,15 +187,16 @@ export default function GutterCleaningPage() {
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
             <div>
                 <span className="inline-block bg-titan-accent/20 text-titan-light text-sm font-semibold px-4 py-1.5 rounded-full mb-6 tracking-wide uppercase">
-                  Protect Your Home
+                  Winter Emergency Service
                 </span>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 leading-tight">
-                  Gutter Cleaning
+                  Ice Dam Removal
                   <span className="block text-titan-light">Minneapolis, MN</span>
                 </h1>
                 <p className="text-lg sm:text-xl text-slate-300 mb-8 leading-relaxed max-w-xl">
-                  Clogged gutters cause foundation damage, basement flooding, and ice dams.
-                  We keep your gutters flowing so your home stays protected year-round.
+                  Ice dams form when melting snow refreezes at the colder eaves, blocking
+                  proper drainage. Professional removal using low-pressure steam safely melts
+                  ice without damaging shingles, gutters, or roofing materials.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
@@ -197,21 +219,21 @@ export default function GutterCleaningPage() {
 
         <StatsBar />
 
-        {/* What's Included */}
+        {/* What We Do */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">
-                What&apos;s Included in Every Gutter Cleaning
+                Our Ice Dam Removal Services
               </h2>
               <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-                We do not cut corners. Every gutter cleaning includes a thorough, multi-step
-                process to make sure your system is working properly.
+                We handle every aspect of ice dam removal and prevention, using the safest
+                method available to protect your home.
               </p>
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {includedItems.map((item) => (
+              {serviceItems.map((item) => (
                 <div
                   key={item.name}
                   className="bg-slate-50 border border-slate-200 rounded-xl p-6 hover:border-titan-accent/40 hover:shadow-md transition-all"
@@ -241,36 +263,43 @@ export default function GutterCleaningPage() {
           </div>
         </section>
 
-        {/* Before & After Gallery */}
+        {/* Why Choose Professional Steam Removal */}
         <section className="py-20 bg-slate-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">
-                Before &amp; After Results
-              </h2>
-              <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-                See the difference professional gutter cleaning makes. These are real
-                Minneapolis homes we have serviced.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {galleryImages.map((image) => (
-                <div
-                  key={image.src}
-                  className="relative rounded-2xl overflow-hidden shadow-lg group"
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    width={500}
-                    height={400}
-                    className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-6">
+              Why Choose Professional Steam Removal
+            </h2>
+            <p className="text-lg text-slate-600 mb-10 leading-relaxed">
+              DIY ice dam removal is dangerous and often causes more damage than the ice dam itself.
+              Our professional steam method is the gold standard recommended by roofing experts and
+              insurance companies across Minnesota.
+            </p>
+            <ul className="space-y-4 mb-10 text-left max-w-xl mx-auto">
+              {benefits.map((benefit) => (
+                <li key={benefit} className="flex items-start gap-3">
+                  <svg
+                    className="w-6 h-6 text-titan-accent flex-shrink-0 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span className="text-slate-700 text-lg">{benefit}</span>
+                </li>
               ))}
-            </div>
+            </ul>
+            <Link
+              href="/contact"
+              className="inline-block bg-titan-accent hover:bg-titan-light text-white font-semibold px-8 py-4 rounded-lg transition-colors"
+            >
+              Schedule Ice Dam Removal
+            </Link>
           </div>
         </section>
 
@@ -282,8 +311,8 @@ export default function GutterCleaningPage() {
                 Our Process
               </h2>
               <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-                Booking gutter cleaning should be easy. Here is exactly what to expect
-                when you work with Pressure Titans.
+                Fast, safe, and effective. Here is how we handle every ice dam removal job
+                from first call to final check.
               </p>
             </div>
 
@@ -315,13 +344,12 @@ export default function GutterCleaningPage() {
                   Honest, Upfront Pricing
                 </h2>
                 <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                  Gutter cleaning costs vary based on your home, but we make the pricing
-                  simple and predictable. No surprise charges, no upselling. You get a clear
-                  quote before we start, and that is the price you pay.
+                  Every ice dam situation is different, so we do not use one-size-fits-all pricing.
+                  We assess your specific situation and give you a clear quote before we start any work.
                 </p>
                 <p className="text-slate-600 mb-8 leading-relaxed">
-                  Here is what we take into account when building your quote so you understand
-                  exactly where the number comes from.
+                  Here are the factors we consider when putting together your ice dam removal quote.
+                  We walk you through each one so the price always makes sense.
                 </p>
                 <Link
                   href="/contact"
@@ -364,11 +392,11 @@ export default function GutterCleaningPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">
-                Gutter Cleaning FAQs
+                Ice Dam Removal FAQs
               </h2>
               <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-                Answers to the most common gutter cleaning questions we hear from
-                Minneapolis homeowners.
+                Common questions Minneapolis homeowners ask about ice dams and our
+                removal services.
               </p>
             </div>
 
@@ -392,11 +420,11 @@ export default function GutterCleaningPage() {
         <section className="py-20 bg-navy">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
-              Get Your Free Gutter Cleaning Quote
+              Get Your Free Ice Dam Removal Quote
             </h2>
             <p className="text-xl text-slate-300 mb-4">
-              Do not wait for the next rainstorm to find out your gutters are clogged.
-              Schedule your cleaning today and protect your home.
+              Do not let ice dams damage your home. Whether it is an emergency or preventive
+              removal, we are ready to help.
             </p>
             <p className="text-slate-400 mb-8">
               Call, text, or fill out our form. We respond within 24 hours — usually sooner.

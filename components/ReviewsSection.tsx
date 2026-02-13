@@ -65,7 +65,7 @@ function getCardStyle(offset: number): React.CSSProperties {
   }
   if (Math.abs(offset) === 1) {
     return {
-      transform: `translateX(${offset > 0 ? "110%" : "-110%"}) scale(0.75)`,
+      transform: `translateX(${offset > 0 ? "100%" : "-100%"}) scale(0.75)`,
       zIndex: 10,
       opacity: 0.5,
       visibility: "visible" as const,
@@ -74,8 +74,8 @@ function getCardStyle(offset: number): React.CSSProperties {
   // Hidden cards — kept in DOM for smooth transition in
   return {
     transform: offset > 0
-      ? "translateX(140%) scale(0.6)"
-      : "translateX(-140%) scale(0.6)",
+      ? "translateX(110%) scale(0.6)"
+      : "translateX(-110%) scale(0.6)",
     zIndex: 0,
     opacity: 0,
     visibility: "hidden" as const,
@@ -102,13 +102,13 @@ export default function ReviewsSection() {
   }, []);
 
   return (
-    <section className="py-24 bg-navy overflow-hidden">
+    <section className="py-16 sm:py-24 bg-white overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <p className="text-titan-light font-semibold uppercase tracking-widest text-sm mb-3">
+          <p className="text-titan-accent font-semibold uppercase tracking-widest text-sm mb-3">
             What Our Clients Say
           </p>
-          <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-900 mb-4">
             Google Reviews
           </h2>
           <div className="flex items-center justify-center gap-2">
@@ -119,7 +119,7 @@ export default function ReviewsSection() {
                 </svg>
               ))}
             </div>
-            <span className="text-white/60 text-sm font-medium ml-1">
+            <span className="text-slate-400 text-sm font-medium ml-1">
               5.0 &middot; 25+ Reviews
             </span>
           </div>
@@ -147,7 +147,7 @@ export default function ReviewsSection() {
                     cursor: Math.abs(offset) === 1 ? "pointer" : undefined,
                   }}
                 >
-                  <div className="bg-white/[0.07] border border-white/10 rounded-2xl p-8 sm:p-10 h-full flex flex-col justify-between">
+                  <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 sm:p-10 h-full flex flex-col justify-between shadow-sm">
                     <div>
                       <div className="flex gap-0.5 mb-4">
                         {[...Array(5)].map((_, si) => (
@@ -156,7 +156,7 @@ export default function ReviewsSection() {
                           </svg>
                         ))}
                       </div>
-                      <p className="text-white text-base sm:text-lg leading-relaxed">
+                      <p className="text-slate-700 text-base sm:text-lg leading-relaxed">
                         &ldquo;{review.text}&rdquo;
                       </p>
                     </div>
@@ -165,8 +165,8 @@ export default function ReviewsSection() {
                         {review.name.charAt(0)}
                       </div>
                       <div>
-                        <p className="text-white font-semibold">{review.name}</p>
-                        <p className="text-white/40 text-xs">Google Review</p>
+                        <p className="text-slate-900 font-semibold">{review.name}</p>
+                        <p className="text-slate-400 text-xs">Google Review</p>
                       </div>
                     </div>
                   </div>
@@ -175,19 +175,25 @@ export default function ReviewsSection() {
             })}
           </div>
 
-          {/* Arrows */}
+        </div>
+
+        {/* Arrows + Counter */}
+        <div className="flex items-center justify-center gap-6 mt-8">
           <button
             onClick={() => go(-1)}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-40 w-12 h-12 bg-white/10 hover:bg-titan-accent border border-white/20 hover:border-titan-accent rounded-full flex items-center justify-center text-white transition-all"
+            className="w-12 h-12 bg-slate-100 hover:bg-titan-accent border border-slate-200 hover:border-titan-accent rounded-full flex items-center justify-center text-slate-600 hover:text-white transition-all"
             aria-label="Previous review"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
+          <p className="text-slate-400 text-sm">
+            {current + 1} / {reviews.length}
+          </p>
           <button
             onClick={() => go(1)}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-40 w-12 h-12 bg-white/10 hover:bg-titan-accent border border-white/20 hover:border-titan-accent rounded-full flex items-center justify-center text-white transition-all"
+            className="w-12 h-12 bg-slate-100 hover:bg-titan-accent border border-slate-200 hover:border-titan-accent rounded-full flex items-center justify-center text-slate-600 hover:text-white transition-all"
             aria-label="Next review"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -195,17 +201,12 @@ export default function ReviewsSection() {
             </svg>
           </button>
         </div>
-
-        {/* Counter + CTA */}
-        <p className="text-center text-white/40 text-sm mt-8">
-          {current + 1} / {reviews.length}
-        </p>
         <div className="text-center mt-6">
           <a
             href="https://www.google.com/maps/place/Pressure+Titans/@44.9833485,-93.719369,9z/data=!4m8!3m7!1s0x68ba74e0c3bd65e5:0xf5e2288cbaada241!8m2!3d44.9833485!4d-93.719369!9m1!1b1!16s%2Fg%2F11y3v6bwts?entry=ttu&g_ep=EgoyMDI2MDIwOC4wIKXMDSoASAFQAw%3D%3D"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-white/10 hover:bg-titan-accent border border-white/20 hover:border-titan-accent text-white font-semibold px-8 py-4 rounded-xl transition-all"
+            className="inline-flex items-center gap-2 bg-slate-900 hover:bg-titan-accent border border-slate-900 hover:border-titan-accent text-white font-semibold px-8 py-4 rounded-xl transition-all"
           >
             See All Reviews
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

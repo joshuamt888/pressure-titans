@@ -3,13 +3,25 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import VideoCarousel from "@/components/VideoCarousel";
 
 export const metadata: Metadata = {
   title: "Portfolio",
   description:
     "See stunning before and after results from Pressure Titans. Driveways, decks, siding, walkways, gutters, and more — transformed by professional pressure washing in Minneapolis.",
+  keywords:
+    "pressure washing before and after, pressure washing results Minneapolis, exterior cleaning portfolio, driveway cleaning results, deck restoration Minneapolis",
   alternates: {
     canonical: "https://pressuretitans.com/portfolio",
+  },
+  openGraph: {
+    title: "Portfolio | Pressure Titans Before & After Results",
+    description:
+      "See stunning before and after results from Pressure Titans. Driveways, decks, siding, walkways, gutters, and more — transformed by professional pressure washing.",
+    url: "https://pressuretitans.com/portfolio",
+    siteName: "Pressure Titans",
+    locale: "en_US",
+    type: "website",
   },
 };
 
@@ -35,7 +47,7 @@ const projects = [
     alt: "Before and after pressure washing a walkway",
   },
   {
-    src: "/images/projects/bahouseoutsidewallsgood2.webp",
+    src: "/images/projects/bafrontstepsgood.webp",
     label: "Exterior Walls",
     alt: "Before and after soft washing house exterior walls",
   },
@@ -160,8 +172,7 @@ export default function PortfolioPage() {
         {/* Hero */}
         <section className="relative bg-navy pt-20 overflow-hidden">
           <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
-            <source src="/videos/fullhousejob.MOV" type="video/quicktime" />
-            <source src="/videos/fullhousejob.MOV" type="video/mp4" />
+            <source src="/videos/fullhousejob.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-navy/80" />
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
@@ -228,35 +239,22 @@ export default function PortfolioPage() {
         </section>
 
         {/* Video Section */}
-        <section className="py-20 bg-slate-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <span className="inline-block text-titan-accent font-semibold text-sm uppercase tracking-widest mb-4">
+        <section className="py-16 sm:py-24 bg-navy overflow-hidden">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-14">
+              <p className="text-titan-light font-semibold uppercase tracking-widest text-sm mb-3">
                 In Action
-              </span>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">
+              </p>
+              <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
                 See Us in Action
               </h2>
-              <p className="text-lg text-slate-500 max-w-2xl mx-auto">
+              <p className="text-lg text-slate-400 max-w-2xl mx-auto">
                 Watch the dirt disappear in real time. There&apos;s nothing quite like
                 seeing a surface go from grimy to spotless.
               </p>
             </div>
 
-            <div className="max-w-4xl mx-auto">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-navy">
-                <video
-                  controls
-                  playsInline
-                  preload="metadata"
-                  poster="/images/projects/bastoneflooramazing.webp"
-                  className="w-full aspect-video"
-                >
-                  <source src="/videos/pressurewashingjob1.mov" type="video/quicktime" />
-                  Your browser does not support the video element.
-                </video>
-              </div>
-            </div>
+            <VideoCarousel />
           </div>
         </section>
 

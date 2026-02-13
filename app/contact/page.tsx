@@ -8,8 +8,19 @@ export const metadata: Metadata = {
   title: "Contact Us",
   description:
     "Get a free pressure washing quote from Pressure Titans in Minneapolis. Call (612) 554-8106 or fill out our contact form. We respond within 24 hours.",
+  keywords:
+    "contact Pressure Titans, free pressure washing quote Minneapolis, pressure washing estimate, call Pressure Titans, Minneapolis exterior cleaning quote",
   alternates: {
     canonical: "https://pressuretitans.com/contact",
+  },
+  openGraph: {
+    title: "Contact Pressure Titans | Free Pressure Washing Quote",
+    description:
+      "Get a free pressure washing quote from Pressure Titans in Minneapolis. Call (612) 554-8106 or fill out our contact form.",
+    url: "https://pressuretitans.com/contact",
+    siteName: "Pressure Titans",
+    locale: "en_US",
+    type: "website",
   },
 };
 
@@ -191,8 +202,7 @@ export default function ContactPage() {
         {/* Hero */}
         <section className="relative bg-navy pt-20 overflow-hidden">
           <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
-            <source src="/videos/fullhousejob.MOV" type="video/quicktime" />
-            <source src="/videos/fullhousejob.MOV" type="video/mp4" />
+            <source src="/videos/fullhousejob.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-navy/80" />
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">

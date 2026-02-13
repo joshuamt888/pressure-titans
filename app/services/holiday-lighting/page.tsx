@@ -3,136 +3,129 @@ import Header from "@/components/Header";
 import ReviewCarousel from "@/components/ReviewCarousel";
 import StatsBar from "@/components/StatsBar";
 import Footer from "@/components/Footer";
-import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Gutter Cleaning Minneapolis | Professional Gutter & Downspout Service",
+  title: "Holiday Lighting Minneapolis | Professional Installation & Design",
   description:
-    "Professional gutter cleaning in Minneapolis. Debris removal, downspout flushing & gutter maintenance. Prevent water damage. Call (612) 554-8106.",
+    "Professional holiday lighting installation in Minneapolis, MN. Custom design, installation, maintenance, and takedown. Hassle-free holiday displays. Free estimates.",
   keywords:
-    "gutter cleaning Minneapolis, gutter maintenance, downspout cleaning, gutter debris removal, gutter service Minneapolis, gutter flushing Minnesota",
+    "holiday lighting Minneapolis, Christmas light installation, holiday light design, Christmas light service Minneapolis, holiday display installation Minnesota",
   alternates: {
-    canonical: "https://pressuretitans.com/services/gutter-cleaning",
+    canonical: "https://pressuretitans.com/services/holiday-lighting",
   },
   openGraph: {
-    title: "Gutter Cleaning Minneapolis | Professional Gutter & Downspout Service",
+    title: "Holiday Lighting Minneapolis | Professional Installation & Design",
     description:
-      "Professional gutter cleaning in Minneapolis. Debris removal, downspout flushing & gutter maintenance. Prevent water damage.",
-    url: "https://pressuretitans.com/services/gutter-cleaning",
+      "Professional holiday lighting installation in Minneapolis, MN. Custom design, installation, maintenance, and takedown. Hassle-free holiday displays. Free estimates.",
+    url: "https://pressuretitans.com/services/holiday-lighting",
     siteName: "Pressure Titans",
     locale: "en_US",
     type: "website",
   },
 };
 
-const includedItems = [
+const serviceItems = [
   {
-    name: "Full Debris Removal",
-    detail: "Hand-removal of leaves, twigs, shingle grit, and compacted sludge from all gutters",
+    name: "Custom Design Consultation",
+    detail: "We work with you to create a lighting plan that matches your vision, style, and budget",
   },
   {
-    name: "Downspout Flushing",
-    detail: "High-pressure water flush through every downspout to clear blockages and verify flow",
+    name: "Professional Installation",
+    detail: "Our crew handles every ladder, clip, and connection — safely and securely installed on your home or business",
   },
   {
-    name: "Gutter Inspection",
-    detail: "Visual check for sagging, loose brackets, rust spots, and seam separation",
+    name: "Season-Long Maintenance",
+    detail: "Burnt bulb? Loose strand? We come back and fix it at no extra charge throughout the season",
   },
   {
-    name: "Roof Edge Check",
-    detail: "Inspect drip edge and fascia boards for signs of water intrusion or rot",
+    name: "Complete Takedown",
+    detail: "When the season is over, we take everything down, organize it, and leave your property spotless",
   },
   {
-    name: "Ground Cleanup",
-    detail: "All debris bagged and removed from your property — we leave it cleaner than we found it",
+    name: "Light Storage",
+    detail: "We can store your lights for the off-season so they are ready to go next year without any hassle",
   },
   {
-    name: "Flow Testing",
-    detail: "Run water through the entire system to confirm proper drainage after cleaning",
+    name: "Commercial Displays",
+    detail: "Storefronts, office buildings, and commercial properties — we design and install displays of any scale",
   },
+];
+
+const benefits = [
+  "Custom design consultation",
+  "Professional installation (we climb the ladders)",
+  "Full maintenance throughout the season",
+  "Complete takedown and storage",
+  "Residential and commercial properties",
 ];
 
 const processSteps = [
   {
     step: 1,
-    title: "Free Estimate",
+    title: "Design Consultation",
     description:
-      "Tell us about your home and gutter setup. Photos help, but we can also schedule a quick on-site look. You will receive a clear quote with no hidden fees.",
+      "Tell us your vision — classic white, colorful, elegant, or over-the-top festive. We visit your property, take measurements, and create a custom lighting plan with a clear quote.",
   },
   {
     step: 2,
-    title: "Schedule",
+    title: "Schedule Installation",
     description:
-      "Choose a day that works for your schedule. We confirm the appointment and send a reminder so you always know when we are coming.",
+      "We lock in your installation date well before the season starts. Early booking ensures your display is up and glowing when you want it, not scrambling last minute.",
   },
   {
     step: 3,
-    title: "We Clean",
+    title: "We Install",
     description:
-      "Our crew arrives on time, sets up safely, and works section by section. Every gutter run and downspout gets attention. Debris goes into bags, not your yard.",
+      "Our crew arrives on schedule with all materials and equipment. We install every strand, clip, and timer according to the approved design. You do not lift a finger.",
   },
   {
     step: 4,
-    title: "You Inspect",
+    title: "Enjoy & We Maintain",
     description:
-      "We walk you through what we found and what we cleaned. If there are any gutter issues worth noting, we let you know so you can plan ahead.",
+      "Flip the switch and enjoy your display all season. If anything goes wrong — a burnt bulb, a loose connection — we come back and fix it. After the holidays, we handle the complete takedown.",
   },
 ];
 
 const pricingFactors = [
-  "Total linear footage of gutters on your home",
-  "Number of stories (single-story vs. multi-story)",
-  "Volume of debris and level of buildup",
-  "Number and condition of downspouts",
-  "Presence of gutter guards or screens",
-  "Accessibility challenges (steep roof pitch, landscaping)",
+  "Size of the property and roofline length",
+  "Type and quantity of lights (LED, C9, mini, etc.)",
+  "Complexity of the design (roofline only vs. full property)",
+  "Trees, bushes, and landscaping features included",
+  "Height and accessibility of installation areas",
+  "Residential vs. commercial property",
 ];
 
 const faqs = [
   {
-    question: "How often should I have my gutters cleaned in Minneapolis?",
+    question: "When should I book holiday lighting installation?",
     answer:
-      "We recommend at least twice a year for most Minneapolis homes — once in late spring after seed pods and pollen, and once in late fall after leaves have dropped. If you have large trees overhanging your roofline, a third cleaning in mid-summer can prevent mid-season clogs.",
+      "The earlier, the better. We start booking for the holiday season in September and October. Early bookings get priority scheduling and the widest selection of design options. If you wait until November, availability is limited and you risk not having your display ready for the start of the season.",
   },
   {
-    question: "What happens if I do not clean my gutters regularly?",
+    question: "Do you provide the lights or do I need to supply them?",
     answer:
-      "Clogged gutters cause water to overflow and pool around your foundation, which can lead to basement flooding, soil erosion, and foundation cracking. In winter, blocked gutters contribute to ice dams that can damage your roof and cause interior water damage. The cost of gutter cleaning is a fraction of what these repairs would run.",
+      "We provide everything — lights, clips, extension cords, timers, and all hardware. We use commercial-grade LED lights that are brighter, more energy-efficient, and longer-lasting than retail options. If you have existing lights you love, we are happy to incorporate them into the design.",
   },
   {
-    question: "Do you clean gutters with gutter guards installed?",
+    question: "How much does professional holiday lighting cost?",
     answer:
-      "Yes. Gutter guards reduce the amount of large debris that enters your gutters, but fine particles like shingle grit, pine needles, and seed pods still get through. We carefully remove or work around the guards, clean the gutters, and reinstall everything properly.",
+      "Pricing depends on the size of your property, the design complexity, and the type of lights used. We provide detailed quotes after a design consultation so you know exactly what you are getting and what it costs. Most homeowners find it surprisingly affordable compared to the time, risk, and frustration of doing it themselves.",
   },
   {
-    question: "Will you let me know if my gutters need repairs?",
+    question: "What if a light burns out or a strand falls down?",
     answer:
-      "Absolutely. During every cleaning, we inspect for sagging sections, loose or missing brackets, rust, seam separation, and fascia board issues. We document what we find and give you honest recommendations. We never pressure you into unnecessary repairs.",
+      "We include full maintenance throughout the season at no extra charge. If you notice a burnt bulb, a flickering section, or anything that does not look right, call or text us and we will come out to fix it promptly. Your display stays looking perfect from day one through takedown.",
   },
   {
-    question: "Can gutter cleaning be done in winter or early spring?",
+    question: "Do you install holiday lighting on commercial properties?",
     answer:
-      "We can clean gutters in early spring once ice has cleared and temperatures are consistently above freezing. For winter months, if you are experiencing ice dam issues or emergency overflow, we offer targeted solutions to address the immediate problem and schedule a full cleaning when conditions allow.",
+      "Yes. We work with storefronts, office buildings, restaurants, HOAs, and commercial properties of all sizes. A professional holiday display makes a strong impression on customers and visitors. We handle the entire process — design, installation, maintenance, and takedown — so your team can focus on business.",
   },
 ];
 
-const galleryImages = [
-  {
-    src: "/images/projects/bagutterclean.webp",
-    alt: "Before and after gutter cleaning showing debris removal in Minneapolis",
-  },
-  {
-    src: "/images/projects/baguttercleaned.webp",
-    alt: "Before and after gutter cleaned with downspout flushing",
-  },
-  {
-    src: "/images/projects/bagutter3.webp",
-    alt: "Before and after gutter maintenance and debris removal results",
-  },
-];
 
-export default function GutterCleaningPage() {
+export default function HolidayLightingPage() {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -146,11 +139,39 @@ export default function GutterCleaningPage() {
     })),
   };
 
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Holiday Lighting Installation",
+    provider: {
+      "@type": "LocalBusiness",
+      name: "Pressure Titans",
+      telephone: "(612) 554-8106",
+      email: "pressuretitans@gmail.com",
+      areaServed: {
+        "@type": "City",
+        name: "Minneapolis",
+        addressRegion: "MN",
+      },
+    },
+    areaServed: {
+      "@type": "City",
+      name: "Minneapolis",
+      addressRegion: "MN",
+    },
+    description:
+      "Full-service holiday lighting — custom design, professional installation, season-long maintenance, and complete takedown. Residential and commercial properties.",
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
 
       <Header />
@@ -166,15 +187,16 @@ export default function GutterCleaningPage() {
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
             <div>
                 <span className="inline-block bg-titan-accent/20 text-titan-light text-sm font-semibold px-4 py-1.5 rounded-full mb-6 tracking-wide uppercase">
-                  Protect Your Home
+                  Hassle-Free Holiday Displays
                 </span>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 leading-tight">
-                  Gutter Cleaning
+                  Holiday Lighting
                   <span className="block text-titan-light">Minneapolis, MN</span>
                 </h1>
                 <p className="text-lg sm:text-xl text-slate-300 mb-8 leading-relaxed max-w-xl">
-                  Clogged gutters cause foundation damage, basement flooding, and ice dams.
-                  We keep your gutters flowing so your home stays protected year-round.
+                  Full-service holiday lighting — design, installation, maintenance, and
+                  takedown. Whether you want a classic, elegant display or a festive,
+                  eye-catching setup, we handle everything.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
@@ -197,21 +219,21 @@ export default function GutterCleaningPage() {
 
         <StatsBar />
 
-        {/* What's Included */}
+        {/* What We Offer */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">
-                What&apos;s Included in Every Gutter Cleaning
+                Our Holiday Lighting Services
               </h2>
               <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-                We do not cut corners. Every gutter cleaning includes a thorough, multi-step
-                process to make sure your system is working properly.
+                From the first design sketch to the final takedown, we handle every detail of
+                your holiday lighting experience.
               </p>
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {includedItems.map((item) => (
+              {serviceItems.map((item) => (
                 <div
                   key={item.name}
                   className="bg-slate-50 border border-slate-200 rounded-xl p-6 hover:border-titan-accent/40 hover:shadow-md transition-all"
@@ -241,36 +263,43 @@ export default function GutterCleaningPage() {
           </div>
         </section>
 
-        {/* Before & After Gallery */}
+        {/* Why Homeowners Choose Us */}
         <section className="py-20 bg-slate-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">
-                Before &amp; After Results
-              </h2>
-              <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-                See the difference professional gutter cleaning makes. These are real
-                Minneapolis homes we have serviced.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {galleryImages.map((image) => (
-                <div
-                  key={image.src}
-                  className="relative rounded-2xl overflow-hidden shadow-lg group"
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    width={500}
-                    height={400}
-                    className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-6">
+              Why Homeowners Choose Us
+            </h2>
+            <p className="text-lg text-slate-600 mb-10 leading-relaxed">
+              Holiday lighting should be enjoyable, not stressful. We take the hassle out of the
+              entire process so you can focus on what matters — spending time with family and enjoying
+              a beautiful display.
+            </p>
+            <ul className="space-y-4 mb-10 text-left max-w-xl mx-auto">
+              {benefits.map((benefit) => (
+                <li key={benefit} className="flex items-start gap-3">
+                  <svg
+                    className="w-6 h-6 text-titan-accent flex-shrink-0 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span className="text-slate-700 text-lg">{benefit}</span>
+                </li>
               ))}
-            </div>
+            </ul>
+            <Link
+              href="/contact"
+              className="inline-block bg-titan-accent hover:bg-titan-light text-white font-semibold px-8 py-4 rounded-lg transition-colors"
+            >
+              Book Your Holiday Lighting
+            </Link>
           </div>
         </section>
 
@@ -282,8 +311,8 @@ export default function GutterCleaningPage() {
                 Our Process
               </h2>
               <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-                Booking gutter cleaning should be easy. Here is exactly what to expect
-                when you work with Pressure Titans.
+                From design to takedown, we make holiday lighting easy. Here is exactly
+                what to expect when you work with Pressure Titans.
               </p>
             </div>
 
@@ -312,16 +341,16 @@ export default function GutterCleaningPage() {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-6">
-                  Honest, Upfront Pricing
+                  Transparent Pricing, No Surprises
                 </h2>
                 <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                  Gutter cleaning costs vary based on your home, but we make the pricing
-                  simple and predictable. No surprise charges, no upselling. You get a clear
-                  quote before we start, and that is the price you pay.
+                  Every property and design is different, so we tailor each quote to your specific
+                  needs. You get a detailed breakdown before we start — installation, maintenance,
+                  and takedown all included in one price.
                 </p>
                 <p className="text-slate-600 mb-8 leading-relaxed">
-                  Here is what we take into account when building your quote so you understand
-                  exactly where the number comes from.
+                  Here is what we factor into your holiday lighting quote so there are
+                  never any surprises.
                 </p>
                 <Link
                   href="/contact"
@@ -364,11 +393,11 @@ export default function GutterCleaningPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">
-                Gutter Cleaning FAQs
+                Holiday Lighting FAQs
               </h2>
               <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-                Answers to the most common gutter cleaning questions we hear from
-                Minneapolis homeowners.
+                Common questions we get from Minneapolis homeowners and businesses about our
+                holiday lighting services.
               </p>
             </div>
 
@@ -392,11 +421,11 @@ export default function GutterCleaningPage() {
         <section className="py-20 bg-navy">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
-              Get Your Free Gutter Cleaning Quote
+              Get Your Free Holiday Lighting Quote
             </h2>
             <p className="text-xl text-slate-300 mb-4">
-              Do not wait for the next rainstorm to find out your gutters are clogged.
-              Schedule your cleaning today and protect your home.
+              Ready to have the best-looking house on the block this holiday season?
+              Let us design and install a display you will love.
             </p>
             <p className="text-slate-400 mb-8">
               Call, text, or fill out our form. We respond within 24 hours — usually sooner.
