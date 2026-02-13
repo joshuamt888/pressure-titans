@@ -77,11 +77,11 @@ export default function Header() {
               height={96}
               className="rounded-lg w-16 h-16 sm:w-24 sm:h-24"
             />
-            <div className="hidden sm:block">
-              <span className="text-2xl font-heading font-bold text-slate-900 leading-tight block">
+            <div>
+              <span className="text-base sm:text-2xl font-heading font-bold text-slate-900 leading-tight block">
                 Pressure Titans
               </span>
-              <span className="text-sm text-slate-500 leading-tight">
+              <span className="text-xs sm:text-sm text-slate-500 leading-tight hidden sm:block">
                 Minneapolis Pressure Washing
               </span>
             </div>
