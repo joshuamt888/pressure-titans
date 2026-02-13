@@ -17,7 +17,7 @@ export default function StatsBar() {
           {stats.map((stat, i) => (
             <ScrollReveal key={stat.label} animation="fade-up" delay={i * 100}>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-heading font-bold text-titan-accent mb-2">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-titan-accent mb-2">
                   <AnimatedCounter value={stat.value} />
                 </div>
                 <div className="text-slate-500 font-medium text-sm uppercase tracking-widest">

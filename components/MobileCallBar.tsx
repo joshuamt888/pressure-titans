@@ -1,8 +1,25 @@
 "use client";
 
+import { useState, useEffect } from "react";
+
 export default function MobileCallBar() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setVisible(window.scrollY > window.innerHeight);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-titan-accent border-t border-titan-light/30 safe-area-bottom">
+    <div
+      className={`fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-titan-accent border-t border-titan-light/30 safe-area-bottom transition-transform duration-300 ${
+        visible ? "translate-y-0" : "translate-y-full"
+      }`}
+    >
       <a
         href="tel:6125548106"
         className="flex items-center justify-center gap-3 py-4 px-6 text-white font-semibold text-lg"
