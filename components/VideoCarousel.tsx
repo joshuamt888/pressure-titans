@@ -78,7 +78,8 @@ export default function VideoCarousel() {
               controls={i === current && activated}
               muted
               playsInline
-              preload={i === current || Math.abs(i - current) <= 1 ? "metadata" : "none"}
+              preload={i === 0 ? "auto" : i === current || Math.abs(i - current) <= 1 ? "metadata" : "none"}
+              poster={i === 0 ? "/images/fullhousejob-poster.webp" : undefined}
             >
               <source src={video.src} type="video/mp4" />
             </video>

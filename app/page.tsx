@@ -174,6 +174,8 @@ export default function HomePage() {
             muted
             loop
             playsInline
+            preload="auto"
+            poster="/images/fullhousejob-poster.webp"
             className="absolute inset-0 w-full h-full object-cover"
           >
             <source src="/videos/fullhousejob.mp4" type="video/mp4" />

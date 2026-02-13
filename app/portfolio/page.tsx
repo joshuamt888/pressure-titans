@@ -171,7 +171,7 @@ export default function PortfolioPage() {
       <main>
         {/* Hero */}
         <section className="relative bg-navy pt-20 overflow-hidden">
-          <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+          <video autoPlay muted loop playsInline preload="auto" poster="/images/fullhousejob-poster.webp" className="absolute inset-0 w-full h-full object-cover">
             <source src="/videos/fullhousejob.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-navy/80" />
