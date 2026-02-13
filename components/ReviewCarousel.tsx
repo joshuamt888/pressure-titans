@@ -63,8 +63,6 @@ export default function ReviewCarousel() {
     return () => clearInterval(timer);
   }, []);
 
-  const review = reviews[current];
-
   return (
     <div className="mt-10 max-w-xl">
       {/* Stars + badge */}
@@ -81,20 +79,25 @@ export default function ReviewCarousel() {
         </span>
       </div>
 
-      {/* Review text */}
-      <div className="relative min-h-[80px]">
-        <p
-          key={current}
-          className="text-white/80 text-sm sm:text-base leading-relaxed italic animate-fade-in"
-        >
-          &ldquo;{review.text}&rdquo;
-        </p>
+      {/* Review text — all reviews rendered in a grid stack so the container
+          always matches the tallest review. Only the active one is visible. */}
+      <div className="relative grid">
+        {reviews.map((review, i) => (
+          <div
+            key={i}
+            className="col-start-1 row-start-1 transition-opacity duration-500"
+            style={{ opacity: i === current ? 1 : 0 }}
+            aria-hidden={i !== current}
+          >
+            <p className="text-white/80 text-sm sm:text-base leading-relaxed italic">
+              &ldquo;{review.text}&rdquo;
+            </p>
+            <p className="text-white/60 text-sm mt-3 font-medium">
+              — {review.name}
+            </p>
+          </div>
+        ))}
       </div>
-
-      {/* Reviewer name */}
-      <p className="text-white/60 text-sm mt-3 font-medium">
-        — {review.name}
-      </p>
     </div>
   );
 }
