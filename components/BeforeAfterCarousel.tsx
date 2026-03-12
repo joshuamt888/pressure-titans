@@ -21,8 +21,6 @@ const photos = [
   { src: "/images/projects/newsiding2.webp", label: "Chanhassen" },
   { src: "/images/projects/newsiding1.webp", label: "Siding Wash" },
   { src: "/images/projects/newsiding3.webp", label: "Soft Wash" },
-  { src: "/images/projects/bafrontdoorwaterfountain.webp", label: "Water Fountain" },
-  { src: "/images/projects/bahouseoutsidewalls3.webp", label: "Exterior Cleaning" },
 ];
 
 function getCardStyle(offset: number): React.CSSProperties {
