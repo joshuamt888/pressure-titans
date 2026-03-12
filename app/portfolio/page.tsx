@@ -91,16 +91,6 @@ const projects = [
     label: "Deck Surface",
     alt: "Before and after pressure washing a deck surface",
   },
-  {
-    src: "/images/projects/bafrontdoorwaterfountain.webp",
-    label: "Water Fountain",
-    alt: "Before and after cleaning a water fountain area",
-  },
-  {
-    src: "/images/projects/bahouseoutsidewalls3.webp",
-    label: "Exterior Cleaning",
-    alt: "Before and after house exterior cleaning",
-  },
 ];
 
 export default function PortfolioPage() {
