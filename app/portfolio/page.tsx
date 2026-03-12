@@ -91,6 +91,36 @@ const projects = [
     label: "Deck Surface",
     alt: "Before and after pressure washing a deck surface",
   },
+  {
+    src: "/images/projects/housewash-eden-prairie.webp",
+    label: "Eden Prairie",
+    alt: "Before and after house washing in Eden Prairie MN",
+  },
+  {
+    src: "/images/projects/pw-gallery-2.webp",
+    label: "Patio Cleaning",
+    alt: "Before and after paver patio pressure washing",
+  },
+  {
+    src: "/images/projects/newsiding1.webp",
+    label: "Siding Wash",
+    alt: "Before and after soft wash siding cleaning",
+  },
+  {
+    src: "/images/projects/newholiday1.webp",
+    label: "Chanhassen",
+    alt: "Holiday lighting installation in Chanhassen MN",
+  },
+  {
+    src: "/images/projects/gc-gallery-3.webp",
+    label: "Gutter Cleaning",
+    alt: "Before and after gutter cleaning results",
+  },
+  {
+    src: "/images/projects/newholiday4.webp",
+    label: "Victoria",
+    alt: "Holiday lighting installation in Victoria MN",
+  },
 ];
 
 export default function PortfolioPage() {
