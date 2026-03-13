@@ -1,0 +1,390 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ContactForm from "@/components/ContactForm";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description:
+    "Get a free pressure washing quote from Pressure Titans in Minneapolis. Call (612) 554-8106 or fill out our contact form. We respond within 24 hours.",
+  keywords:
+    "contact Pressure Titans, free pressure washing quote Minneapolis, pressure washing estimate, call Pressure Titans, Minneapolis exterior cleaning quote",
+  alternates: {
+    canonical: "https://pressuretitans.com/contact",
+  },
+  openGraph: {
+    title: "Contact Pressure Titans | Free Pressure Washing Quote",
+    description:
+      "Get a free pressure washing quote from Pressure Titans in Minneapolis. Call (612) 554-8106 or fill out our contact form.",
+    url: "https://pressuretitans.com/contact",
+    siteName: "Pressure Titans",
+    locale: "en_US",
+    type: "website",
+  },
+};
+
+const steps = [
+  {
+    step: "01",
+    title: "We Respond Within 24 Hours",
+    description:
+      "Submit your request and we'll get back to you fast — usually the same day.",
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+        />
+      </svg>
+    ),
+  },
+  {
+    step: "02",
+    title: "Free On-Site Estimate",
+    description:
+      "We'll come to your property to assess the job in person, at no cost to you.",
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+        />
+      </svg>
+    ),
+  },
+  {
+    step: "03",
+    title: "Detailed Quote, No Hidden Fees",
+    description:
+      "You'll receive an itemized quote so you know exactly what you're paying for.",
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+        />
+      </svg>
+    ),
+  },
+  {
+    step: "04",
+    title: "No Pressure, No Obligation",
+    description:
+      "Take your time deciding. We never use high-pressure sales tactics — just honest service.",
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
+        />
+      </svg>
+    ),
+  },
+];
+
+const serviceAreas = [
+  { city: "Eden Prairie", slug: "eden-prairie" },
+  { city: "Chanhassen", slug: "chanhassen" },
+  { city: "Chaska", slug: "chaska" },
+  { city: "Shakopee", slug: "shakopee" },
+  { city: "Prior Lake", slug: "prior-lake" },
+  { city: "Savage", slug: "savage" },
+  { city: "Minnetonka", slug: "minnetonka" },
+  { city: "Victoria", slug: "victoria" },
+  { city: "Waconia", slug: "waconia" },
+  { city: "Excelsior", slug: "excelsior" },
+  { city: "Shorewood", slug: "shorewood" },
+  { city: "Deephaven", slug: "deephaven" },
+  { city: "Tonka Bay", slug: "tonka-bay" },
+  { city: "Greenwood", slug: "greenwood" },
+  { city: "Mound", slug: "mound" },
+  { city: "Carver", slug: "carver" },
+];
+
+const contactInfo = [
+  {
+    label: "Phone",
+    value: "(612) 554-8106",
+    href: "tel:6125548106",
+    description: "Call or text anytime",
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+        />
+      </svg>
+    ),
+  },
+  {
+    label: "Email",
+    value: "pressuretitans@gmail.com",
+    href: "mailto:pressuretitans@gmail.com",
+    description: "We reply within 24 hours",
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+        />
+      </svg>
+    ),
+  },
+  {
+    label: "Service Area",
+    value: "Southwest Twin Cities Metro",
+    href: null,
+    description: "Eden Prairie, Chanhassen & more",
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+        />
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+        />
+      </svg>
+    ),
+  },
+  {
+    label: "Hours",
+    value: "7:00 AM - 7:00 PM",
+    href: null,
+    description: "Monday through Saturday",
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    ),
+  },
+];
+
+export default function ContactPage() {
+  return (
+    <>
+      <Header />
+
+      <main>
+        {/* Hero */}
+        <section className="relative bg-navy pt-20 overflow-hidden">
+          <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+            <source src="/videos/fullhousejob.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-navy/80" />
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 leading-tight">
+                Get Your Free Quote
+              </h1>
+              <p className="text-xl sm:text-2xl text-slate-300 leading-relaxed">
+                We respond within 24 hours
+              </p>
+            </div>
+          </div>
+          {/* Bottom edge */}
+          <div className="relative z-10">
+            <svg
+              viewBox="0 0 1440 48"
+              fill="none"
+              className="w-full text-slate-50"
+              preserveAspectRatio="none"
+            >
+              <path d="M0 48h1440V0C1200 40 240 40 0 0v48z" fill="currentColor" />
+            </svg>
+          </div>
+        </section>
+
+        {/* Contact Form + Info */}
+        <section className="py-20 md:py-28 bg-slate-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
+              {/* Contact Form — takes 3 columns */}
+              <div className="lg:col-span-3">
+                <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8 md:p-10">
+                  <h2 className="text-2xl font-heading font-bold text-slate-900 mb-2">
+                    Request a Free Quote
+                  </h2>
+                  <p className="text-slate-500 mb-8">
+                    Fill out the form below and we&apos;ll get back to you within 24 hours.
+                  </p>
+                  <ContactForm />
+                </div>
+              </div>
+
+              {/* Contact Info Cards — takes 2 columns */}
+              <div className="lg:col-span-2 space-y-5">
+                {contactInfo.map((info) => (
+                  <div
+                    key={info.label}
+                    className="bg-white rounded-xl border border-slate-200 p-6 flex items-start gap-5 hover:shadow-md transition-shadow"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 bg-titan-accent/10 rounded-xl flex items-center justify-center text-titan-accent">
+                      {info.icon}
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                        {info.label}
+                      </p>
+                      {info.href ? (
+                        <a
+                          href={info.href}
+                          className="text-lg font-heading font-bold text-slate-900 hover:text-titan-accent transition-colors"
+                        >
+                          {info.value}
+                        </a>
+                      ) : (
+                        <p className="text-lg font-heading font-bold text-slate-900">
+                          {info.value}
+                        </p>
+                      )}
+                      <p className="text-sm text-slate-500 mt-0.5">{info.description}</p>
+                    </div>
+                  </div>
+                ))}
+
+                {/* Quick call-out box */}
+                <div className="bg-navy rounded-xl p-6 text-center">
+                  <p className="text-white font-heading font-bold text-lg mb-2">
+                    Prefer to talk?
+                  </p>
+                  <p className="text-slate-400 text-sm mb-4">
+                    Give us a call and we&apos;ll walk you through everything.
+                  </p>
+                  <a
+                    href="tel:6125548106"
+                    className="inline-block bg-titan-accent hover:bg-titan-light text-white font-semibold px-8 py-3 rounded-lg transition-colors"
+                  >
+                    (612) 554-8106
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* What to Expect */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <span className="inline-block text-titan-accent font-semibold text-sm uppercase tracking-widest mb-4">
+                Our Process
+              </span>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">
+                What to Expect
+              </h2>
+              <p className="text-lg text-slate-500 max-w-2xl mx-auto">
+                From first contact to finished job, here&apos;s how we make it easy.
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {steps.map((item, i) => (
+                <div key={item.step} className="relative text-center">
+                  {/* Connector line */}
+                  {i < steps.length - 1 && (
+                    <div className="hidden lg:block absolute top-8 left-[60%] w-[80%] border-t-2 border-dashed border-slate-200" />
+                  )}
+                  <div className="relative z-10 w-16 h-16 mx-auto bg-titan-accent/10 rounded-2xl flex items-center justify-center text-titan-accent mb-5">
+                    {item.icon}
+                  </div>
+                  <span className="inline-block text-xs font-bold text-titan-accent bg-titan-accent/10 px-3 py-1 rounded-full mb-3">
+                    Step {item.step}
+                  </span>
+                  <h3 className="text-lg font-heading font-bold text-slate-900 mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Service Areas */}
+        <section className="py-20 bg-slate-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <span className="inline-block text-titan-accent font-semibold text-sm uppercase tracking-widest mb-4">
+                Where We Work
+              </span>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">
+                Service Areas
+              </h2>
+              <p className="text-lg text-slate-500 max-w-2xl mx-auto">
+                We proudly serve Eden Prairie, Chanhassen, Minnetonka, and surrounding southwest metro cities.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+              {serviceAreas.map((area) => (
+                <Link
+                  key={area.slug}
+                  href={`/${area.slug}-pressure-washing`}
+                  className="group bg-white border border-slate-200 rounded-xl px-5 py-4 text-center hover:border-titan-accent hover:shadow-md transition-all"
+                >
+                  <span className="text-slate-700 font-medium group-hover:text-titan-accent transition-colors">
+                    {area.city}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="py-20 bg-navy">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
+              Let&apos;s Get Your Property Looking Brand New
+            </h2>
+            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+              Free quotes, honest pricing, and results that speak for themselves.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="tel:6125548106"
+                className="bg-titan-accent hover:bg-titan-light text-white font-semibold px-10 py-4 rounded-lg text-lg transition-colors"
+              >
+                Call (612) 554-8106
+              </a>
+              <a
+                href="mailto:pressuretitans@gmail.com"
+                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold px-10 py-4 rounded-lg text-lg transition-colors"
+              >
+                Email Us
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <Footer />
+      </main>
+    </>
+  );
+}
