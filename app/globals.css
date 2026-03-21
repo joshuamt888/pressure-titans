@@ -28,7 +28,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
-  scrollbar-gutter: stable both-edges;
+  scrollbar-gutter: stable;
 }
 
 body {
