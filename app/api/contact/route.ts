@@ -2,6 +2,7 @@ export const runtime = "nodejs";
 
 import { NextRequest, NextResponse } from "next/server";
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
+import { SNSClient, PublishCommand } from "@aws-sdk/client-sns";
 
 const RATE_LIMIT_MAP = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT_MAX = 3;
@@ -51,45 +52,52 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid email address." }, { status: 400 });
   }
 
-  const ses = new SESClient({
-    region: "us-east-2",
+  const awsCreds = {
+    region: (process.env.AWS_REGION ?? "us-east-2").trim(),
     credentials: {
-      accessKeyId: (process.env.AWS_SES_ACCESS_KEY_ID ?? "").trim(),
-      secretAccessKey: (process.env.AWS_SES_SECRET_ACCESS_KEY ?? "").trim(),
+      accessKeyId: (process.env.AWS_ACCESS_KEY_ID ?? "").trim(),
+      secretAccessKey: (process.env.AWS_SECRET_ACCESS_KEY ?? "").trim(),
     },
-  });
+  };
+
+  const ses = new SESClient(awsCreds);
+  const sns = new SNSClient(awsCreds);
+
+  const notifyEmail = (process.env.NOTIFY_EMAIL ?? "").trim();
+  const notifyPhone = (process.env.NOTIFY_PHONE ?? "").trim();
+  const snsFrom = (process.env.SNS_ORIGINATION_NUMBER ?? "").trim();
+
+  const subject = `New Quote Request from ${name} — Pressure Titans`;
+  const textBody = [
+    `Name: ${name}`,
+    `Email: ${email}`,
+    `Phone: ${phone}`,
+    `Service: ${service || "Not specified"}`,
+    `Message: ${message || "None"}`,
+  ].join("\n");
+  const smsBody = `New quote - Pressure Titans\nName: ${name}\nPhone: ${phone}\nService: ${service || "N/A"}`;
 
   try {
     await ses.send(new SendEmailCommand({
-      Source: `"Pressure Titans Website" <${process.env.SES_FROM_EMAIL}>`,
-      Destination: { ToAddresses: [process.env.SES_TO_EMAIL!] },
+      Source: "noreply@steadyscaling.com",
+      Destination: { ToAddresses: [notifyEmail] },
       Message: {
-        Subject: { Data: `New Quote Request from ${name}` },
-        Body: {
-          Text: {
-            Data: [
-              `Name: ${name}`,
-              `Email: ${email}`,
-              `Phone: ${phone}`,
-              `Service: ${service || "Not specified"}`,
-              `Message: ${message || "None"}`,
-            ].join("\n"),
-          },
-          Html: {
-            Data: `
-              <h2>New Quote Request — Pressure Titans</h2>
-              <table cellpadding="8" style="border-collapse:collapse;font-family:sans-serif;font-size:15px;">
-                <tr><td><strong>Name</strong></td><td>${name}</td></tr>
-                <tr><td><strong>Email</strong></td><td>${email}</td></tr>
-                <tr><td><strong>Phone</strong></td><td>${phone}</td></tr>
-                <tr><td><strong>Service</strong></td><td>${service || "Not specified"}</td></tr>
-                <tr><td><strong>Message</strong></td><td>${message || "None"}</td></tr>
-              </table>
-            `,
-          },
-        },
+        Subject: { Data: subject },
+        Body: { Text: { Data: textBody } },
       },
     }));
+
+    // Send SMS via SNS (non-blocking — don't fail the form if SMS fails)
+    sns.send(new PublishCommand({
+      PhoneNumber: notifyPhone,
+      Message: smsBody,
+      MessageAttributes: {
+        "AWS.MM.SMS.OriginationNumber": {
+          DataType: "String",
+          StringValue: snsFrom,
+        },
+      },
+    })).catch((snsErr) => console.error("SNS error:", snsErr));
 
     return NextResponse.json({ success: true });
   } catch (err) {
