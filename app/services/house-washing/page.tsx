@@ -159,7 +159,7 @@ export default function HouseWashingPage() {
         {/* Hero */}
         <section className="relative min-h-[70dvh] flex items-center bg-navy pt-20 overflow-hidden">
           <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
-            <source src="/videos/pressurewashingjob2.mp4" type="video/mp4" />
+            <source src="/videos/house-washing-bg.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-navy/80" />
 
