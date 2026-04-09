@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
     `Service: ${service || "Not specified"}`,
     `Message: ${message || "None"}`,
   ].join("\n");
-  const smsBody = `New quote - Pressure Titans\nName: ${name}\nPhone: ${phone}\nService: ${service || "N/A"}`;
+  const smsBody = `New quote - Pressure Titans\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nService: ${service || "N/A"}${message ? `\nMsg: ${message.slice(0, 80)}` : ""}`;
 
   try {
     await ses.send(new SendEmailCommand({
