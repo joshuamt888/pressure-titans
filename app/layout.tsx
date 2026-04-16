@@ -60,6 +60,109 @@ export const metadata: Metadata = {
   },
 };
 
+const schemaData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://pressuretitans.com/#organization",
+      "name": "Pressure Titans",
+      "url": "https://pressuretitans.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://pressuretitans.com/images/logos/pressure-titans-icon.webp",
+        "width": 800,
+        "height": 800
+      },
+      "description": "Professional pressure washing, soft washing, ice dam removal, gutter cleaning, and holiday lighting in Minneapolis, MN.",
+      "telephone": "(612) 554-8106",
+      "email": "pressuretitans@gmail.com"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://pressuretitans.com/#website",
+      "url": "https://pressuretitans.com",
+      "name": "Pressure Titans",
+      "description": "Professional pressure washing and exterior cleaning services in Minneapolis, MN.",
+      "publisher": { "@id": "https://pressuretitans.com/#organization" },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://pressuretitans.com/#localbusiness",
+      "name": "Pressure Titans",
+      "image": "https://pressuretitans.com/images/logos/pressure-titans-icon.webp",
+      "description": "Professional pressure washing, soft washing, ice dam removal, gutter cleaning, and holiday lighting in Minneapolis, MN. Licensed & insured. Free estimates.",
+      "url": "https://pressuretitans.com",
+      "telephone": "(612) 554-8106",
+      "email": "pressuretitans@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Minneapolis",
+        "addressRegion": "MN",
+        "postalCode": "55401",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 44.9778,
+        "longitude": -93.2650
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Minneapolis" },
+        { "@type": "City", "name": "Eden Prairie" },
+        { "@type": "City", "name": "Chanhassen" },
+        { "@type": "City", "name": "Chaska" },
+        { "@type": "City", "name": "Shakopee" },
+        { "@type": "City", "name": "Prior Lake" },
+        { "@type": "City", "name": "Savage" },
+        { "@type": "City", "name": "Minnetonka" },
+        { "@type": "City", "name": "Victoria" },
+        { "@type": "City", "name": "Waconia" },
+        { "@type": "City", "name": "Excelsior" },
+        { "@type": "City", "name": "Shorewood" }
+      ],
+      "priceRange": "$$",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "07:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday"],
+          "opens": "08:00",
+          "closes": "17:00"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": 47,
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Exterior Cleaning Services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pressure Washing" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "House Washing" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Soft Washing" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gutter Cleaning" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ice Dam Removal" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Holiday Lighting" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Stain Removal" } }
+        ]
+      },
+      "paymentAccepted": "Cash, Credit Card, Check",
+      "currenciesAccepted": "USD"
+    }
+  ]
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -67,6 +170,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        />
+      </head>
       <body className={`${inter.variable} ${outfit.variable} antialiased`}>
         {children}
         <MobileCallBar />

@@ -74,24 +74,6 @@ const faqSchema = {
   })),
 };
 
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Pressure Titans",
-  description: "Professional pressure washing, soft washing, and exterior cleaning services in Minneapolis, MN.",
-  telephone: "612-554-8106",
-  email: "pressuretitans@gmail.com",
-  url: "https://pressuretitans.com",
-  areaServed: {
-    "@type": "City",
-    name: "Minneapolis",
-    containedIn: {
-      "@type": "State",
-      name: "Minnesota",
-    },
-  },
-  priceRange: "$$",
-};
 
 const services = [
   {
@@ -158,11 +140,6 @@ export default function HomePage() {
         id="faq-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <Script
-        id="local-business-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
 
       <Header />
