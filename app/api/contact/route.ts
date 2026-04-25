@@ -41,6 +41,7 @@ export async function POST(req: NextRequest) {
   const email = String(body.email ?? "").trim().slice(0, 200);
   const phone = String(body.phone ?? "").trim().slice(0, 30);
   const service = String(body.service ?? "").trim().slice(0, 100);
+  const address = String(body.address ?? "").trim().slice(0, 300);
   const message = String(body.message ?? "").trim().slice(0, 2000);
 
   if (!name || !email || !phone) {
@@ -72,10 +73,11 @@ export async function POST(req: NextRequest) {
     `Name: ${name}`,
     `Email: ${email}`,
     `Phone: ${phone}`,
+    `Address: ${address || "Not provided"}`,
     `Service: ${service || "Not specified"}`,
     `Message: ${message || "None"}`,
   ].join("\n");
-  const smsBody = `New quote - Pressure Titans\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nService: ${service || "N/A"}${message ? `\nMsg: ${message.slice(0, 80)}` : ""}`;
+  const smsBody = `New quote - Pressure Titans\nName: ${name}\nPhone: ${phone}\nEmail: ${email}${address ? `\nAddress: ${address}` : ""}\nService: ${service || "N/A"}${message ? `\nMsg: ${message.slice(0, 60)}` : ""}`;
 
   try {
     await ses.send(new SendEmailCommand({

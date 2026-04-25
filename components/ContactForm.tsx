@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const serviceOptions = [
   "Pressure Washing",
@@ -12,16 +12,74 @@ const serviceOptions = [
   "Other",
 ];
 
+declare global {
+  interface Window {
+    google: typeof google;
+    initGoogleMapsAutocomplete?: () => void;
+  }
+}
+
 export default function ContactForm() {
   const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
     service: "",
+    address: "",
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const addressInputRef = useRef<HTMLInputElement>(null);
+  const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null);
+
+  useEffect(() => {
+    const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+    if (!apiKey) return;
+
+    const initAutocomplete = () => {
+      if (!addressInputRef.current || !window.google?.maps?.places) return;
+      autocompleteRef.current = new window.google.maps.places.Autocomplete(
+        addressInputRef.current,
+        {
+          types: ["address"],
+          componentRestrictions: { country: "us" },
+          fields: ["formatted_address"],
+        }
+      );
+      autocompleteRef.current.addListener("place_changed", () => {
+        const place = autocompleteRef.current?.getPlace();
+        if (place?.formatted_address) {
+          setForm((prev) => ({ ...prev, address: place.formatted_address! }));
+        }
+      });
+    };
+
+    if (window.google?.maps?.places) {
+      initAutocomplete();
+      return;
+    }
+
+    // Load Maps script once
+    if (!document.querySelector("#google-maps-script")) {
+      const script = document.createElement("script");
+      script.id = "google-maps-script";
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=initGoogleMapsAutocomplete`;
+      script.async = true;
+      script.defer = true;
+      window.initGoogleMapsAutocomplete = initAutocomplete;
+      document.head.appendChild(script);
+    } else {
+      // Script already loading — wait for callback
+      window.initGoogleMapsAutocomplete = initAutocomplete;
+    }
+
+    return () => {
+      if (autocompleteRef.current) {
+        window.google?.maps?.event?.clearInstanceListeners(autocompleteRef.current);
+      }
+    };
+  }, []);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -117,6 +175,24 @@ export default function ContactForm() {
             className="w-full px-4 py-3 rounded-lg border border-slate-300 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-titan-accent focus:border-transparent transition-shadow"
           />
         </div>
+      </div>
+
+      <div>
+        <label htmlFor="address" className="block text-sm font-semibold text-slate-700 mb-2">
+          Property Address <span className="text-slate-400 font-normal text-xs ml-1">(optional)</span>
+        </label>
+        <input
+          type="text"
+          id="address"
+          name="address"
+          ref={addressInputRef}
+          maxLength={300}
+          placeholder="123 Main St, Minneapolis, MN"
+          value={form.address}
+          onChange={handleChange}
+          autoComplete="off"
+          className="w-full px-4 py-3 rounded-lg border border-slate-300 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-titan-accent focus:border-transparent transition-shadow"
+        />
       </div>
 
       <div>
