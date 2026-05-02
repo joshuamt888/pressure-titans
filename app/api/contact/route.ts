@@ -120,7 +120,8 @@ export async function POST(req: NextRequest) {
     `Service: ${service || "Not specified"}`,
     `Message: ${message || "None"}`,
   ].join("\n");
-  const smsBody = `Pressure Titans: Your website just got a new lead! Check your email for full details. Reply STOP to opt out.`;
+  // Include all key fields so Mike can follow up without opening email
+  const smsBody = `New PT lead! ${name} | ${phone} | ${email} | ${service || "No service selected"} | ${address || "No address"}`.slice(0, 160);
 
   try {
     await ses.send(new SendEmailCommand({
