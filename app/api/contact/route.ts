@@ -20,6 +20,22 @@ function isRateLimited(ip: string): boolean {
   return false;
 }
 
+// Detect gibberish: too many consecutive consonants = bot-generated random string
+function isGibberish(value: string): boolean {
+  if (!value) return false;
+  const lower = value.toLowerCase();
+  // Flag strings with 5+ consecutive consonants (no real name does this)
+  if (/[^aeiou\s\d\W]{5,}/.test(lower)) return true;
+  // Flag strings that are >80% non-vowel alpha characters (random char strings)
+  const alpha = lower.replace(/[^a-z]/g, "");
+  if (alpha.length >= 6) {
+    const vowels = (alpha.match(/[aeiou]/g) ?? []).length;
+    const ratio = vowels / alpha.length;
+    if (ratio < 0.1) return true; // less than 10% vowels = random garbage
+  }
+  return false;
+}
+
 export async function POST(req: NextRequest) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
 
@@ -37,6 +53,21 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
+  // --- SPAM LAYER 1: Honeypot — bots fill hidden fields, humans don't ---
+  const honeypot = String(body.website ?? "").trim();
+  if (honeypot) {
+    // Silently accept so bots think it worked
+    return NextResponse.json({ success: true });
+  }
+
+  // --- SPAM LAYER 2: Timing check — bots submit instantly, humans don't ---
+  const formLoadTime = Number(body._formLoadTime ?? 0);
+  const elapsed = formLoadTime > 0 ? Date.now() - formLoadTime : Infinity;
+  if (elapsed < 4000) {
+    // Also silent — don't give bots a signal
+    return NextResponse.json({ success: true });
+  }
+
   const name = String(body.name ?? "").trim().slice(0, 100);
   const email = String(body.email ?? "").trim().slice(0, 200);
   const phone = String(body.phone ?? "").trim().slice(0, 30);
@@ -51,6 +82,18 @@ export async function POST(req: NextRequest) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     return NextResponse.json({ error: "Invalid email address." }, { status: 400 });
+  }
+
+  // --- SPAM LAYER 3: Gibberish detection — random char strings fail this ---
+  if (isGibberish(name) || isGibberish(address)) {
+    console.warn("Spam blocked (gibberish):", { name, email, ip });
+    return NextResponse.json({ success: true }); // silent rejection
+  }
+
+  // --- SPAM LAYER 4: Basic phone sanity check ---
+  const phoneDigits = phone.replace(/\D/g, "");
+  if (phoneDigits.length < 10 || phoneDigits.length > 15) {
+    return NextResponse.json({ error: "Please enter a valid phone number." }, { status: 400 });
   }
 
   const awsCreds = {

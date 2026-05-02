@@ -27,10 +27,12 @@ export default function ContactForm() {
     service: "",
     address: "",
     message: "",
+    website: "", // honeypot — hidden from real users, bots fill this
   });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const addressInputRef = useRef<HTMLInputElement>(null);
+  const formLoadTime = useRef<number>(Date.now());
   const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null);
 
   useEffect(() => {
@@ -94,7 +96,10 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          _formLoadTime: formLoadTime.current,
+        }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -125,6 +130,17 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Honeypot — hidden from real users, visible to bots */}
+      <div aria-hidden="true" tabIndex={-1} style={{ position: "absolute", left: "-9999px", opacity: 0, pointerEvents: "none" }}>
+        <input
+          type="text"
+          name="website"
+          value={form.website}
+          onChange={handleChange}
+          autoComplete="off"
+          tabIndex={-1}
+        />
+      </div>
       <div>
         <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-2">
           Full Name <span className="text-red-500">*</span>
