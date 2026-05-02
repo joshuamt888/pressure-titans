@@ -84,9 +84,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid email address." }, { status: 400 });
   }
 
-  // --- SPAM LAYER 3: Gibberish detection — random char strings fail this ---
-  if (isGibberish(name) || isGibberish(address)) {
-    console.warn("Spam blocked (gibberish):", { name, email, ip });
+  // --- SPAM LAYER 3: Gibberish detection — name only, NOT address ---
+  // Addresses can have abbreviated words with long consonant runs (e.g. "Porchlght Ln")
+  // so we only check name, where real values always follow normal word patterns.
+  if (isGibberish(name)) {
+    console.warn("Spam blocked (gibberish name):", { name, email, ip });
     return NextResponse.json({ success: true }); // silent rejection
   }
 
