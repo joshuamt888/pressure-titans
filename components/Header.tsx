@@ -7,6 +7,7 @@ import Image from "next/image";
 const coreServices = [
   { label: "Pressure Washing", href: "/services/pressure-washing" },
   { label: "House Washing", href: "/services/house-washing" },
+  { label: "Deck Restoration", href: "/services/deck-restoration" },
   { label: "Gutter Cleaning", href: "/services/gutter-cleaning" },
   { label: "Holiday Lighting", href: "/services/holiday-lighting" },
 ];

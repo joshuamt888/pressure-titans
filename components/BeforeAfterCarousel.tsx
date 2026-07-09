@@ -4,8 +4,11 @@ import { useState, useCallback, useRef } from "react";
 import Image from "next/image";
 
 const photos = [
+  { src: "/images/projects/ipe-lake-deck-restore-before-after.webp", label: "Ipe Deck Restoration" },
   { src: "/images/projects/bastoneflooramazing.webp", label: "Stone Patio" },
+  { src: "/images/projects/cedar-deck-strip-golden-stain-before-after.webp", label: "Cedar Deck Stain" },
   { src: "/images/projects/bafrontstepsgood.webp", label: "Front Steps" },
+  { src: "/images/projects/pergola-mildew-wash-before-after.webp", label: "Pergola Wash" },
   { src: "/images/projects/newdeck1.webp", label: "Deck Cleaning" },
   { src: "/images/projects/bawalkwaygood.webp", label: "Walkway" },
   { src: "/images/projects/newgutter1.webp", label: "Chanhassen" },

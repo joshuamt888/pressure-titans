@@ -89,6 +89,12 @@ const services = [
     icon: "home",
   },
   {
+    title: "Deck Restoration",
+    description: "Deck cleaning, staining, and sealing for wood and composite.",
+    href: "/services/deck-restoration",
+    icon: "deck",
+  },
+  {
     title: "Gutter Cleaning",
     description: "Full debris removal and downspout flushing to prevent damage.",
     href: "/services/gutter-cleaning",
@@ -256,6 +262,11 @@ export default function HomePage() {
                       {service.icon === "home" && (
                         <svg className="w-5 h-5 sm:w-7 sm:h-7 text-titan-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4" />
+                        </svg>
+                      )}
+                      {service.icon === "deck" && (
+                        <svg className="w-5 h-5 sm:w-7 sm:h-7 text-titan-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 12h16M4 12v8m16-8v8M4 16h16M7 12V8m5 4V8m5 4V8M5 8h14l1-3H4l1 3z" />
                         </svg>
                       )}
                       {service.icon === "gutter" && (
