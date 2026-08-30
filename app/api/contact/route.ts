@@ -21,15 +21,16 @@ function isRateLimited(ip: string): boolean {
 }
 
 // Detect gibberish: too many consecutive consonants = bot-generated random string
+// "y" counts as a vowel — real names like "Lynn Smyth" have no aeiou at all
 function isGibberish(value: string): boolean {
   if (!value) return false;
   const lower = value.toLowerCase();
   // Flag strings with 5+ consecutive consonants (no real name does this)
-  if (/[^aeiou\s\d\W]{5,}/.test(lower)) return true;
+  if (/[^aeiouy\s\d\W]{5,}/.test(lower)) return true;
   // Flag strings that are >80% non-vowel alpha characters (random char strings)
   const alpha = lower.replace(/[^a-z]/g, "");
   if (alpha.length >= 6) {
-    const vowels = (alpha.match(/[aeiou]/g) ?? []).length;
+    const vowels = (alpha.match(/[aeiouy]/g) ?? []).length;
     const ratio = vowels / alpha.length;
     if (ratio < 0.1) return true; // less than 10% vowels = random garbage
   }
@@ -53,20 +54,23 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
-  // --- SPAM LAYER 1: Honeypot — bots fill hidden fields, humans don't ---
-  const honeypot = String(body.website ?? "").trim();
-  if (honeypot) {
-    // Silently accept so bots think it worked
-    return NextResponse.json({ success: true });
-  }
+  // Spam checks no longer silently discard: a flagged submission that still has
+  // valid contact fields gets delivered with a "[Suspected spam]" subject so a
+  // false positive never costs a real lead. Only garbage submissions are dropped.
+  let spamReason = "";
 
-  // --- SPAM LAYER 2: Timing check — bots submit instantly, humans don't ---
+  // --- SPAM LAYER 1: Honeypot — bots fill hidden fields, humans don't.
+  // Field renamed from "website" to "xfield": browser autofill treats a hidden
+  // input named "website" as a real URL field and fills it, flagging real users.
+  const honeypot = String(body.xfield ?? body.website ?? "").trim();
+  if (honeypot) spamReason = "honeypot filled";
+
+  // --- SPAM LAYER 2: Timing check — bots submit instantly, humans don't.
+  // Negative elapsed means the visitor's clock is ahead of the server's, not a
+  // bot — only flag a genuine sub-4s submission.
   const formLoadTime = Number(body._formLoadTime ?? 0);
   const elapsed = formLoadTime > 0 ? Date.now() - formLoadTime : Infinity;
-  if (elapsed < 4000) {
-    // Also silent — don't give bots a signal
-    return NextResponse.json({ success: true });
-  }
+  if (!spamReason && elapsed >= 0 && elapsed < 4000) spamReason = "submitted <4s after load";
 
   const name = String(body.name ?? "").trim().slice(0, 100);
   const email = String(body.email ?? "").trim().slice(0, 200);
@@ -75,27 +79,37 @@ export async function POST(req: NextRequest) {
   const address = String(body.address ?? "").trim().slice(0, 300);
   const message = String(body.message ?? "").trim().slice(0, 2000);
 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneDigits = phone.replace(/\D/g, "");
+  const fieldsValid =
+    Boolean(name && email && phone) &&
+    emailRegex.test(email) &&
+    phoneDigits.length >= 10 &&
+    phoneDigits.length <= 15;
+
+  if (spamReason && !fieldsValid) {
+    // Flagged AND garbage fields — drop it, but pretend success so bots learn nothing
+    console.warn("Spam dropped:", { spamReason, name, email, ip });
+    return NextResponse.json({ success: true });
+  }
+
   if (!name || !email || !phone) {
     return NextResponse.json({ error: "Name, email, and phone are required." }, { status: 400 });
   }
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     return NextResponse.json({ error: "Invalid email address." }, { status: 400 });
+  }
+  if (phoneDigits.length < 10 || phoneDigits.length > 15) {
+    return NextResponse.json({ error: "Please enter a valid phone number." }, { status: 400 });
   }
 
   // --- SPAM LAYER 3: Gibberish detection — name only, NOT address ---
   // Addresses can have abbreviated words with long consonant runs (e.g. "Porchlght Ln")
   // so we only check name, where real values always follow normal word patterns.
-  if (isGibberish(name)) {
-    console.warn("Spam blocked (gibberish name):", { name, email, ip });
-    return NextResponse.json({ success: true }); // silent rejection
-  }
+  if (!spamReason && isGibberish(name)) spamReason = "gibberish name";
 
-  // --- SPAM LAYER 4: Basic phone sanity check ---
-  const phoneDigits = phone.replace(/\D/g, "");
-  if (phoneDigits.length < 10 || phoneDigits.length > 15) {
-    return NextResponse.json({ error: "Please enter a valid phone number." }, { status: 400 });
+  if (spamReason) {
+    console.warn("Suspected spam (delivering flagged, no SMS):", { spamReason, name, email, ip });
   }
 
   const awsCreds = {
@@ -113,7 +127,9 @@ export async function POST(req: NextRequest) {
   const notifyPhone = (process.env.NOTIFY_PHONE ?? "").trim();
   const snsFrom = (process.env.SNS_ORIGINATION_NUMBER ?? "").trim();
 
-  const subject = `New Quote Request from ${name} — Pressure Titans`;
+  const subject = spamReason
+    ? `[Suspected spam] Quote request from ${name} — Pressure Titans`
+    : `New Quote Request from ${name} — Pressure Titans`;
   const textBody = [
     `Name: ${name}`,
     `Email: ${email}`,
@@ -127,13 +143,17 @@ export async function POST(req: NextRequest) {
 
   try {
     await ses.send(new SendEmailCommand({
-      Source: "noreply@steadyscaling.com",
+      Source: "Pressure Titans Website <noreply@steadyscaling.com>",
       Destination: { ToAddresses: [notifyEmail] },
+      ReplyToAddresses: [email],
       Message: {
         Subject: { Data: subject },
         Body: { Text: { Data: textBody } },
       },
     }));
+
+    // Suspected spam still gets the flagged email above, but no SMS ping
+    if (spamReason) return NextResponse.json({ success: true });
 
     // Send SMS via SNS (non-blocking — don't fail the form if SMS fails)
     sns.send(new PublishCommand({

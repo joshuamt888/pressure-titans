@@ -27,7 +27,9 @@ export default function ContactForm() {
     service: "",
     address: "",
     message: "",
-    website: "", // honeypot — hidden from real users, bots fill this
+    // Honeypot — hidden from real users, bots fill this. Named "xfield" because
+    // browser autofill fills a hidden input named "website" and flags real users.
+    xfield: "",
   });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -134,8 +136,8 @@ export default function ContactForm() {
       <div aria-hidden="true" tabIndex={-1} style={{ position: "absolute", left: "-9999px", opacity: 0, pointerEvents: "none" }}>
         <input
           type="text"
-          name="website"
-          value={form.website}
+          name="xfield"
+          value={form.xfield}
           onChange={handleChange}
           autoComplete="off"
           tabIndex={-1}
