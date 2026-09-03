@@ -106,8 +106,8 @@ const galleryImages = [
     alt: "Before and after pressure washing showing restored surfaces",
   },
   {
-    src: "/images/projects/pw-gallery-3.webp",
-    alt: "Before and after pressure washing showing clean restored surfaces",
+    src: "/images/projects/pw-dumpster-pad.webp",
+    alt: "Before and after commercial pressure washing of a concrete dumpster pad with grease and grime removed",
   },
   {
     src: "/images/projects/newpressurewash2.webp",
