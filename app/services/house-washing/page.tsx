@@ -119,16 +119,16 @@ const faqs = [
 
 const galleryImages = [
   {
-    src: "/images/projects/newsiding1.webp",
-    alt: "Before and after soft washing vinyl siding showing algae removal results",
+    src: "/images/projects/hw-siding-eave.webp",
+    alt: "Before and after soft washing vinyl siding under the eaves showing algae removal results",
   },
   {
     src: "/images/projects/hw-gallery-2.webp",
     alt: "Before and after siding wash showing restored exterior",
   },
   {
-    src: "/images/projects/hw-gallery-3.webp",
-    alt: "Before and after house washing showing full exterior cleaning results",
+    src: "/images/projects/hw-siding-window.webp",
+    alt: "Before and after house washing showing mildew removed from vinyl siding below a window",
   },
 ];
 
