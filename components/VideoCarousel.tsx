@@ -6,7 +6,6 @@ const videos = [
   { src: "/videos/fullhousejob.mp4", label: "Full House Wash" },
   { src: "/videos/pressurewashingwall.mp4", label: "Wall Cleaning" },
   { src: "/videos/walkwaytohouse.mp4", label: "Walkway Restoration" },
-  { src: "/videos/removingstainoffthecement.mp4", label: "Stain Removal" },
   { src: "/videos/pressurewashingjob1.mp4", label: "Pressure Washing" },
   { src: "/videos/pressurewashingjob2.mp4", label: "Driveway Cleaning" },
   { src: "/videos/doingacarwashplace.mp4", label: "Commercial Wash" },

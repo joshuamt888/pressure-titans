@@ -35,7 +35,8 @@ const servicePages = [
   { label: "Gutter Cleaning", href: "/services/gutter-cleaning" },
   { label: "Ice Dam Removal", href: "/services/ice-dam-removal" },
   { label: "Holiday Lighting", href: "/services/holiday-lighting" },
-  { label: "Stain Removal", href: "/services/stain-removal" },
+  { label: "Deck Restoration", href: "/services/deck-restoration" },
+  { label: "Commercial Lighting", href: "/services/commercial-holiday-lighting" },
 ];
 
 const cityPages = [

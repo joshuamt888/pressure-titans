@@ -14,7 +14,7 @@ const coreServices = [
 
 const additionalServices = [
   { label: "Ice Dam Removal", href: "/services/ice-dam-removal" },
-  { label: "Stain Removal", href: "/services/stain-removal" },
+  { label: "Commercial Lighting", href: "/services/commercial-holiday-lighting" },
 ];
 
 const areas = [

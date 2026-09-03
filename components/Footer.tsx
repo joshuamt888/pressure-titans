@@ -31,6 +31,8 @@ export default function Footer() {
                 <li><Link href="/services/house-washing" className="hover:text-white transition-colors">House Washing</Link></li>
                 <li><Link href="/services/deck-restoration" className="hover:text-white transition-colors">Deck Restoration</Link></li>
                 <li><Link href="/services/gutter-cleaning" className="hover:text-white transition-colors">Gutter Cleaning</Link></li>
+                <li><Link href="/services/holiday-lighting" className="hover:text-white transition-colors">Holiday Lighting</Link></li>
+                <li><Link href="/services/commercial-holiday-lighting" className="hover:text-white transition-colors">Commercial Lighting</Link></li>
               </ul>
             </div>
 

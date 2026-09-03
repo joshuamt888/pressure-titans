@@ -154,7 +154,7 @@ const schemaData = {
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gutter Cleaning" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ice Dam Removal" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Holiday Lighting" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Stain Removal" } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial Holiday Lighting" } }
         ]
       },
       "paymentAccepted": "Cash, Credit Card, Check",

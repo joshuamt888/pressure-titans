@@ -5,7 +5,7 @@ import CityPageContent from "@/components/CityPageContent";
 export const metadata: Metadata = {
   title: "Savage Pressure Washing & Exterior Cleaning",
   description:
-    "Trusted pressure washing in Savage, MN. Professional house washing, soft washing, gutter cleaning, ice dam removal, and stain removal in the Minneapolis metro. Free estimates.",
+    "Trusted pressure washing in Savage, MN. Professional house washing, soft washing, gutter cleaning, ice dam removal, and holiday lighting in the Minneapolis metro. Free estimates.",
   keywords:
     "pressure washing Savage, power washing Savage MN, soft washing Savage, gutter cleaning Savage, exterior cleaning Minneapolis metro",
   alternates: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Savage Pressure Washing & Exterior Cleaning | Pressure Titans",
     description:
-      "Trusted pressure washing in Savage, MN. Professional house washing, soft washing, gutter cleaning, ice dam removal, and stain removal in the Minneapolis metro.",
+      "Trusted pressure washing in Savage, MN. Professional house washing, soft washing, gutter cleaning, ice dam removal, and holiday lighting in the Minneapolis metro.",
     url: "https://pressuretitans.com/savage-pressure-washing",
     siteName: "Pressure Titans",
     locale: "en_US",
@@ -46,7 +46,7 @@ const faqs = [
   {
     question: "What pressure washing services do you offer in Savage?",
     answer:
-      "We offer a full range of exterior cleaning services in Savage including pressure washing, soft washing, house washing, gutter cleaning, ice dam removal, holiday lighting, and stain removal.",
+      "We offer a full range of exterior cleaning services in Savage including pressure washing, soft washing, house washing, gutter cleaning, ice dam removal, deck restoration, and residential and commercial holiday lighting.",
   },
 ];
 

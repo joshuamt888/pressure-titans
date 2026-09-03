@@ -8,7 +8,7 @@ const serviceOptions = [
   "Ice Dam Removal",
   "Gutter Cleaning",
   "Holiday Lighting",
-  "Stain Removal",
+  "Commercial Lighting",
   "Other",
 ];
 

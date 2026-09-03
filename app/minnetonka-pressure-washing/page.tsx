@@ -47,7 +47,7 @@ const faqs = [
   {
     question: "What pressure washing services do you offer in Minnetonka?",
     answer:
-      "We offer a full range of exterior cleaning services in Minnetonka including pressure washing, soft washing, house washing, gutter cleaning, ice dam removal, holiday lighting, and stain removal.",
+      "We offer a full range of exterior cleaning services in Minnetonka including pressure washing, soft washing, house washing, gutter cleaning, ice dam removal, deck restoration, and residential and commercial holiday lighting.",
   },
 ];
 

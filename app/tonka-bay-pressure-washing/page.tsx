@@ -5,7 +5,7 @@ import CityPageContent from "@/components/CityPageContent";
 export const metadata: Metadata = {
   title: "Tonka Bay Pressure Washing & Exterior Cleaning",
   description:
-    "Professional pressure washing in Tonka Bay, MN. Lakefront house washing, soft washing, gutter cleaning, ice dam removal, and stain removal in the Minneapolis metro. Free quotes.",
+    "Professional pressure washing in Tonka Bay, MN. Lakefront house washing, soft washing, gutter cleaning, ice dam removal, and holiday lighting in the Minneapolis metro. Free quotes.",
   keywords:
     "pressure washing Tonka Bay, power washing Tonka Bay MN, soft washing Tonka Bay, gutter cleaning Tonka Bay, exterior cleaning Minneapolis metro, Lake Minnetonka",
   alternates: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Tonka Bay Pressure Washing & Exterior Cleaning | Pressure Titans",
     description:
-      "Professional pressure washing in Tonka Bay, MN. Lakefront house washing, soft washing, gutter cleaning, ice dam removal, and stain removal in the Minneapolis metro.",
+      "Professional pressure washing in Tonka Bay, MN. Lakefront house washing, soft washing, gutter cleaning, ice dam removal, and holiday lighting in the Minneapolis metro.",
     url: "https://pressuretitans.com/tonka-bay-pressure-washing",
     siteName: "Pressure Titans",
     locale: "en_US",
@@ -46,7 +46,7 @@ const faqs = [
   {
     question: "What pressure washing services do you offer in Tonka Bay?",
     answer:
-      "We offer a full range of exterior cleaning services in Tonka Bay including pressure washing, soft washing, house washing, gutter cleaning, ice dam removal, holiday lighting, and stain removal.",
+      "We offer a full range of exterior cleaning services in Tonka Bay including pressure washing, soft washing, house washing, gutter cleaning, ice dam removal, deck restoration, and residential and commercial holiday lighting.",
   },
 ];
 

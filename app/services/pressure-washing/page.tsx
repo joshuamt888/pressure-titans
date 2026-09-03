@@ -92,12 +92,7 @@ const faqs = [
   {
     question: "Do you use any chemicals or is it just water?",
     answer:
-      "We use a combination of high-pressure water and eco-friendly, biodegradable cleaning solutions. For tough stains like oil, rust, or deep-set algae, pre-treatment solutions break down the buildup so the pressure washing can remove it completely. All products we use are safe for pets, plants, and lawns.",
-  },
-  {
-    question: "Can you remove oil stains from my garage floor or driveway?",
-    answer:
-      "Yes. Oil and grease stains are one of our most common requests. We use specialized degreasing agents combined with high-pressure cleaning to lift and remove oil stains. While very old or deeply penetrated stains may lighten significantly rather than disappear completely, most stains are removed to the customer's satisfaction.",
+      "We use a combination of high-pressure water and eco-friendly, biodegradable cleaning solutions. For heavy buildup like algae, mildew, or ground-in grime, pre-treatment solutions break it down so the pressure washing can remove it completely. All products we use are safe for pets, plants, and lawns.",
   },
 ];
 

@@ -5,7 +5,7 @@ import CityPageContent from "@/components/CityPageContent";
 export const metadata: Metadata = {
   title: "Chanhassen Pressure Washing & Exterior Cleaning",
   description:
-    "Top-rated pressure washing in Chanhassen, MN. House washing, soft washing, gutter cleaning, ice dam removal, and stain removal in the Minneapolis metro area. Free quotes.",
+    "Top-rated pressure washing in Chanhassen, MN. House washing, soft washing, gutter cleaning, ice dam removal, and holiday lighting in the Minneapolis metro area. Free quotes.",
   keywords:
     "pressure washing Chanhassen, power washing Chanhassen MN, soft washing Chanhassen, gutter cleaning Chanhassen, exterior cleaning Minneapolis metro",
   alternates: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Chanhassen Pressure Washing & Exterior Cleaning | Pressure Titans",
     description:
-      "Top-rated pressure washing in Chanhassen, MN. House washing, soft washing, gutter cleaning, ice dam removal, and stain removal in the Minneapolis metro area.",
+      "Top-rated pressure washing in Chanhassen, MN. House washing, soft washing, gutter cleaning, ice dam removal, and holiday lighting in the Minneapolis metro area.",
     url: "https://pressuretitans.com/chanhassen-pressure-washing",
     siteName: "Pressure Titans",
     locale: "en_US",
@@ -46,7 +46,7 @@ const faqs = [
   {
     question: "What pressure washing services do you offer in Chanhassen?",
     answer:
-      "We offer a full range of exterior cleaning services in Chanhassen including pressure washing, soft washing, house washing, gutter cleaning, ice dam removal, holiday lighting, and stain removal.",
+      "We offer a full range of exterior cleaning services in Chanhassen including pressure washing, soft washing, house washing, gutter cleaning, ice dam removal, deck restoration, and residential and commercial holiday lighting.",
   },
 ];
 

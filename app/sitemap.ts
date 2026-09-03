@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { lightingCities } from "@/lib/commercial-lighting-cities";
 
 const baseUrl = "https://pressuretitans.com";
 
@@ -22,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/services/gutter-cleaning`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/services/ice-dam-removal`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/services/holiday-lighting`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/services/stain-removal`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/services/commercial-holiday-lighting`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
   ];
 
   const cityPages: MetadataRoute.Sitemap = cities.map((city) => ({
@@ -32,5 +33,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...cityPages];
+  const lightingPages: MetadataRoute.Sitemap = lightingCities.map((city) => ({
+    url: `${baseUrl}/${city.slug}-christmas-light-installation`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...cityPages, ...lightingPages];
 }

@@ -14,16 +14,16 @@ const galleryImages = [
 ];
 
 export const metadata: Metadata = {
-  title: "Holiday Lighting Minneapolis | Professional Installation & Design",
+  title: "Christmas Light Installation Minneapolis | Holiday Lighting Installers",
   description:
-    "Professional holiday lighting installation in Minneapolis, MN. Custom design, installation, maintenance, and takedown. Hassle-free holiday displays. Free estimates.",
+    "Professional Christmas light installation in Minneapolis, MN. Custom design, installation, season-long maintenance, and takedown for homes and businesses. Free estimates.",
   keywords:
-    "holiday lighting Minneapolis, Christmas light installation, holiday light design, Christmas light service Minneapolis, holiday display installation Minnesota",
+    "christmas light installation Minneapolis, christmas light installers near me, holiday light installation Minneapolis, holiday lighting installation, professional christmas light installation, christmas light hanging service Minneapolis, holiday lighting company Minnesota",
   alternates: {
     canonical: "https://pressuretitans.com/services/holiday-lighting",
   },
   openGraph: {
-    title: "Holiday Lighting Minneapolis | Professional Installation & Design",
+    title: "Christmas Light Installation Minneapolis | Holiday Lighting Installers",
     description:
       "Professional holiday lighting installation in Minneapolis, MN. Custom design, installation, maintenance, and takedown. Hassle-free holiday displays. Free estimates.",
     url: "https://pressuretitans.com/services/holiday-lighting",
@@ -56,7 +56,7 @@ const serviceItems = [
   },
   {
     name: "Commercial Displays",
-    detail: "Storefronts, office buildings, and commercial properties — we design and install displays of any scale",
+    detail: "Storefronts, office buildings, HOAs, and commercial properties — see our dedicated commercial Christmas lighting service for displays of any scale",
   },
 ];
 
@@ -198,13 +198,17 @@ export default function HolidayLightingPage() {
                   Hassle-Free Holiday Displays
                 </span>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 leading-tight">
-                  Holiday Lighting
+                  Christmas Light Installation
                   <span className="block text-titan-light">Minneapolis, MN</span>
                 </h1>
                 <p className="text-lg sm:text-xl text-slate-300 mb-8 leading-relaxed max-w-xl">
                   Full-service holiday lighting — design, installation, maintenance, and
                   takedown. Whether you want a classic, elegant display or a festive,
-                  eye-catching setup, we handle everything.
+                  eye-catching setup, we handle everything. Own a business?{" "}
+                  <Link href="/services/commercial-holiday-lighting" className="text-titan-light underline hover:text-white">
+                    See our commercial Christmas lighting
+                  </Link>
+                  .
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link

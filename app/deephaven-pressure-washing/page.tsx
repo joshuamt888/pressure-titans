@@ -5,7 +5,7 @@ import CityPageContent from "@/components/CityPageContent";
 export const metadata: Metadata = {
   title: "Deephaven Pressure Washing & Exterior Cleaning",
   description:
-    "Trusted pressure washing in Deephaven, MN. Professional house washing, soft washing, gutter cleaning, ice dam removal, and stain removal near Lake Minnetonka. Minneapolis metro.",
+    "Trusted pressure washing in Deephaven, MN. Professional house washing, soft washing, gutter cleaning, ice dam removal, and holiday lighting near Lake Minnetonka. Minneapolis metro.",
   keywords:
     "pressure washing Deephaven, power washing Deephaven MN, soft washing Deephaven, gutter cleaning Deephaven, exterior cleaning Minneapolis metro",
   alternates: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Deephaven Pressure Washing & Exterior Cleaning | Pressure Titans",
     description:
-      "Trusted pressure washing in Deephaven, MN. Professional house washing, soft washing, gutter cleaning, ice dam removal, and stain removal near Lake Minnetonka.",
+      "Trusted pressure washing in Deephaven, MN. Professional house washing, soft washing, gutter cleaning, ice dam removal, and holiday lighting near Lake Minnetonka.",
     url: "https://pressuretitans.com/deephaven-pressure-washing",
     siteName: "Pressure Titans",
     locale: "en_US",
@@ -47,7 +47,7 @@ const faqs = [
   {
     question: "What pressure washing services do you offer in Deephaven?",
     answer:
-      "We offer a full range of exterior cleaning services in Deephaven including pressure washing, soft washing, house washing, gutter cleaning, ice dam removal, holiday lighting, and stain removal.",
+      "We offer a full range of exterior cleaning services in Deephaven including pressure washing, soft washing, house washing, gutter cleaning, ice dam removal, deck restoration, and residential and commercial holiday lighting.",
   },
 ];
 

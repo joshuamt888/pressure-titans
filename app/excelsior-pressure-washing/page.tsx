@@ -5,7 +5,7 @@ import CityPageContent from "@/components/CityPageContent";
 export const metadata: Metadata = {
   title: "Excelsior Pressure Washing & Exterior Cleaning",
   description:
-    "Expert pressure washing in Excelsior, MN. Lakeside home cleaning, soft washing, gutter cleaning, ice dam removal, and stain removal in the Minneapolis metro. Free estimates.",
+    "Expert pressure washing in Excelsior, MN. Lakeside home cleaning, soft washing, gutter cleaning, ice dam removal, and holiday lighting in the Minneapolis metro. Free estimates.",
   keywords:
     "pressure washing Excelsior, power washing Excelsior MN, soft washing Excelsior, gutter cleaning Excelsior, exterior cleaning Minneapolis metro, Lake Minnetonka Excelsior",
   alternates: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Excelsior Pressure Washing & Exterior Cleaning | Pressure Titans",
     description:
-      "Expert pressure washing in Excelsior, MN. Lakeside home cleaning, soft washing, gutter cleaning, ice dam removal, and stain removal in the Minneapolis metro.",
+      "Expert pressure washing in Excelsior, MN. Lakeside home cleaning, soft washing, gutter cleaning, ice dam removal, and holiday lighting in the Minneapolis metro.",
     url: "https://pressuretitans.com/excelsior-pressure-washing",
     siteName: "Pressure Titans",
     locale: "en_US",
@@ -46,7 +46,7 @@ const faqs = [
   {
     question: "What pressure washing services do you offer in Excelsior?",
     answer:
-      "We offer a full range of exterior cleaning services in Excelsior including pressure washing, soft washing, house washing, gutter cleaning, ice dam removal, holiday lighting, and stain removal.",
+      "We offer a full range of exterior cleaning services in Excelsior including pressure washing, soft washing, house washing, gutter cleaning, ice dam removal, deck restoration, and residential and commercial holiday lighting.",
   },
 ];
 

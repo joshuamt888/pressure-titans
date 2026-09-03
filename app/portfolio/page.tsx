@@ -122,11 +122,6 @@ const projects = [
     alt: "Before and after pressure washing a concrete driveway",
   },
   {
-    src: "/images/projects/baruststainremoval.webp",
-    label: "Carver",
-    alt: "Before and after rust stain removal in Carver",
-  },
-  {
     src: "/images/projects/basidewalk.webp",
     label: "Sidewalk",
     alt: "Before and after pressure washing a sidewalk",
