@@ -110,8 +110,8 @@ const galleryImages = [
     alt: "Before and after commercial pressure washing of a concrete dumpster pad with grease and grime removed",
   },
   {
-    src: "/images/projects/newpressurewash2.webp",
-    alt: "Before and after patio pressure washing showing restored outdoor surface",
+    src: "/images/projects/pw-driveway-garage.webp",
+    alt: "Before and after concrete driveway pressure washing in front of a brick garage with stains removed",
   },
 ];
 
