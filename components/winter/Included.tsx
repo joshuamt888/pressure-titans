@@ -57,7 +57,6 @@ export function Included() {
               </li>
             ))}
           </ul>
-          <a href="/process" className="mt-10 md:mt-12 inline-flex items-center gap-3 rounded-full border-2 border-glow text-glow text-xl font-medium px-8 py-4 hover:bg-glow hover:text-navy transition-colors active:scale-[0.98]">See our process <span aria-hidden>&rarr;</span></a>
         </div>
       </div>
     </section>

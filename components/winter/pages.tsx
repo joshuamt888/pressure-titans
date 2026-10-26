@@ -12,7 +12,6 @@ import { Close } from "./Close";
 import { SiteFooter } from "./SiteFooter";
 import { SeoSections } from "./SeoSections";
 import { JsonLd } from "./JsonLd";
-import { Process } from "./Process";
 import { CityPage } from "./CityPage";
 import { ServicePage } from "./ServicePage";
 import { HOLIDAY, COMMERCIAL } from "./services";
@@ -29,7 +28,6 @@ const meta = (title: string, description: string, path: string): Metadata => ({
 
 export const winterContactMetadata = meta("Contact Pressure Titans | Free Christmas Light Quote", "Get a free Christmas light installation quote from Pressure Titans in Minneapolis and across Minnesota. Call (612) 554-8106 or send your address. We respond within 24 hours.", "/contact");
 export const winterHomeMetadata = meta(titleFor.home, descFor.home, "");
-export const winterProcessMetadata = meta("Our Christmas Light Installation Process | Pressure Titans", "How Pressure Titans installs Christmas lights: design consultation, scheduling, installation, season-long maintenance and takedown, in one quote.", "/process");
 export const winterHolidayMetadata = meta(titleFor.holiday, descFor.holiday, "/services/holiday-lighting");
 export const winterCommercialMetadata = meta(titleFor.commercial, descFor.commercial, "/services/commercial-holiday-lighting");
 export function winterCityMetadata(slug: string): Metadata {
@@ -53,19 +51,6 @@ export function WinterHome() {
         <Faq items={faqs} />
         <SeoSections list={blocks(undefined, "home")} tint="bg-night" />
         <Areas />
-      </main>
-      <Close />
-      <SiteFooter />
-    </WinterShell>
-  );
-}
-
-export function WinterProcess() {
-  return (
-    <WinterShell>
-      <Nav />
-      <main>
-        <Process page />
       </main>
       <Close />
       <SiteFooter />

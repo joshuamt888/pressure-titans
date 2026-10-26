@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { SEASON } from "@/lib/season";
 import Link from "next/link";
 import { PartnersFooterStrip } from "@/components/PartnersSection";
 
@@ -41,7 +40,7 @@ export default function Footer() {
               <h3 className="font-heading font-bold text-slate-300 mb-4">Company</h3>
               <ul className="space-y-2 text-slate-400 text-sm">
                 <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
-                <li><Link href={SEASON === "winter" ? "/process" : "/portfolio"} className="hover:text-white transition-colors">{SEASON === "winter" ? "Our process" : "Our Work"}</Link></li>
+                <li><Link href="/portfolio" className="hover:text-white transition-colors">Our Work</Link></li>
                 <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
                 <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
               </ul>

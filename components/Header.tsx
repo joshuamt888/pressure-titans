@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { SEASON } from "@/lib/season";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -40,7 +39,7 @@ const areas = [
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  SEASON === "winter" ? { label: "Our process", href: "/process" } : { label: "Portfolio", href: "/portfolio" },
+  { label: "Portfolio", href: "/portfolio" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -179,8 +178,8 @@ export default function Header() {
             <Link href="/about" className="text-slate-600 hover:text-titan-accent font-semibold text-lg transition-colors">
               About
             </Link>
-            <Link href={SEASON === "winter" ? "/process" : "/portfolio"} className="text-slate-600 hover:text-titan-accent font-semibold text-lg transition-colors">
-              {SEASON === "winter" ? "Our process" : "Portfolio"}
+            <Link href="/portfolio" className="text-slate-600 hover:text-titan-accent font-semibold text-lg transition-colors">
+              Portfolio
             </Link>
             <Link href="/contact" className="text-slate-600 hover:text-titan-accent font-semibold text-lg transition-colors">
               Contact

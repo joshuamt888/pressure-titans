@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      { source: "/process", destination: "/", permanent: false },
       {
         source: "/services/stain-removal",
         destination: "/services/pressure-washing",
