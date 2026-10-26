@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { SEASON } from "@/lib/season";
+import { WinterHoliday, winterHolidayMetadata } from "@/components/winter/pages";
 import Header from "@/components/Header";
 import ReviewCarousel from "@/components/ReviewCarousel";
 import StatsBar from "@/components/StatsBar";
@@ -13,7 +15,7 @@ const galleryImages = [
   { src: "/images/projects/newholiday4.webp", alt: "Holiday light installation Victoria MN" },
 ];
 
-export const metadata: Metadata = {
+const summerMetadata: Metadata = {
   title: "Christmas Light Installation Minneapolis | Holiday Lighting Installers",
   description:
     "Professional Christmas light installation in Minneapolis, MN. Custom design, installation, season-long maintenance, and takedown for homes and businesses. Free estimates.",
@@ -134,6 +136,7 @@ const faqs = [
 
 
 export default function HolidayLightingPage() {
+  if (SEASON === "winter") return <WinterHoliday />;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -503,3 +506,5 @@ export default function HolidayLightingPage() {
     </>
   );
 }
+
+export const metadata: Metadata = SEASON === "winter" ? winterHolidayMetadata : summerMetadata;

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { SEASON } from "@/lib/season";
+import { WinterCity, winterCityMetadata } from "@/components/winter/pages";
 import { notFound } from "next/navigation";
 import CommercialLightingContent from "@/components/CommercialLightingContent";
 import { getLightingCity } from "@/lib/commercial-lighting-cities";
@@ -18,7 +20,7 @@ const title = "Commercial Christmas Light Installation Savage MN | Pressure Tita
 const description =
   "Commercial Christmas light installation in Savage, MN for storefronts, offices, restaurants, and HOAs. Design, commercial-grade LEDs, install, season-long maintenance, and takedown in one quote. Fully insured. Free estimates.";
 
-export const metadata: Metadata = {
+const summerMetadata: Metadata = {
   title,
   description,
   keywords:
@@ -37,6 +39,7 @@ export const metadata: Metadata = {
 
 export default function SavageChristmasLightInstallationPage() {
   if (!city) notFound();
+  if (SEASON === "winter") return <WinterCity slug={SLUG} />;
   const faqs = buildFaqs(city);
   return (
     <>
@@ -47,3 +50,5 @@ export default function SavageChristmasLightInstallationPage() {
     </>
   );
 }
+
+export const metadata: Metadata = SEASON === "winter" ? winterCityMetadata(SLUG) : summerMetadata;

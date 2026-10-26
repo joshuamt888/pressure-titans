@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { SEASON } from "@/lib/season";
+import { WinterCommercial, winterCommercialMetadata } from "@/components/winter/pages";
 import CommercialLightingContent from "@/components/CommercialLightingContent";
 import {
   buildFaqs,
@@ -13,7 +15,7 @@ const title = "Commercial Christmas Light Installation Minneapolis | Holiday Lig
 const description =
   "Commercial Christmas light installation in Minneapolis and the Twin Cities. Storefronts, offices, restaurants, HOAs. Design, commercial-grade LEDs, install, season-long maintenance, and takedown in one quote. Fully insured.";
 
-export const metadata: Metadata = {
+const summerMetadata: Metadata = {
   title,
   description,
   keywords:
@@ -31,6 +33,7 @@ export const metadata: Metadata = {
 };
 
 export default function CommercialHolidayLightingPage() {
+  if (SEASON === "winter") return <WinterCommercial />;
   const faqs = buildFaqs();
   return (
     <>
@@ -41,3 +44,5 @@ export default function CommercialHolidayLightingPage() {
     </>
   );
 }
+
+export const metadata: Metadata = SEASON === "winter" ? winterCommercialMetadata : summerMetadata;
