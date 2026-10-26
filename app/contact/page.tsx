@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { SEASON } from "@/lib/season";
+import { WinterContact, winterContactMetadata } from "@/components/winter/pages";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 
-export const metadata: Metadata = {
+const summerMetadata: Metadata = {
   title: "Contact Us",
   description:
     "Get a free pressure washing quote from Pressure Titans in Minneapolis. Call (612) 554-8106 or fill out our contact form. We respond within 24 hours.",
@@ -184,6 +186,7 @@ const contactInfo = [
 ];
 
 export default function ContactPage() {
+  if (SEASON === "winter") return <WinterContact />;
   return (
     <>
       <Header />
@@ -388,3 +391,5 @@ export default function ContactPage() {
     </>
   );
 }
+
+export const metadata: Metadata = SEASON === "winter" ? winterContactMetadata : summerMetadata;
