@@ -1,6 +1,7 @@
 "use client";
 
 import { trackLead } from "@/lib/track";
+import { getAttribution } from "@/lib/attribution";
 
 import { useState, useRef, useEffect } from "react";
 
@@ -103,6 +104,7 @@ export default function ContactForm() {
         body: JSON.stringify({
           ...form,
           _formLoadTime: formLoadTime.current,
+          attribution: getAttribution(),
         }),
       });
       const data = await res.json();

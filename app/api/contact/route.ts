@@ -3,6 +3,7 @@ export const runtime = "nodejs";
 import { NextRequest, NextResponse } from "next/server";
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import { SNSClient, PublishCommand } from "@aws-sdk/client-sns";
+import { attributionLines } from "@/lib/attribution";
 
 const RATE_LIMIT_MAP = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT_MAX = 5;
@@ -143,6 +144,7 @@ export async function POST(req: NextRequest) {
     `Address: ${address || "Not provided"}`,
     `Service: ${service || "Not specified"}`,
     `Message: ${message || "None"}`,
+    ...(attributionLines(body.attribution).length ? ["", "--", ...attributionLines(body.attribution)] : []),
   ].join("\n");
   // Include all key fields so Mike can follow up without opening email
   const smsBody = `New PT lead! ${name} | ${phone} | ${email} | ${service || "No service selected"} | ${address || "No address"}`.slice(0, 160);
@@ -161,8 +163,9 @@ export async function POST(req: NextRequest) {
     // Suspected spam still gets the flagged email above, but no SMS ping
     if (spamReason) return NextResponse.json({ success: true });
 
-    // Send SMS via SNS (non-blocking — don't fail the form if SMS fails)
-    sns.send(new PublishCommand({
+    // Send SMS via SNS. Awaited: an un-awaited send gets cut off when the serverless function returns,
+    // which is why texts were not arriving. A failed text is still caught and never fails the form.
+    await sns.send(new PublishCommand({
       PhoneNumber: notifyPhone,
       Message: smsBody,
       MessageAttributes: {

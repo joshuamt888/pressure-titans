@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import Script from "next/script";
 import MobileCallBar from "@/components/MobileCallBar";
+import Attribution from "@/components/Attribution";
 import "./globals.css";
 
 const inter = Inter({
@@ -179,6 +180,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${outfit.variable} antialiased`}>
         {children}
         <MobileCallBar />
+        <Attribution />
         {/* Google Analytics GA4 */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-1JTVC6NZT4"

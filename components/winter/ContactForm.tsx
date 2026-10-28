@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { trackLead } from "@/lib/track";
+import { getAttribution } from "@/lib/attribution";
 
 const SERVICES = ["Holiday Lighting", "Commercial Lighting", "Pressure Washing", "Soft Washing", "Gutter Cleaning", "Ice Dam Removal", "Other"];
 
@@ -59,7 +60,7 @@ export function ContactForm({ source = "contact" }: { source?: string } = {}) {
     if (bad) { setErrorMsg(bad); setStatus("error"); return; }
     setStatus("sending"); setErrorMsg("");
     try {
-      const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, _formLoadTime: loadTime.current }) });
+      const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, _formLoadTime: loadTime.current, attribution: getAttribution() }) });
       const data = await res.json();
       if (!res.ok) { setErrorMsg(data.error ?? "Something went wrong."); setStatus("error"); } else { setStatus("success"); trackLead(source); }
     } catch {
