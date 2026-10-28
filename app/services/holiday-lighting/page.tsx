@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SEASON } from "@/lib/season";
 import { WinterHoliday, winterHolidayMetadata } from "@/components/winter/pages";
 import Header from "@/components/Header";
+import { crumbs } from "@/lib/seoExtras";
 import ReviewCarousel from "@/components/ReviewCarousel";
 import StatsBar from "@/components/StatsBar";
 import Footer from "@/components/Footer";
@@ -184,6 +185,8 @@ export default function HolidayLightingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs([{ name: "Home", path: "/" }, { name: "Christmas Light Installation Minneapolis", path: "/services/holiday-lighting" }])) }} />
 
       <Header />
 

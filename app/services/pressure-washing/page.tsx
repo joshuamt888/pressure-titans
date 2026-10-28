@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
+import { crumbs, serviceExtra } from "@/lib/seoExtras";
 import ReviewCarousel from "@/components/ReviewCarousel";
 import StatsBar from "@/components/StatsBar";
 import Footer from "@/components/Footer";
@@ -95,6 +96,7 @@ const faqs = [
       "We use a combination of high-pressure water and eco-friendly, biodegradable cleaning solutions. For heavy buildup like algae, mildew, or ground-in grime, pre-treatment solutions break it down so the pressure washing can remove it completely. All products we use are safe for pets, plants, and lawns.",
   },
 ];
+faqs.push(...serviceExtra);
 
 const galleryImages = [
   {
@@ -135,6 +137,8 @@ export default function PressureWashingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs([{ name: "Home", path: "/" }, { name: "Pressure Washing Minneapolis", path: "/services/pressure-washing" }])) }} />
 
       <Header />
 

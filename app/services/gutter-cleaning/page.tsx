@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
+import { crumbs, serviceExtra } from "@/lib/seoExtras";
 import ReviewCarousel from "@/components/ReviewCarousel";
 import StatsBar from "@/components/StatsBar";
 import Footer from "@/components/Footer";
@@ -116,6 +117,7 @@ const faqs = [
       "We can clean gutters in early spring once ice has cleared and temperatures are consistently above freezing. For winter months, if you are experiencing ice dam issues or emergency overflow, we offer targeted solutions to address the immediate problem and schedule a full cleaning when conditions allow.",
   },
 ];
+faqs.push(...serviceExtra);
 
 const galleryImages = [
   {
@@ -152,6 +154,8 @@ export default function GutterCleaningPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs([{ name: "Home", path: "/" }, { name: "Gutter Cleaning Minneapolis", path: "/services/gutter-cleaning" }])) }} />
 
       <Header />
 

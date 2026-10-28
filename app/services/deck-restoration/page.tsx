@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Header from "@/components/Header";
+import { crumbs, serviceExtra } from "@/lib/seoExtras";
 import ReviewCarousel from "@/components/ReviewCarousel";
 import StatsBar from "@/components/StatsBar";
 import Footer from "@/components/Footer";
@@ -184,6 +185,7 @@ const faqs = [
       "Minnesota winters are hard on decks. As a rule of thumb: horizontal surfaces (deck boards, stair treads) need attention every 2-3 years, while verticals like railings can go 4-5 years. A quality penetrating stain applied over properly prepped wood lasts noticeably longer than a rushed job over dirty wood.",
   },
 ];
+faqs.push(...serviceExtra);
 
 export default function DeckRestorationPage() {
   const faqSchema = {
@@ -233,6 +235,8 @@ export default function DeckRestorationPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs([{ name: "Home", path: "/" }, { name: "Deck Cleaning & Staining Minneapolis", path: "/services/deck-restoration" }])) }} />
 
       <Header />
 

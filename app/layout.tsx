@@ -140,7 +140,7 @@ const schemaData = {
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
-        "reviewCount": 47,
+        "reviewCount": 48,
         "bestRating": "5",
         "worstRating": "1"
       },

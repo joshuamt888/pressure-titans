@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
+import { crumbs, serviceExtra } from "@/lib/seoExtras";
 import ReviewCarousel from "@/components/ReviewCarousel";
 import StatsBar from "@/components/StatsBar";
 import Footer from "@/components/Footer";
@@ -116,6 +117,7 @@ const faqs = [
       "For most Minneapolis homes, we recommend house washing every 1 to 2 years. Homes on the north side of trees or in heavily shaded areas may benefit from annual cleaning since those conditions accelerate algae and mildew growth. Regular cleaning maintains your curb appeal and prevents long-term discoloration from setting in.",
   },
 ];
+faqs.push(...serviceExtra);
 
 const galleryImages = [
   {
@@ -152,6 +154,8 @@ export default function HouseWashingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs([{ name: "Home", path: "/" }, { name: "House Washing Minneapolis", path: "/services/house-washing" }])) }} />
 
       <Header />
 

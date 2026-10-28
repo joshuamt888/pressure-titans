@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import CityPageContent from "@/components/CityPageContent";
+import { cityExtra, crumbs } from "@/lib/seoExtras";
 
 export const metadata: Metadata = {
   title: "Shakopee Pressure Washing & Exterior Cleaning",
@@ -50,6 +50,8 @@ const faqs = [
   },
 ];
 
+faqs.push(...cityExtra("Shakopee"));
+
 const schema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -85,16 +87,9 @@ const faqSchema = {
 export default function ShakopeePressureWashingPage() {
   return (
     <>
-      <Script
-        id="local-business-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
-      <Script
-        id="faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs([{ name: "Home", path: "/" }, { name: "Shakopee Pressure Washing", path: "/shakopee-pressure-washing" }])) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <CityPageContent cityName="Shakopee" faqs={faqs} />
     </>
   );

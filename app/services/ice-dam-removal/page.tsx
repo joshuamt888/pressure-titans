@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
+import { crumbs, serviceExtra } from "@/lib/seoExtras";
 import ReviewCarousel from "@/components/ReviewCarousel";
 import StatsBar from "@/components/StatsBar";
 import Footer from "@/components/Footer";
@@ -123,6 +124,7 @@ const faqs = [
       "Yes. If an ice dam is actively causing leaking inside your home, we prioritize your call and do everything we can to get a crew to you the same day. Call us at (612) 554-8106 and let us know it is an emergency so we can respond as quickly as possible.",
   },
 ];
+faqs.push(...serviceExtra);
 
 
 export default function IceDamRemovalPage() {
@@ -173,6 +175,8 @@ export default function IceDamRemovalPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs([{ name: "Home", path: "/" }, { name: "Ice Dam Removal Minneapolis", path: "/services/ice-dam-removal" }])) }} />
 
       <Header />
 

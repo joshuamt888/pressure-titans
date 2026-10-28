@@ -93,6 +93,7 @@ export function jsonLd(opts: { name: string; description: string; url: string; a
       hasOfferCatalog: { "@type": "OfferCatalog", name: "Holiday lighting", itemListElement: ["Custom design consultation", "Professional installation", "Season-long maintenance", "Complete takedown", "Light storage", "Commercial displays"].map((n) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: n } })) },
     },
     { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: opts.faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) },
+    ...(opts.url.replace(LIVE, "").replace(/^\//, "") ? [{ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: LIVE + "/" }, { "@type": "ListItem", position: 2, name: opts.name, item: opts.url }] }] : []),
   ];
 }
 

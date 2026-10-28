@@ -4,6 +4,8 @@ import { WinterContact, winterContactMetadata } from "@/components/winter/pages"
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FaqAccordion from "@/components/FaqAccordion";
+import { contactFaqs, crumbs, faqLd } from "@/lib/seoExtras";
 import ContactForm from "@/components/ContactForm";
 
 const summerMetadata: Metadata = {
@@ -189,6 +191,7 @@ export default function ContactPage() {
   if (SEASON === "winter") return <WinterContact />;
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([faqLd(contactFaqs), crumbs([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }])]) }} />
       <Header />
 
       <main>
@@ -383,6 +386,16 @@ export default function ContactPage() {
                 Email Us
               </a>
             </div>
+          </div>
+        </section>
+
+        <section className="py-16 sm:py-24 bg-slate-50">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <p className="text-titan-accent font-semibold uppercase tracking-widest text-sm mb-3">FAQ</p>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900">Common Questions</h2>
+            </div>
+            <FaqAccordion faqs={contactFaqs} />
           </div>
         </section>
 

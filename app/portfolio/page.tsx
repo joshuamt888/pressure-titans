@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FaqAccordion from "@/components/FaqAccordion";
+import { portfolioFaqs, crumbs, faqLd } from "@/lib/seoExtras";
 import VideoCarousel from "@/components/VideoCarousel";
 
 export const metadata: Metadata = {
@@ -181,6 +183,7 @@ const projects = [
 export default function PortfolioPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([faqLd(portfolioFaqs), crumbs([{ name: "Home", path: "/" }, { name: "Portfolio", path: "/portfolio" }])]) }} />
       <Header />
 
       <main>
@@ -297,6 +300,16 @@ export default function PortfolioPage() {
                 Call (612) 554-8106
               </a>
             </div>
+          </div>
+        </section>
+
+        <section className="py-16 sm:py-24 bg-slate-50">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <p className="text-titan-accent font-semibold uppercase tracking-widest text-sm mb-3">FAQ</p>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900">Common Questions</h2>
+            </div>
+            <FaqAccordion faqs={portfolioFaqs} />
           </div>
         </section>
 

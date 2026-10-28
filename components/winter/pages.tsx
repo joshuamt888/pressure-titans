@@ -19,6 +19,7 @@ import { blocks, faqsFor, jsonLd, titleFor, descFor } from "./seo";
 import { ContactForm } from "./ContactForm";
 import { CITIES, cityHref } from "./siteData";
 import { PHONE, TEL } from "./phone";
+import { contactFaqs, crumbs, faqLd } from "@/lib/seoExtras";
 
 const SITE = "https://pressuretitans.com";
 const meta = (title: string, description: string, path: string): Metadata => ({
@@ -87,7 +88,30 @@ export function WinterContact() {
             </div>
           </div>
         </div>
+
+        <section className="max-w-[1200px] mx-auto px-5 md:px-10 mt-24 md:mt-32">
+          <h2 className="text-[9vw] md:text-[3.6vw] leading-[1.04] tracking-[-0.035em] font-medium">What we <span className="font-serif italic font-normal warm">do.</span></h2>
+          <div className="mt-8 space-y-5 text-xl md:text-2xl text-bone/90 leading-relaxed max-w-[62ch]">
+            <p>Pressure Titans is based in Minneapolis, MN, and serves the Twin Cities metro. We pressure wash, soft wash and wash houses, clean gutters, remove ice dams and restore decks, and we design, install, maintain and take down holiday and commercial lighting.</p>
+            <p>Every quote is free with no obligation, and Pressure Titans is fully insured for residential and commercial work. Send us the address, or call or text the number above, and we will get back to you within 24 hours, usually the same day, with a clear, itemized quote.</p>
+          </div>
+        </section>
+
+        <section className="max-w-[1200px] mx-auto px-5 md:px-10 mt-24 md:mt-32">
+          <h2 className="text-[9vw] md:text-[3.6vw] leading-[1.04] tracking-[-0.035em] font-medium">What happens <span className="font-serif italic font-normal warm">next.</span></h2>
+          <ol className="mt-10 grid md:grid-cols-3 gap-5">
+            {[["01", "We Respond Within 24 Hours", "Submit your request and we'll get back to you fast, usually the same day."], ["02", "Free On-Site Estimate", "We'll come to your property to assess the job in person, at no cost to you."], ["03", "Detailed Quote, No Hidden Fees", "You'll receive an itemized quote so you know exactly what you're paying for."]].map(([n, t, d]) => (
+              <li key={n} className="rounded-2xl border border-bone/15 bg-navy p-7 md:p-8">
+                <span className="text-base font-semibold tracking-[0.22em] text-glow">{n}</span>
+                <h3 className="mt-3 text-[26px] md:text-[28px] leading-[1.1] tracking-[-0.02em] font-medium">{t}</h3>
+                <p className="mt-3 text-xl text-bone/85 leading-relaxed">{d}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+        <Faq items={contactFaqs.map((f) => ({ q: f.question, a: f.answer }))} />
       </main>
+      <JsonLd data={[faqLd(contactFaqs), crumbs([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }])]} />
       <SiteFooter />
     </WinterShell>
   );
