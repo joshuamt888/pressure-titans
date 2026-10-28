@@ -33,7 +33,7 @@ const summerMetadata: Metadata = {
     siteName: "Pressure Titans",
     locale: "en_US",
     type: "website",
-    images: [{ url: `${BASE_URL}/images/projects/newholiday1.webp` }],
+    images: [{ url: `${BASE_URL}/images/og-logo.png` }],
   },
 };
 
