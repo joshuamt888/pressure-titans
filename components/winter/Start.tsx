@@ -30,14 +30,14 @@ export function WinterStart() {
       <main className="bg-night text-bone">
         <section className="pt-28 md:pt-36 pb-14 md:pb-20">
           <div className="max-w-[1200px] mx-auto px-5 md:px-10 grid md:grid-cols-12 gap-10 md:gap-14 items-start">
-            <div className="md:col-span-6">
+            <div className="md:col-span-6 min-w-0">
               <p className="inline-block rounded-full border border-glow/60 bg-glow/10 text-glow text-base md:text-lg font-medium px-4 py-2">$100 off when you book before Thanksgiving</p>
-              <h1 className="mt-6 text-[11vw] md:text-[4.6vw] leading-[1.0] tracking-[-0.04em] font-medium">
+              <h1 className="mt-6 text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.02] break-words tracking-[-0.04em] font-medium">
                 Lake Minnetonka <span className="font-serif italic font-normal warm hero-glow">holiday lights.</span>
               </h1>
               <p className="mt-6 text-xl md:text-2xl text-bone/90 leading-relaxed max-w-[36ch]">Design, installation, maintenance and takedown, all in one price. Send the address and get a free quote.</p>
             </div>
-            <div className="md:col-span-6">
+            <div className="md:col-span-6 min-w-0">
               <div className="rounded-2xl border border-bone/15 bg-navy p-6 md:p-9">
                 <h2 className="text-[28px] md:text-[34px] leading-[1.1] tracking-[-0.02em] font-medium">Get your free quote</h2>
                 <p className="mt-2 mb-7 text-lg text-bone/80">We reply within 24 hours, usually the same day.</p>
@@ -49,7 +49,7 @@ export function WinterStart() {
 
         <section className="pb-16 md:pb-24">
           <div className="max-w-[1200px] mx-auto px-5 md:px-10">
-            <h2 className="text-[9vw] md:text-[3.2vw] leading-[1.04] tracking-[-0.035em] font-medium">What you <span className="font-serif italic font-normal warm">get.</span></h2>
+            <h2 className="text-[clamp(2rem,5vw,3.25rem)] leading-[1.06] tracking-[-0.035em] font-medium">What you <span className="font-serif italic font-normal warm">get.</span></h2>
             <ul className="mt-8 grid sm:grid-cols-2 gap-4">
               {INCLUDED.map((t) => (
                 <li key={t} className="rounded-2xl border border-bone/15 bg-navy px-6 py-5 text-xl md:text-2xl leading-snug">{t}</li>
@@ -67,7 +67,7 @@ export function WinterStart() {
         <Faq />
 
         <section className="py-16 md:py-24 text-center px-5">
-          <h2 className="text-[9vw] md:text-[3.6vw] leading-[1.04] tracking-[-0.035em] font-medium">Rather just <span className="font-serif italic font-normal warm">call?</span></h2>
+          <h2 className="text-[clamp(2rem,5vw,3.25rem)] leading-[1.06] tracking-[-0.035em] font-medium">Rather just <span className="font-serif italic font-normal warm">call?</span></h2>
           <a href={TEL} className="mt-8 inline-block rounded-full bg-glow text-navy text-xl md:text-2xl font-medium px-10 py-4 hover:bg-bone transition-colors">{PHONE}</a>
         </section>
         <p className="pb-24 md:pb-10 text-center text-base text-bone/60 px-5">Pressure Titans &middot; Minneapolis, MN &middot; Fully insured</p>
