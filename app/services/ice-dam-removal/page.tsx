@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     siteName: "Pressure Titans",
     locale: "en_US",
     type: "website",
+    images: [{ url: "https://pressuretitans.com/images/og-logo.png", width: 1200, height: 630 }],
   },
 };
 
