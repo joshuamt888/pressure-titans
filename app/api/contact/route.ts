@@ -5,19 +5,26 @@ import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import { SNSClient, PublishCommand } from "@aws-sdk/client-sns";
 
 const RATE_LIMIT_MAP = new Map<string, { count: number; resetAt: number }>();
-const RATE_LIMIT_MAX = 3;
+const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
 
+// Looks only. Counting happens in recordSubmission, after the fields pass, so typos and validation
+// errors never lock a real customer out (shared mobile-carrier IPs made that easy).
 function isRateLimited(ip: string): boolean {
+  const entry = RATE_LIMIT_MAP.get(ip);
+  return Boolean(entry && Date.now() <= entry.resetAt && entry.count >= RATE_LIMIT_MAX);
+}
+
+function recordSubmission(ip: string) {
   const now = Date.now();
   const entry = RATE_LIMIT_MAP.get(ip);
-  if (!entry || now > entry.resetAt) {
-    RATE_LIMIT_MAP.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
-    return false;
-  }
-  if (entry.count >= RATE_LIMIT_MAX) return true;
-  entry.count++;
-  return false;
+  if (!entry || now > entry.resetAt) RATE_LIMIT_MAP.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+  else entry.count++;
+}
+
+function reject(error: string, status: number, ip: string) {
+  console.warn("contact rejected", { error, status, ip });
+  return NextResponse.json({ error }, { status });
 }
 
 // Detect gibberish: too many consecutive consonants = bot-generated random string
@@ -41,17 +48,14 @@ export async function POST(req: NextRequest) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
 
   if (isRateLimited(ip)) {
-    return NextResponse.json(
-      { error: "Too many requests. Please try again later." },
-      { status: 429 }
-    );
+    return reject("Too many requests. Please try again later.", 429, ip);
   }
 
   let body: Record<string, unknown>;
   try {
     body = await req.json();
   } catch {
-    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
+    return reject("Invalid request.", 400, ip);
   }
 
   // Spam checks no longer silently discard: a flagged submission that still has
@@ -94,14 +98,16 @@ export async function POST(req: NextRequest) {
   }
 
   if (!name || !email || !phone) {
-    return NextResponse.json({ error: "Name, email, and phone are required." }, { status: 400 });
+    return reject("Name, email, and phone are required.", 400, ip);
   }
   if (!emailRegex.test(email)) {
-    return NextResponse.json({ error: "Invalid email address." }, { status: 400 });
+    return reject("Invalid email address.", 400, ip);
   }
   if (phoneDigits.length < 10 || phoneDigits.length > 15) {
-    return NextResponse.json({ error: "Please enter a valid phone number." }, { status: 400 });
+    return reject("Please enter a valid phone number.", 400, ip);
   }
+
+  recordSubmission(ip);
 
   // --- SPAM LAYER 3: Gibberish detection — name only, NOT address ---
   // Addresses can have abbreviated words with long consonant runs (e.g. "Porchlght Ln")

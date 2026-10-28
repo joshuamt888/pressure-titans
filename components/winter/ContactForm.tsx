@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { trackLead } from "@/lib/track";
 
 const SERVICES = ["Holiday Lighting", "Commercial Lighting", "Pressure Washing", "Soft Washing", "Gutter Cleaning", "Ice Dam Removal", "Other"];
 
@@ -15,7 +16,7 @@ const field = "w-full rounded-xl border border-bone/25 bg-navy-2 px-4 py-3.5 tex
 const label = "block text-base text-bone/90 mb-2";
 
 /** The winter version of the quote form. Same /api/contact endpoint and fields as the summer form. */
-export function ContactForm() {
+export function ContactForm({ source = "contact" }: { source?: string } = {}) {
   const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", address: "", message: "", xfield: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -51,11 +52,16 @@ export function ContactForm() {
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
+    const digits = form.phone.replace(/\D/g, "");
+    const bad = !form.name.trim() ? "Please enter your name."
+      : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim()) ? "Please enter a valid email address."
+      : digits.length < 10 || digits.length > 15 ? "Please enter a valid phone number (10 digits)." : "";
+    if (bad) { setErrorMsg(bad); setStatus("error"); return; }
     setStatus("sending"); setErrorMsg("");
     try {
       const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, _formLoadTime: loadTime.current }) });
       const data = await res.json();
-      if (!res.ok) { setErrorMsg(data.error ?? "Something went wrong."); setStatus("error"); } else setStatus("success");
+      if (!res.ok) { setErrorMsg(data.error ?? "Something went wrong."); setStatus("error"); } else { setStatus("success"); trackLead(source); }
     } catch {
       setErrorMsg("Network error. Please try again."); setStatus("error");
     }
@@ -74,7 +80,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={submit} className="space-y-6">
+    <form onSubmit={submit} noValidate className="space-y-6">
       <div aria-hidden="true" tabIndex={-1} style={{ position: "absolute", left: "-9999px", opacity: 0, pointerEvents: "none" }}>
         <input type="text" name="xfield" value={form.xfield} onChange={change} autoComplete="off" tabIndex={-1} />
       </div>

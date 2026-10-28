@@ -1,5 +1,7 @@
 "use client";
 
+import { trackLead } from "@/lib/track";
+
 import { useState, useRef, useEffect } from "react";
 
 const serviceOptions = [
@@ -109,6 +111,7 @@ export default function ContactForm() {
         setStatus("error");
       } else {
         setStatus("success");
+        trackLead("contact");
       }
     } catch {
       setErrorMsg("Network error. Please try again.");
