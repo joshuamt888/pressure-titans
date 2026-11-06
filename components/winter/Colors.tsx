@@ -10,7 +10,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Mike, 10/26: "We offer pretty much everything roygbiv. We just don't do the color changing."
 // Photos: one of our installs (the warm white original) and edited previews of the same house in four colors.
-type Color = { n: string; h: string; c: string; img: "white" | "red" | "orange" | "yellow" | "green" | "blue" | "indigo" | "purple"; copy: string };
+// Mike, 11/6: add a warm white and green mix, and a multicolor of red, green, orange and blue. g is the swatch when it is more than one color.
+type Color = { n: string; h: string; c: string; g?: string; img: "white" | "red" | "orange" | "yellow" | "green" | "blue" | "indigo" | "purple" | "mix" | "multi"; copy: string };
 const COLORS: Color[] = [
   { n: "Warm white", h: "Warm white Christmas lights", c: "#ffe2b0", img: "white", copy: "Warm white is the classic Christmas light color and the one most Minnesota homeowners ask for first. It outlines rooflines, gables, trees and porch columns without fighting your siding, and it looks right with snow on the ground. Warm white Christmas lights work on traditional homes, modern builds, storefronts and HOA entrances." },
   { n: "Red", h: "Red Christmas lights", c: "#ff3b3b", img: "red", copy: "Red Christmas lights are the color most people picture at the holidays. Red looks great along a roofline, on porch columns and around a front door wreath, and it pairs with green or warm white for the classic Christmas look. Red is also a strong pick for storefronts and offices that want a bold seasonal display." },
@@ -19,6 +20,8 @@ const COLORS: Color[] = [
   { n: "Green", h: "Green Christmas lights", c: "#2fd36b", img: "green", copy: "Green Christmas lights bring a classic holiday look and are an easy match with red or warm white. Green stands out on light siding and snow, and it highlights evergreens, bushes and railings. Many homeowners use green on gables, porch lines and trees." },
   { n: "Blue", h: "Blue Christmas lights", c: "#2f8bff", img: "blue", copy: "Blue Christmas lights give an icy winter look that stands out against snow. Blue is popular for winter-themed displays and for modern homes with white or gray siding, and it pairs well with warm white on a roofline." },
   { n: "Indigo", h: "Indigo Christmas lights", c: "#5a4bff", img: "indigo", copy: "Indigo Christmas lights are a deep blue-violet that looks dramatic on a dark roofline and in trees at night. Indigo makes a strong accent when mixed with blue, purple and white." },
+  { n: "White & green", h: "Warm white and green Christmas lights", c: "#2fd36b", g: "linear-gradient(90deg, #ffe2b0 50%, #2fd36b 50%)", img: "mix", copy: "Warm white and green alternate bulb by bulb, so you get the classic warm glow with a festive green pop. It reads like Christmas from the street without going full color, and it looks great on rooflines, gables and porch lines against snow." },
+  { n: "Multicolor", h: "Multicolor Christmas lights", c: "#ff8a1f", g: "conic-gradient(#ff3b3b 0 25%, #2fd36b 0 50%, #ff8a1f 0 75%, #2f8bff 0)", img: "multi", copy: "Red, green, orange and blue in a repeating pattern, the old-school multicolor look a lot of families grew up with. Multicolor is fun on rooflines and trees and makes the whole house feel like the holidays. The bulbs stay one color each, no color-changing." },
   { n: "Violet", h: "Violet and purple Christmas lights", c: "#b24dff", img: "purple", copy: "Purple Christmas lights are bold and unexpected, which makes your house the one people remember on the street. Violet and purple work on rooflines, gables and trees, and they pair well with white or blue for a winter-night look." },
 ];
 
@@ -66,7 +69,7 @@ export function Colors() {
                 key={c.n} type="button" role="radio" aria-checked={sel === k} onClick={() => pick(k)}
                 className={`flex items-center gap-3 rounded-full border px-5 py-3.5 text-lg md:text-xl text-left transition-colors active:scale-[0.98] ${sel === k ? "border-glow bg-glow text-navy font-medium" : "border-bone/35 text-bone hover:border-bone/75"}`}
               >
-                <span aria-hidden className="w-4 h-4 rounded-full shrink-0" style={{ background: c.c, boxShadow: sel === k ? "none" : `0 0 10px ${c.c}` }} />
+                <span aria-hidden className="w-4 h-4 rounded-full shrink-0" style={{ background: c.g ?? c.c, boxShadow: sel === k ? "none" : `0 0 10px ${c.c}` }} />
                 {c.n}
               </button>
             ))}
