@@ -4,6 +4,7 @@ import { Nav } from "./Nav";
 import { Snow } from "./Snow";
 import { Bulb } from "./Bulb";
 import { Colors } from "./Colors";
+import { OwnRent } from "./OwnRent";
 import { GoogleReviews } from "./GoogleReviews";
 import { Faq } from "./Faq";
 import { Areas } from "./Areas";
@@ -50,6 +51,7 @@ export function ServicePage({ cfg }: { cfg: Cfg }) {
               <a href="/contact" className="rounded-full bg-glow text-navy text-xl font-medium px-8 py-4 hover:bg-bone transition-colors active:scale-[0.98]">{cfg.quoteLabel}</a>
               <a href={TEL} className="hidden md:inline-block rounded-full border border-bone/40 bg-bone/10 backdrop-blur-md text-xl px-8 py-4 hover:bg-bone/20 transition-colors">{PHONE}</a>
             </div>
+            {cfg.startingAt && <p className="mt-4 text-lg md:text-xl text-glow">{cfg.startingAt}</p>}
           </div>
         </section>
 
@@ -161,6 +163,7 @@ export function ServicePage({ cfg }: { cfg: Cfg }) {
           </section>
         )}
 
+        {cfg.ownRent && <OwnRent />}
         <Colors />
         <GoogleReviews />
         <Faq items={faqs} />

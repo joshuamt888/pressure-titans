@@ -25,11 +25,11 @@ export function Included() {
 
   useGSAP(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    gsap.to(".in-up", { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out", scrollTrigger: { trigger: ref.current, start: "top 75%" } });
+    gsap.to(".in-up", { opacity: 1, y: 0, duration: 0.6, stagger: 0.05, ease: "power3.out", scrollTrigger: { trigger: ref.current, start: "top 92%" } });
     gsap.utils.toArray<HTMLElement>(".in-row").forEach((el) => {
       const bulb = el.querySelector<SVGElement>(".in-bulb")!;
       if (reduced) { bulb.setAttribute("data-on", "true"); return; }
-      ScrollTrigger.create({ trigger: el, start: "top 82%", once: true, onEnter: () => bulb.setAttribute("data-on", "true") });
+      ScrollTrigger.create({ trigger: el, start: "top 92%", once: true, onEnter: () => bulb.setAttribute("data-on", "true") });
     });
   }, { scope: ref });
 

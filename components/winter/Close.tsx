@@ -16,7 +16,7 @@ export function Close() {
 
   useGSAP(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    gsap.to(".cl-up", { opacity: 1, y: 0, duration: 0.9, stagger: 0.1, ease: "power3.out", scrollTrigger: { trigger: ref.current, start: "top 75%" } });
+    gsap.to(".cl-up", { opacity: 1, y: 0, duration: 0.6, stagger: 0.05, ease: "power3.out", scrollTrigger: { trigger: ref.current, start: "top 92%" } });
     const lit = { color: "#ffe2b0", textShadow: "0 0 36px rgba(255,190,100,0.75)" };
     const mid = { color: "#8a7a62", textShadow: "0 0 10px rgba(255,190,100,0.25)" };
     const dim = { color: "#2a3447", textShadow: "0 0 0px rgba(255,190,100,0)" };

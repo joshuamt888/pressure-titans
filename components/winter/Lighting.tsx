@@ -46,6 +46,7 @@ export function Lighting() {
   const last = useRef(0);
   const headDone = useRef(false);
   const [active, setActive] = useState(0);
+  const playing = useRef(-1);
 
   useGSAP(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -61,6 +62,22 @@ export function Lighting() {
     }
     // GSAP owns the transforms from here: clear the inline starting offsets and start every word below its mask
     gsap.set([...words, ...hw], { y: 0, yPercent: 110 });
+    // Phones (Mike, 11/14: "you have to go super slow"): seeking a video on every scroll frame stutters on a phone and a
+    // normal flick skips past it. There the sentence rises on a timer as the film arrives, and each chapter plays its
+    // stretch of the clip in real time once you reach it. Laptops keep the scrubbed film.
+    const mobile = window.matchMedia("(max-width: 767px)").matches;
+    if (mobile) {
+      ScrollTrigger.create({ trigger: ".lg-outer", start: "top 75%", once: true, onEnter: () => gsap.to(words, { yPercent: 0, duration: 0.5, stagger: 0.04, ease: "power4.out" }) });
+      const v = video.current;
+      if (v) v.addEventListener("timeupdate", () => { const i = playing.current; if (i >= 0 && v.currentTime >= END[i]) v.pause(); });
+    }
+    const playChapter = (i: number) => {
+      const v = video.current;
+      if (!v || playing.current === i) return;
+      playing.current = i;
+      v.currentTime = START[i];
+      v.play().catch(() => { v.currentTime = END[i]; });
+    };
     let raf = 0;
     ScrollTrigger.create({
       trigger: ".lg-outer", start: "top top", end: "bottom bottom", scrub: true,
@@ -69,7 +86,7 @@ export function Lighting() {
         // intro: words rise one after another, hold, then the whole panel wipes upward
         const qi = clamp(p / INTRO);
         const r = clamp(qi / 0.45);
-        words.forEach((el, k) => { const a = clamp((r - (k / words.length) * 0.7) / 0.3); gsap.set(el, { yPercent: (1 - a) * 110 }); });
+        if (!mobile) words.forEach((el, k) => { const a = clamp((r - (k / words.length) * 0.7) / 0.3); gsap.set(el, { yPercent: (1 - a) * 110 }); });
         const wipe = clamp((qi - 0.62) / 0.38);
         intro.style.clipPath = `inset(0 0 ${wipe * 100}% 0)`;
         intro.style.visibility = wipe >= 1 ? "hidden" : "visible";
@@ -89,6 +106,7 @@ export function Lighting() {
         const e = s * s;
         sw.style.transform = `translate3d(${x * -e * 9}%,0,0) scaleX(${1 + 0.2 * e})`;
         sw.style.filter = e > 0.01 ? `blur(${e * 16}px) brightness(${1 + 0.15 * e})` : "none";
+        if (mobile) { if (p > INTRO) playChapter(i); return; }
         const v = video.current;
         if (v) { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => { if (v.readyState >= 1 && Number.isFinite(v.duration)) v.currentTime = Math.min(v.duration * 0.995, clipTime(q)); }); }
       },
@@ -97,7 +115,7 @@ export function Lighting() {
 
   return (
     <section ref={ref} id="light" className="bg-night">
-      <div className="lg-outer relative" style={{ height: "460vh" }}>
+      <div className="lg-outer relative h-[300vh] md:h-[460vh]">
         <div className="sticky top-0 h-[100svh] overflow-hidden bg-night">
           {/* phones: the film sits on top as its own frame, the words go underneath; laptops: full-bleed behind the words */}
           <div className="absolute inset-x-0 top-[72px] h-[36svh] md:top-0 md:inset-0 md:h-full overflow-hidden">

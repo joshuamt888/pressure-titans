@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 // From the holiday lighting page on pressuretitans.com, word for word.
 const FAQS = [
   { q: "When should I book holiday lighting installation?", a: "The earlier, the better. We start booking for the holiday season in September and October. Early bookings get priority scheduling and the widest selection of design options. If you wait until November, availability is limited and you risk not having your display ready for the start of the season." },
-  { q: "Do you provide the lights or do I need to supply them?", a: "We provide everything: lights, clips, extension cords, timers, and all hardware. We use commercial-grade LED lights that are brighter, more energy-efficient, and longer-lasting than retail options. If you have existing lights you love, we are happy to incorporate them into the design." },
+  { q: "Do you provide the lights or do I need to supply them?", a: "You choose: own the lights or rent them. Your estimate shows both prices side by side, and either way we supply commercial-grade LED lights, clips, cords, timers and all hardware. Own: year one costs more because it includes the lights, then every year after is one flat fee for install, takedown, maintenance and storage, and the lights are yours to keep. Rent: no lights to buy, just one yearly fee that is a bit more per year than owning. Both include design, installation, free in-season repairs, takedown and storage." },
   { q: "How much does professional holiday lighting cost?", a: "Pricing depends on the size of your property, the design complexity, and the type of lights used. We provide detailed quotes after a design consultation so you know exactly what you are getting and what it costs." },
   { q: "What if a light burns out or a strand falls down?", a: "We include full maintenance throughout the season at no extra charge. If you notice a burnt bulb, a flickering section, or anything that does not look right, call or text us and we will come out to fix it promptly." },
   { q: "Do you install holiday lighting on commercial properties?", a: "Yes. We work with storefronts, office buildings, restaurants, HOAs, and commercial properties of all sizes. We handle the entire process: design, installation, maintenance, and takedown." },
@@ -22,7 +22,7 @@ export function Faq({ items }: { items?: { q: string; a: string }[] } = {}) {
   const [open, setOpen] = useState(0);
 
   useGSAP(() => {
-    gsap.to(".fq-up", { opacity: 1, y: 0, duration: 0.8, stagger: 0.08, ease: "power3.out", scrollTrigger: { trigger: ref.current, start: "top 75%" } });
+    gsap.to(".fq-up", { opacity: 1, y: 0, duration: 0.6, stagger: 0.05, ease: "power3.out", scrollTrigger: { trigger: ref.current, start: "top 92%" } });
   }, { scope: ref });
 
   return (

@@ -17,9 +17,9 @@ export function Areas({ current }: { current?: string } = {}) {
 
   useGSAP(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    gsap.to(".ar-up", { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: ref.current, start: "top 75%" } });
+    gsap.to(".ar-up", { opacity: 1, y: 0, duration: 0.6, ease: "power3.out", scrollTrigger: { trigger: ref.current, start: "top 92%" } });
     if (reduced) { gsap.set(".ar-city", { opacity: 1 }); return; }
-    gsap.to(".ar-city", { opacity: 1, stagger: 0.07, ease: "none", scrollTrigger: { trigger: ".ar-block", start: "top 80%", end: "bottom 55%", scrub: 0.6 } });
+    gsap.to(".ar-city", { opacity: 1, duration: 0.4, stagger: 0.03, ease: "power1.out", scrollTrigger: { trigger: ".ar-block", start: "top 92%" } });
   }, { scope: ref });
 
   return (

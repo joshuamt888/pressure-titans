@@ -69,6 +69,7 @@ export function Hero() {
           <div data-hide className="hero-in md:col-span-6 flex flex-wrap gap-3 md:justify-end pointer-events-auto" style={{ opacity: 0, transform: "translateY(18px)" }}>
             <a href="#quote" className="rounded-full bg-glow text-navy text-xl font-medium px-8 py-4 hover:bg-bone transition-colors active:scale-[0.98]">Get my free quote</a>
             <a href={TEL} className="rounded-full border border-bone/40 bg-bone/10 backdrop-blur-md text-xl px-8 py-4 hover:bg-bone/15 transition-colors active:scale-[0.98]">{PHONE}</a>
+            <p className="basis-full text-lg md:text-xl text-glow md:text-right">Holiday lighting starting at $650.</p>
           </div>
         </div>
       </div>

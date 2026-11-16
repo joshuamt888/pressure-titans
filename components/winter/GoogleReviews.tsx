@@ -57,7 +57,7 @@ export function GoogleReviews() {
   }, [i, paused, N]);
 
   useGSAP(() => {
-    gsap.to(".gr-up", { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out", scrollTrigger: { trigger: ref.current, start: "top 72%" } });
+    gsap.to(".gr-up", { opacity: 1, y: 0, duration: 0.6, stagger: 0.05, ease: "power3.out", scrollTrigger: { trigger: ref.current, start: "top 92%" } });
   }, { scope: ref });
 
   return (

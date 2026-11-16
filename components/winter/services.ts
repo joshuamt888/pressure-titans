@@ -23,6 +23,8 @@ export type Cfg = {
   processSub: string;
   process: Step[];
   pricing?: { title: string; text: string; sub: string; factors: string[] };
+  startingAt?: string;
+  ownRent?: boolean;
   faqs?: { q: string; a: string }[];
 };
 
@@ -33,6 +35,8 @@ export const HOLIDAY: Cfg = {
   accent: "in Minnesota",
   sub: "Full-service holiday lighting: design, installation, maintenance and takedown. Whether you want a classic, elegant display or a festive, eye-catching setup, we handle everything.",
   quoteLabel: "Get a free estimate",
+  startingAt: "Holiday lighting starting at $650.", // Mike, 11/15
+  ownRent: true,
   introTitle: "Holiday lighting should be enjoyable,",
   introAccent: "not stressful.",
   intro: ["We take the hassle out of the entire process so you can focus on what matters: spending time with family and enjoying a beautiful display."],

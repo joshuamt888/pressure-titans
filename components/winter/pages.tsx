@@ -7,6 +7,7 @@ import { Included } from "./Included";
 import { Faq } from "./Faq";
 import { Areas } from "./Areas";
 import { Colors } from "./Colors";
+import { OwnRent } from "./OwnRent";
 import { GoogleReviews } from "./GoogleReviews";
 import { Close } from "./Close";
 import { SiteFooter } from "./SiteFooter";
@@ -47,6 +48,7 @@ export function WinterHome() {
         <Hero />
         <Lighting />
         <Included />
+        <OwnRent />
         <Colors />
         <GoogleReviews />
         <Faq items={faqs} />
