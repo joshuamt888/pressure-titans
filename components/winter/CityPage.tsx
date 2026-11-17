@@ -3,7 +3,6 @@ import { PHONE, TEL } from "./phone";
 import { Nav } from "./Nav";
 import { Snow } from "./Snow";
 import { Bulb } from "./Bulb";
-import { Included } from "./Included";
 import { Colors } from "./Colors";
 import { GoogleReviews } from "./GoogleReviews";
 import { Faq } from "./Faq";
@@ -60,9 +59,7 @@ export function CityPage({ slug }: { slug: string }) {
           </div>
         </section>
 
-
         <Lighting />
-        <Included />
         <Colors />
         <GoogleReviews />
         <Faq items={faqs} />
