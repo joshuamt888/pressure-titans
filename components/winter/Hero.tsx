@@ -32,7 +32,10 @@ export function Hero() {
 
     const st = { trigger: root, start: "top top", end: "bottom top", scrub: true };
     gsap.to(".hero-bgwrap", { yPercent: 9, ease: "none", scrollTrigger: st });
-    gsap.to(".hero-content", { y: -110, opacity: 0, ease: "none", scrollTrigger: { ...st } });
+    // laptops only: the copy lifts and fades as you scroll. Phones (Josh, 11/16): the copy stays put and just scrolls away.
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => { gsap.to(".hero-content", { y: -110, opacity: 0, ease: "none", scrollTrigger: { ...st } }); });
+    return () => mm.revert();
   }, { scope: ref });
 
   return (
