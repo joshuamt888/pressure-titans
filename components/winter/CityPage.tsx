@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { PHONE, TEL } from "./phone";
 import { Nav } from "./Nav";
 import { Snow } from "./Snow";
+import { HeroVideo } from "./HeroVideo";
 import { Bulb } from "./Bulb";
 import { Colors } from "./Colors";
 import { GoogleReviews } from "./GoogleReviews";
@@ -38,9 +39,7 @@ export function CityPage({ slug }: { slug: string }) {
       <Nav />
       <main>
         <section className="relative min-h-[100svh] overflow-hidden flex items-center bg-night text-bone">
-          <video autoPlay muted loop playsInline preload="auto" poster="/winter/hero-poster.jpg" aria-hidden className="absolute inset-0 w-full h-full object-cover object-[50%_55%]">
-            <source src="/winter/hero.mp4" type="video/mp4" />
-          </video>
+          <HeroVideo />
           <div aria-hidden className="absolute inset-0" style={{ background: "rgba(5,10,20,0.40)" }} />
           <Snow className="absolute inset-0 w-full h-full z-[3] pointer-events-none" count={80} />
           <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 md:px-10 pt-36 pb-20">

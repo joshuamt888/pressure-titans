@@ -6,6 +6,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { PHONE, TEL } from "./phone";
 import { Snow } from "./Snow";
+import { HeroVideo } from "./HeroVideo";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,8 +14,6 @@ type Word = { t: string; serif?: boolean };
 const LINE_1: Word[] = [{ t: "Flip" }, { t: "the" }];
 const LINE_2: Word[] = [{ t: "switch.", serif: true }];
 
-const POSTER = "/winter/hero-poster.jpg";
-const VIDEO = "/winter/hero.mp4";
 
 /** A lit house at dusk, slowly pushing in, with snow drifting over it. Nothing gates the headline or the house. */
 export function Hero() {
@@ -23,7 +22,6 @@ export function Hero() {
   useGSAP(() => {
     const root = ref.current!;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) root.querySelectorAll("video").forEach((v) => v.pause());
 
     const tl = gsap.timeline({ paused: true, delay: 0.1 });
     tl.to(".hero-word", { y: "0%", duration: 0.85, stagger: 0.06, ease: "power4.out" }, 0)
@@ -42,13 +40,7 @@ export function Hero() {
     <section ref={ref} id="top" className="relative min-h-[100svh] overflow-hidden flex items-center bg-night text-bone">
       <div className="hero-bgwrap absolute inset-0">
         <div className="hero-bg absolute inset-0">
-          <video
-            autoPlay muted loop playsInline preload="auto" poster={POSTER}
-            aria-label="A large house at dusk with Christmas lights along the roofline, trees and front door, slowly pushing in"
-            className="absolute inset-0 w-full h-full object-cover object-[50%_55%]"
-          >
-            <source src={VIDEO} type="video/mp4" />
-          </video>
+          <HeroVideo label="A large house at dusk with Christmas lights along the roofline, trees and front door" />
         </div>
         <div className="absolute inset-0 z-[3] pointer-events-none" style={{ background: "linear-gradient(to top, rgba(5,10,20,0.9) 0%, rgba(5,10,20,0.5) 38%, rgba(5,10,20,0.1) 70%, rgba(5,10,20,0.45) 100%), linear-gradient(to right, rgba(5,10,20,0.55) 0%, rgba(5,10,20,0) 60%)" }} />
         <Snow className="absolute inset-0 w-full h-full z-[4]" count={100} />

@@ -111,3 +111,6 @@ html:not(.js-ready) .winter-root [data-hide] { animation: failsafe 0.01s 6s forw
 @keyframes wipein { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
 .winter-root .wipein { animation: wipein 0.55s cubic-bezier(0.7, 0, 0.2, 1) both; }
 @media (prefers-reduced-motion: reduce) { .winter-root .wipein { animation: none; } }
+/* iOS draws a big play button over a video it would not autoplay (Low Power Mode). Never show it; the still shows instead. */
+video::-webkit-media-controls-start-playback-button { display: none !important; -webkit-appearance: none; }
+video::-webkit-media-controls { display: none !important; }

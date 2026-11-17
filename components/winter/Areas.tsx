@@ -35,12 +35,6 @@ export function Areas({ current }: { current?: string } = {}) {
             </span>
           ))}
         </p>
-        <p className="mt-12 text-lg md:text-xl text-bone/80 leading-relaxed max-w-[75ch]">
-          Christmas light installation near me: we install and hang Christmas lights in every city above, plus Minneapolis, St. Paul and across the Twin Cities.
-        </p>
-        <p className="mt-6 text-lg md:text-xl text-bone/80 leading-relaxed max-w-[75ch]">
-          Popular searches we answer: Christmas light installation Minneapolis, Christmas light installation Minnesota, Christmas light installers Minnesota, holiday light installation Twin Cities, commercial Christmas lights near me, commercial Christmas lights LED, holiday lighting for house, and Christmas light installation cost.
-        </p>
       </div>
     </section>
   );
