@@ -35,7 +35,7 @@ export function Nav() {
   const panel = "absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-2xl border border-bone/15 bg-night/95 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.5)] p-3";
 
   return (
-    <header ref={wrap} className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${solid || menu ? "bg-night/90 backdrop-blur-lg border-b border-bone/10" : "bg-transparent"}`}>
+    <header ref={wrap} className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${solid || menu ? "bg-night/[0.97] md:bg-night/90 md:backdrop-blur-lg border-b border-bone/10" : "bg-transparent"}`}>
       <div className="max-w-[1500px] mx-auto px-5 md:px-10 py-3 md:py-4 flex items-center justify-between gap-3 md:gap-6">
         <a href="/" className="flex items-center gap-2.5 md:gap-3 min-w-0">
           <Image src="/winter/mark.webp" alt="Pressure Titans" width={48} height={34} className="w-11 md:w-14 h-auto object-contain" />

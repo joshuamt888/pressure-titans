@@ -44,14 +44,23 @@ export function Colors() {
   const lit = useRef<HTMLDivElement>(null);
   const dark = useRef<HTMLDivElement>(null);
   const track = useRef<HTMLDivElement>(null);
+  const fill = useRef<HTMLDivElement>(null);
+  const thumb = useRef<HTMLDivElement>(null);
   const lv = useRef({ p: 1 });
-  const [pct, setPct] = useState(100);
 
+  // straight to the DOM, no React render: the slider raises itself during scroll and must not re-render the section
   const apply = (p: number) => {
     lv.current.p = p;
+    const pc = Math.round(p * 100);
     if (lit.current) lit.current.style.opacity = String(p);
     if (dark.current) dark.current.style.opacity = String((1 - p) * 0.45);
-    setPct(Math.round(p * 100));
+    if (fill.current) fill.current.style.width = `${pc}%`;
+    const t = thumb.current;
+    if (t) {
+      t.style.left = `${pc}%`;
+      t.setAttribute("aria-valuenow", String(pc));
+      t.setAttribute("aria-valuetext", pc < 3 ? "Lights off" : `${pc}% brightness`);
+    }
   };
   const fromX = (x: number) => {
     const r = track.current!.getBoundingClientRect();
@@ -132,10 +141,10 @@ export function Colors() {
               onPointerMove={(e) => { if (e.currentTarget.hasPointerCapture(e.pointerId)) fromX(e.clientX); }}
             >
               <div aria-hidden className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-2 rounded-full bg-bone/15 overflow-hidden">
-                <div className="h-full rounded-full" style={{ width: `${pct}%`, background: `linear-gradient(90deg, rgba(255,226,176,0.25), ${shown.c})` }} />
+                <div ref={fill} className="h-full rounded-full" style={{ width: "100%", background: `linear-gradient(90deg, rgba(255,226,176,0.25), ${shown.c})` }} />
               </div>
               <div
-                role="slider" tabIndex={0} aria-label="Light brightness" aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct} aria-valuetext={pct < 3 ? "Lights off" : `${pct}% brightness`}
+                ref={thumb} role="slider" tabIndex={0} aria-label="Light brightness" aria-valuemin={0} aria-valuemax={100} aria-valuenow={100} aria-valuetext="100% brightness"
                 onKeyDown={(e) => {
                   const step = { ArrowRight: 10, ArrowUp: 10, ArrowLeft: -10, ArrowDown: -10, PageUp: 25, PageDown: -25 }[e.key];
                   const to = e.key === "Home" ? 0 : e.key === "End" ? 1 : step !== undefined ? Math.max(0, Math.min(1, lv.current.p + step / 100)) : null;
@@ -143,7 +152,7 @@ export function Colors() {
                   e.preventDefault(); gsap.killTweensOf(lv.current); apply(to);
                 }}
                 className="absolute top-1/2 w-9 h-9 -translate-x-1/2 -translate-y-1/2 rounded-full bg-glow border-2 border-bone outline-none focus-visible:ring-2 focus-visible:ring-bone focus-visible:ring-offset-2 focus-visible:ring-offset-night"
-                style={{ left: `${pct}%`, boxShadow: `0 0 ${6 + pct * 0.22}px ${shown.c}` }}
+                style={{ left: "100%", boxShadow: `0 0 14px ${shown.c}` }}
               />
             </div>
             <span className="text-base md:text-lg text-glow shrink-0">Full</span>
