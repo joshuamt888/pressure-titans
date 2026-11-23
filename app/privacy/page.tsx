@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SEASON } from "@/lib/season";
+import { WinterShell } from "@/components/winter/WinterShell";
+import { WinterLegal, legalLink as L, type LegalSection } from "@/components/winter/Legal";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Pressure Titans",
@@ -10,7 +13,36 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://pressuretitans.com/privacy" },
 };
 
+const winterSections: LegalSection[] = [
+  { h: "Overview", body: <>Pressure Titans (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) respects your privacy. This policy explains what data we collect, how we use it, and your rights.</> },
+  { h: "Data We Collect", subs: [
+    { h: "Analytics Data", intro: <>We use the following analytics tools to understand how visitors use our site:</>, items: [
+      <><strong className="text-bone">Google Analytics 4 (GA4)</strong> &mdash; Collects anonymous data about page views, session duration, and traffic sources.</>,
+      <><strong className="text-bone">Google Search Console (GSC)</strong> &mdash; Aggregated data about how our site appears in Google search results. Does not identify individual users.</>,
+      <><strong className="text-bone">Microsoft Clarity</strong> &mdash; Records anonymous session replays and heatmaps. No personal information is captured.</>,
+    ] },
+    { h: "Contact Information", intro: <>When you contact us through our quote form, phone, or email, we collect your name, contact info, and service details. We use this solely to respond and provide services.</> },
+  ] },
+  { h: "Cookies", body: <>Our site uses analytics cookies. By using this site, you consent to their use.</>, items: [
+    <><strong className="text-bone">Google Analytics cookies</strong> &mdash; Anonymous usage data</>,
+    <><strong className="text-bone">Microsoft Clarity cookies</strong> &mdash; Session recording and heatmaps</>,
+  ] },
+  { h: "How We Use Your Data", items: [<>Improve our website and services</>, <>Respond to quote requests and inquiries</>, <>Schedule and deliver exterior cleaning services</>], after: <>We do not sell your personal information.</> },
+  { h: "Third-Party Services", items: [
+    <><strong className="text-bone">Google Analytics</strong> &mdash; <a href="https://policies.google.com/privacy" className={L} target="_blank" rel="noopener noreferrer">Privacy Policy</a></>,
+    <><strong className="text-bone">Microsoft Clarity</strong> &mdash; <a href="https://privacy.microsoft.com/en-us/privacystatement" className={L} target="_blank" rel="noopener noreferrer">Privacy Policy</a></>,
+    <><strong className="text-bone">Vercel</strong> (hosting) &mdash; <a href="https://vercel.com/legal/privacy-policy" className={L} target="_blank" rel="noopener noreferrer">Privacy Policy</a></>,
+  ] },
+  { h: "Your Rights & Opt-Out", body: <>You can request access to, correction of, or deletion of your data at any time. Opt-out tools:</>, items: [
+    <a href="https://tools.google.com/dlpage/gaoptout" className={L} target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Add-on</a>,
+    <a href="https://microsoftedge.microsoft.com/addons/detail/microsoft-clarity/gnldpbnocfnlkkicnaplmkaphfdnlplb" className={L} target="_blank" rel="noopener noreferrer">Microsoft Clarity Block Extension</a>,
+  ] },
+  { h: "Contact", body: <>Questions? <a href="mailto:pressuretitans@gmail.com" className={L}>pressuretitans@gmail.com</a> or <a href="tel:6125548106" className={L}>(612) 554-8106</a></> },
+  { h: "Changes", body: <>We may update this policy from time to time. Changes will be posted here with an updated date.</> },
+];
+
 export default function PrivacyPage() {
+  if (SEASON === "winter") return <WinterShell><WinterLegal title="Privacy Policy" updated="Last updated: March 25, 2026" sections={winterSections} /></WinterShell>;
   return (
     <>
       <Header />

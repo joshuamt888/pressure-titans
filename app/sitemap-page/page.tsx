@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SEASON } from "@/lib/season";
+import { WinterShell } from "@/components/winter/WinterShell";
+import { WinterSitemap } from "@/components/winter/SitemapPage";
 
 export const metadata: Metadata = {
   title: "Sitemap",
@@ -60,6 +63,9 @@ const cityPages = [
 ];
 
 export default function SitemapPage() {
+  if (SEASON === "winter") {
+    return <WinterShell><WinterSitemap main={mainPages} services={[...servicePages].sort((a, b) => Number(/Lighting/.test(b.label)) - Number(/Lighting/.test(a.label)))} washing={cityPages.map((c) => ({ label: `${c.label} Pressure Washing`, href: c.href }))} /></WinterShell>;
+  }
   return (
     <>
       <Header />

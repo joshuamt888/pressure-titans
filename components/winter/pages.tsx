@@ -3,6 +3,7 @@ import { WinterShell } from "./WinterShell";
 import { Nav } from "./Nav";
 import { Hero } from "./Hero";
 import { Lighting } from "./Lighting";
+import { Work } from "./Work";
 import { Faq } from "./Faq";
 import { Areas } from "./Areas";
 import { Colors } from "./Colors";
@@ -46,9 +47,10 @@ export function WinterHome() {
       <main>
         <Hero />
         <Lighting />
+        <Work />
+        <GoogleReviews />
         <OwnRent />
         <Colors />
-        <GoogleReviews />
         <Faq items={faqs} />
         <SeoSections list={blocks(undefined, "home")} tint="bg-night" />
         <Areas />

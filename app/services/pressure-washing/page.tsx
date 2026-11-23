@@ -6,6 +6,10 @@ import StatsBar from "@/components/StatsBar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
+import { SEASON } from "@/lib/season";
+import { WinterShell } from "@/components/winter/WinterShell";
+import { WashService } from "@/components/winter/WashService";
+import { pressureWashing } from "@/components/winter/washServices";
 
 export const metadata: Metadata = {
   title: "Pressure Washing Minneapolis | Driveways, Patios & Concrete Cleaning",
@@ -119,6 +123,7 @@ const galleryImages = [
 ];
 
 export default function PressureWashingPage() {
+  if (SEASON === "winter") return <WinterShell><WashService cfg={pressureWashing} /></WinterShell>;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",

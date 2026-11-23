@@ -56,7 +56,7 @@ export function OwnRent() {
             Your estimate shows both prices side by side. Same professional service either way. The only difference is who owns the lights.
           </p>
 
-          <div className="relative mt-10 md:mt-14 grid md:grid-cols-2 gap-10 md:gap-14">
+          <div className="mt-10 md:mt-14 grid md:grid-cols-2 gap-6 md:gap-8">
             {PLANS.map((p) => (
               <article key={p.k} data-hide className="or-up rounded-2xl border-2 bg-night p-6 md:p-9" style={{ ...hide, borderColor: p.color }}>
                 <div className="flex items-center justify-between gap-4">
@@ -78,7 +78,6 @@ export function OwnRent() {
                 <p className="mt-5 rounded-xl bg-navy px-5 py-4 text-lg text-bone/90 leading-relaxed"><span className="font-semibold text-glow">Best for:</span> {p.best}</p>
               </article>
             ))}
-            <span aria-hidden className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 grid place-items-center w-14 h-14 rounded-full bg-bone text-navy text-lg font-bold tracking-[0.04em] shadow-[0_0_0_6px_var(--navy)]">VS</span>
           </div>
         </div>
 

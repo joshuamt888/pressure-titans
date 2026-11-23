@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { SEASON } from "@/lib/season";
 
 export default function MobileCallBar() {
   const [visible, setVisible] = useState(false);
@@ -16,13 +17,13 @@ export default function MobileCallBar() {
 
   return (
     <div
-      className={`fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-titan-accent border-t border-titan-light/30 safe-area-bottom transition-transform duration-300 ${
+      className={`fixed bottom-0 left-0 right-0 z-50 lg:hidden ${SEASON === "winter" ? "bg-night/95 backdrop-blur-md border-t border-bone/15 text-glow" : "bg-titan-accent border-t border-titan-light/30"} safe-area-bottom transition-transform duration-300 ${
         visible ? "translate-y-0" : "translate-y-full"
       }`}
     >
       <a
         href="tel:6125548106"
-        className="flex items-center justify-center gap-3 py-4 px-6 text-white font-semibold text-lg"
+        className={`flex items-center justify-center gap-3 py-4 px-6 font-semibold text-lg ${SEASON === "winter" ? "text-glow" : "text-white"}`}
       >
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path

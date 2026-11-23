@@ -6,8 +6,11 @@ import Footer from "@/components/Footer";
 import FaqAccordion from "@/components/FaqAccordion";
 import { portfolioFaqs, crumbs, faqLd } from "@/lib/seoExtras";
 import VideoCarousel from "@/components/VideoCarousel";
+import { SEASON } from "@/lib/season";
+import { WinterPortfolio } from "@/components/winter/Portfolio";
+import { WinterShell } from "@/components/winter/WinterShell";
 
-export const metadata: Metadata = {
+const summerMetadata: Metadata = {
   title: "Portfolio",
   description:
     "See stunning before and after results from Pressure Titans. Driveways, decks, siding, walkways, gutters, and more — transformed by professional pressure washing in Minneapolis.",
@@ -181,7 +184,21 @@ const projects = [
   },
 ];
 
+const winterMetadata: Metadata = {
+  title: { absolute: "Holiday Lighting Portfolio | Pressure Titans Minneapolis" },
+  description: "See Christmas light installations by Pressure Titans across the Twin Cities: rooflines, wrapped trees and full displays, plus our washing and deck restoration results. Free quotes.",
+  alternates: { canonical: "https://pressuretitans.com/portfolio" },
+  openGraph: {
+    title: "Holiday Lighting Portfolio | Pressure Titans",
+    description: "Real Christmas light installs across the Twin Cities, plus our washing and restoration results.",
+    url: "https://pressuretitans.com/portfolio", siteName: "Pressure Titans", locale: "en_US", type: "website",
+    images: [{ url: "https://pressuretitans.com/images/og-logo.png", width: 1200, height: 630 }],
+  },
+};
+export const metadata: Metadata = SEASON === "winter" ? winterMetadata : summerMetadata;
+
 export default function PortfolioPage() {
+  if (SEASON === "winter") return <WinterShell><WinterPortfolio /></WinterShell>;
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([faqLd(portfolioFaqs), crumbs([{ name: "Home", path: "/" }, { name: "Portfolio", path: "/portfolio" }])]) }} />

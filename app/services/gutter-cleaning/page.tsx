@@ -6,6 +6,10 @@ import StatsBar from "@/components/StatsBar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
+import { SEASON } from "@/lib/season";
+import { WinterShell } from "@/components/winter/WinterShell";
+import { WashService } from "@/components/winter/WashService";
+import { gutterCleaning } from "@/components/winter/washServices";
 
 export const metadata: Metadata = {
   title: "Gutter Cleaning Minneapolis | Professional Gutter & Downspout Service",
@@ -136,6 +140,7 @@ const galleryImages = [
 ];
 
 export default function GutterCleaningPage() {
+  if (SEASON === "winter") return <WinterShell><WashService cfg={gutterCleaning} /></WinterShell>;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",

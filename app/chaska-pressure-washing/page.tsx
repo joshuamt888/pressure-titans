@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import CityPageContent from "@/components/CityPageContent";
+import CityPageSwitch from "@/components/CityPageSwitch";
 import { cityExtra, crumbs } from "@/lib/seoExtras";
 
 export const metadata: Metadata = {
@@ -91,7 +91,7 @@ export default function ChaskaPressureWashingPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs([{ name: "Home", path: "/" }, { name: "Chaska Pressure Washing", path: "/chaska-pressure-washing" }])) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <CityPageContent cityName="Chaska" faqs={faqs} />
+      <CityPageSwitch cityName="Chaska" faqs={faqs} />
     </>
   );
 }

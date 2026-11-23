@@ -19,6 +19,7 @@ export const cityHref = (s: string) => `/${s}-christmas-light-installation`;
 
 export const COMPANY = [
   { label: "About", href: `/about` },
+  { label: "Portfolio", href: `/portfolio` },
   { label: "Contact", href: `/contact` },
 ];
 

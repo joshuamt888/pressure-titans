@@ -12,6 +12,8 @@ import { Close } from "./Close";
 import { SiteFooter } from "./SiteFooter";
 import { CITIES, LIVE, cityHref } from "./siteData";
 import { Lighting } from "./Lighting";
+import { Work } from "./Work";
+import { OwnRent } from "./OwnRent";
 import { getLightingCity } from "./cityData";
 import { SeoSections } from "./SeoSections";
 import { JsonLd } from "./JsonLd";
@@ -59,8 +61,10 @@ export function CityPage({ slug }: { slug: string }) {
         </section>
 
         <Lighting />
-        <Colors />
+        <Work />
         <GoogleReviews />
+        <OwnRent />
+        <Colors />
         <Faq items={faqs} />
         <SeoSections list={blocks(city, "city")} />
         <Areas current={slug} />

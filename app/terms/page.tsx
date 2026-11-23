@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SEASON } from "@/lib/season";
+import { WinterShell } from "@/components/winter/WinterShell";
+import { WinterLegal, legalLink as L, type LegalSection } from "@/components/winter/Legal";
 
 export const metadata: Metadata = {
   title: "Terms of Service | Pressure Titans",
@@ -9,7 +12,23 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://pressuretitans.com/terms" },
 };
 
+const winterSections: LegalSection[] = [
+  { h: "Agreement to Terms", body: <>By accessing or using the Pressure Titans website and services (&ldquo;Services&rdquo;), you agree to be bound by these Terms of Service. If you do not agree, please do not use our Services.</> },
+  { h: "Services Provided", body: <>Pressure Titans provides professional exterior cleaning services in the Twin Cities metro area, including:</>, items: [
+    <>Pressure washing and soft washing</>, <>House washing and siding cleaning</>, <>Concrete and driveway cleaning</>, <>Gutter cleaning</>, <>Roof cleaning</>, <>Free estimates and quote requests</>,
+  ] },
+  { h: "Scheduling & Service", body: <>When you request a quote or schedule service, we will contact you to confirm details and timing. Service dates are subject to weather conditions and scheduling availability.</> },
+  { h: "Payments & Pricing", body: <>Pricing is provided via quote prior to service. Payment is due upon completion of service unless otherwise agreed. Prices are subject to change, but any confirmed quote will be honored.</> },
+  { h: "Cancellations", body: <>If you need to cancel or reschedule, please contact us as soon as possible at <a href="tel:6125548106" className={L}>(612) 554-8106</a> or <a href="mailto:pressuretitans@gmail.com" className={L}>pressuretitans@gmail.com</a>.</> },
+  { h: "Property Access & Conditions", body: <>By scheduling service, you confirm you have authority to authorize work at the specified property and agree to provide reasonable access to the work area. We are not responsible for damage to underground utilities, irrigation systems, or other features not disclosed prior to service.</> },
+  { h: "Limitation of Liability", body: <>Pressure Titans is not liable for indirect, incidental, or consequential damages arising from use of our Services. Our total liability shall not exceed the amount paid for the specific service in question.</> },
+  { h: "Privacy", body: <>Your use of our Services is also governed by our <Link href="/privacy" className={L}>Privacy Policy</Link>.</> },
+  { h: "Contact", body: <>Questions about these terms? <a href="mailto:pressuretitans@gmail.com" className={L}>pressuretitans@gmail.com</a> or <a href="tel:6125548106" className={L}>(612) 554-8106</a></> },
+  { h: "Changes", body: <>We may update these terms from time to time. Changes will be posted here with an updated date.</> },
+];
+
 export default function TermsPage() {
+  if (SEASON === "winter") return <WinterShell><WinterLegal title="Terms of Service" updated="Last updated: March 25, 2026" sections={winterSections} /></WinterShell>;
   return (
     <>
       <Header />

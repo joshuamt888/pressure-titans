@@ -4,6 +4,8 @@ import { Nav } from "./Nav";
 import { Snow } from "./Snow";
 import { HeroVideo } from "./HeroVideo";
 import { Bulb } from "./Bulb";
+import { Work } from "./Work";
+import { WORK } from "./workPhotos";
 import { Colors } from "./Colors";
 import { OwnRent } from "./OwnRent";
 import { GoogleReviews } from "./GoogleReviews";
@@ -78,6 +80,10 @@ export function ServicePage({ cfg }: { cfg: Cfg }) {
           </div>
         </section>
 
+        <Work sub={cfg.gallerySub} photos={WORK.filter((p) => p.src !== cfg.photo)} />
+        <GoogleReviews />
+        {cfg.ownRent && <OwnRent />}
+
         <section className="bg-navy py-16 md:py-24">
           <div className={sec}>
             <h2 className={h2}>{cfg.includedTitle}</h2>
@@ -111,20 +117,6 @@ export function ServicePage({ cfg }: { cfg: Cfg }) {
             </div>
           </section>
         )}
-
-        <section className="bg-navy py-16 md:py-24">
-          <div className={sec}>
-            <h2 className={h2}>{cfg.galleryTitle}</h2>
-            <p className={lead}>{cfg.gallerySub}</p>
-            <div className="mt-12 grid grid-cols-2 gap-3 md:gap-5">
-              {[1, 2, 3, 4].map((n) => (
-                <div key={n} className="relative aspect-[4/5] md:aspect-[4/3] overflow-hidden rounded-xl bg-night">
-                  <Image src={`/winter/work-${n}.webp`} alt={`${commercial ? "Commercial holiday lighting" : "Holiday lighting for house"} installed by Pressure Titans, project ${n}`} fill sizes="(max-width: 768px) 50vw, 560px" className="object-cover" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         <section className="bg-night py-16 md:py-24">
           <div className={sec}>
@@ -162,9 +154,7 @@ export function ServicePage({ cfg }: { cfg: Cfg }) {
           </section>
         )}
 
-        {cfg.ownRent && <OwnRent />}
         <Colors />
-        <GoogleReviews />
         <Faq items={faqs} />
         <SeoSections list={blocks(undefined, commercial ? "commercial" : "holiday")} tint="bg-night" />
         <Areas />

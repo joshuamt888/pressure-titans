@@ -6,6 +6,10 @@ import ReviewCarousel from "@/components/ReviewCarousel";
 import StatsBar from "@/components/StatsBar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import { SEASON } from "@/lib/season";
+import { WinterShell } from "@/components/winter/WinterShell";
+import { WashService } from "@/components/winter/WashService";
+import { deckRestoration } from "@/components/winter/washServices";
 
 export const metadata: Metadata = {
   title: "Deck Cleaning & Staining Minneapolis | Wood Deck Restoration",
@@ -189,6 +193,7 @@ const faqs = [
 faqs.push(...serviceExtra);
 
 export default function DeckRestorationPage() {
+  if (SEASON === "winter") return <WinterShell><WashService cfg={deckRestoration} /></WinterShell>;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",

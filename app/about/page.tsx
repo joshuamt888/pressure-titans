@@ -3,6 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SEASON } from "@/lib/season";
+import { WinterShell } from "@/components/winter/WinterShell";
+import { WinterAbout } from "@/components/winter/About";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -117,6 +120,7 @@ const values = [
 ];
 
 export default function AboutPage() {
+  if (SEASON === "winter") return <WinterShell><WinterAbout stats={stats} differentiators={differentiators} values={values} /></WinterShell>;
   return (
     <>
       <Header />

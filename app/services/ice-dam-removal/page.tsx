@@ -5,6 +5,10 @@ import ReviewCarousel from "@/components/ReviewCarousel";
 import StatsBar from "@/components/StatsBar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import { SEASON } from "@/lib/season";
+import { WinterShell } from "@/components/winter/WinterShell";
+import { WashService } from "@/components/winter/WashService";
+import { iceDamRemoval } from "@/components/winter/washServices";
 
 export const metadata: Metadata = {
   title: "Ice Dam Removal Minneapolis | Safe Low-Pressure Steam Method",
@@ -129,6 +133,7 @@ faqs.push(...serviceExtra);
 
 
 export default function IceDamRemovalPage() {
+  if (SEASON === "winter") return <WinterShell><WashService cfg={iceDamRemoval} /></WinterShell>;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
