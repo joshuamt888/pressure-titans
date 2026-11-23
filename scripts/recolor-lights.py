@@ -1,3 +1,4 @@
+# 11/23: also builds colors-mix (white and green) and colors-multi (red, green, orange, blue) from the real photo, after Mike circled missed bulbs in the AI versions.
 # Builds colors-redwhite / colors-redgreen from the warm white photo so the bulbs, their halos and the light they
 # cast all take the new color. light = white - background (bulbs eroded out); each bulb's light is re-tinted and added back.
 # Which bulb is which: the existing mix preview (warm white + green, alternating) gives the pattern.
@@ -58,14 +59,14 @@ for i in range(lab.max() + 1):
 lab = np.unique(new, return_inverse=True)[1]
 cy, cx = centers(lab); n = len(cy)
 P = np.stack([cy, cx], 1); D = np.sqrt(((P[:, None] - P[None]) ** 2).sum(2)); np.fill_diagonal(D, 1e9)
-color = -np.ones(n, int)
+color = -np.ones(n, int); depth = np.zeros(n, int)
 for s0 in np.argsort(cx):                       # BFS from the leftmost uncolored bulb
     if color[s0] >= 0: continue
     color[s0] = 0; q = [s0]
     while q:
         a = q.pop(0)
         for b in np.nonzero(D[a] < sp * 1.7)[0]:
-            if color[b] < 0: color[b] = 1 - color[a]; q.append(b)
+            if color[b] < 0: color[b] = 1 - color[a]; depth[b] = depth[a] + 1; q.append(b)
 # every pixel belongs to its nearest bulb, so overlapping halos never blend into a third color
 H, W = cores.shape
 gy, gx = np.mgrid[0:H:1, 0:W:1]
@@ -96,6 +97,18 @@ redwhite = build(fg * tint(light, RED) + (1 - fg) * light)
 redgreen = build(fg * tint(light, GREEN) + (1 - fg) * tint(light, RED))
 Image.fromarray(redwhite).save(f"{out}/colors-redwhite.webp", quality=90)
 Image.fromarray(redgreen).save(f"{out}/colors-redgreen.webp", quality=90)
+# White & green: every other bulb green, the rest stay the warm white they already are
+mix = build(fg * tint(light, GREEN) + (1 - fg) * light)
+Image.fromarray(mix).save(f"{out}/colors-mix.webp", quality=90)
+# Multicolor: red, green, orange, blue repeating along each run of bulbs (BFS step count mod 4)
+ORANGE, BLUE = (1.0, 0.52, 0.08), (0.18, 0.46, 1.0)
+PAL = [RED, GREEN, ORANGE, BLUE]
+mm = 0
+for k in range(4):
+    fk = filt((depth[own] % 4 == k) * 255.0, ImageFilter.GaussianBlur(0.8))[..., None] / 255.0
+    mm = mm + fk * tint(light, PAL[k])
+mult = build(mm / np.maximum(sum(filt((depth[own] % 4 == k) * 255.0, ImageFilter.GaussianBlur(0.8))[..., None] / 255.0 for k in range(4)), 1e-3))
+Image.fromarray(mult).save(f"{out}/colors-multi.webp", quality=90)
 
 # check: far from bulbs the photo is untouched; near bulbs both colors are present
 far = reach < 0.01
