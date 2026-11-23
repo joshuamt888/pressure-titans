@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const POSTER = "/winter/hero-poster.jpg";
-const VIDEO = "/winter/hero.mp4";
+const POSTER = "/winter/hero2-poster.jpg";
+const VIDEO = "/winter/hero2.mp4";
 
 /**
  * The hero film over a still of the same house. The still is always there; the video only fades in once it is actually
