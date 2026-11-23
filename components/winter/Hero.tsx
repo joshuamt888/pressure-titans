@@ -42,7 +42,7 @@ export function Hero() {
         <div className="hero-bg absolute inset-0">
           <HeroVideo label="A large house at dusk with Christmas lights along the roofline, trees and front door" />
         </div>
-        <div className="absolute inset-0 z-[3] pointer-events-none" style={{ background: "linear-gradient(to top, rgba(5,10,20,0.9) 0%, rgba(5,10,20,0.5) 38%, rgba(5,10,20,0.1) 70%, rgba(5,10,20,0.45) 100%), linear-gradient(to right, rgba(5,10,20,0.55) 0%, rgba(5,10,20,0) 60%)" }} />
+        <div className="absolute inset-0 z-[3] pointer-events-none" style={{ background: "linear-gradient(rgba(5,10,20,0.1), rgba(5,10,20,0.1)), linear-gradient(to top, rgba(5,10,20,0.9) 0%, rgba(5,10,20,0.5) 38%, rgba(5,10,20,0.1) 70%, rgba(5,10,20,0.45) 100%), linear-gradient(to right, rgba(5,10,20,0.55) 0%, rgba(5,10,20,0) 60%)" }} />
         <Snow className="absolute inset-0 w-full h-full z-[4]" count={100} />
       </div>
 

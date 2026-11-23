@@ -42,7 +42,7 @@ export function CityPage({ slug }: { slug: string }) {
       <main>
         <section className="relative min-h-[100svh] overflow-hidden flex items-center bg-night text-bone">
           <HeroVideo />
-          <div aria-hidden className="absolute inset-0" style={{ background: "rgba(5,10,20,0.40)" }} />
+          <div aria-hidden className="absolute inset-0" style={{ background: "rgba(5,10,20,0.50)" }} />
           <Snow className="absolute inset-0 w-full h-full z-[3] pointer-events-none" count={80} />
           <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 md:px-10 pt-36 pb-20">
             <p className="text-lg md:text-xl tracking-[0.06em] uppercase text-bone/95 mb-5">Serving {city}, MN</p>
