@@ -7,7 +7,7 @@ import { Faq } from "./Faq";
 import { Close } from "./Close";
 import { SiteFooter } from "./SiteFooter";
 import { JsonLd } from "./JsonLd";
-import { WORK, WORK_PAIR } from "./workPhotos";
+import { HOUSES, WORK_PAIR } from "./workPhotos";
 import { faqsFor } from "./seo";
 import { projects } from "@/lib/portfolioProjects";
 import { crumbs, faqLd } from "@/lib/seoExtras";
@@ -22,7 +22,6 @@ const sec = "max-w-[1200px] mx-auto px-5 md:px-10";
  */
 export function WinterPortfolio() {
   const faqs = faqsFor();
-  const lighting = [...WORK, WORK_PAIR];
   return (
     <>
       <JsonLd data={[faqLd(faqs.map((f) => ({ question: f.q, answer: f.a }))), crumbs([{ name: "Home", path: "/" }, { name: "Portfolio", path: "/portfolio" }])]} />
@@ -47,11 +46,15 @@ export function WinterPortfolio() {
           <div className={sec}>
             <h2 className={h2}>Holiday lighting <span className="font-serif italic font-normal warm">gallery.</span></h2>
             <p className="mt-5 text-xl md:text-2xl text-bone/90 leading-relaxed max-w-[52ch]">Rooflines, wrapped trees and full-property displays. Warm white, purple and white, red and amber.</p>
-            <div className="mt-10 md:mt-14 columns-2 lg:columns-3 gap-3 md:gap-5">
-              {lighting.map((p, i) => (
-                <figure key={p.src} className="mb-3 md:mb-5 break-inside-avoid overflow-hidden rounded-xl bg-navy">
-                  <Image src={p.src} alt={p.alt} width={p.w} height={p.h} sizes="(max-width: 1024px) 50vw, 380px" priority={i < 4} className="w-full h-auto" />
-                </figure>
+            <div className="mt-10 md:mt-14 space-y-3 md:space-y-5">
+              {[...HOUSES, [WORK_PAIR]].map((g, gi) => (
+                <div key={g[0].src} className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5 items-start">
+                  {g.map((p, i) => (
+                    <figure key={p.src} className={`overflow-hidden rounded-xl bg-navy ${g.length === 1 ? "col-span-2 md:col-span-1" : ""}`}>
+                      <Image src={p.src} alt={p.alt} width={p.w} height={p.h} sizes="(max-width: 768px) 50vw, 380px" priority={gi < 2 && i < 3} className="w-full h-auto" />
+                    </figure>
+                  ))}
+                </div>
               ))}
             </div>
           </div>
