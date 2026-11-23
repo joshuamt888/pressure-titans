@@ -13,7 +13,7 @@ import { Fragment, useEffect, useRef, useState } from "react";
 // it never goes blank. Phones load the 720px set at half the frames (3.8 MB), laptops the 1280px set (15 MB).
 // Frames: public/winter/seq/{sm,lg}/fNNN.webp, cut from the 1080p film (24 fps, 241 frames) by scripts/film-frames.py, grade baked in.
 const SETS = { sm: { n: 121, fps: 12 }, lg: { n: 241, fps: 24 } } as const;
-const frameSrc = (set: keyof typeof SETS, i: number) => `/winter/seq2/${set}/f${String(i).padStart(3, "0")}.webp`;
+const frameSrc = (set: keyof typeof SETS, i: number) => `/winter/seq3/${set}/f${String(i).padStart(3, "0")}.webp`;
 const POSTER = "/winter/journey-poster.jpg";
 // cuts at 3.0s (house to tree) and 6.46s (tree to office); each chapter plays START to END, then holds its lit frame
 const START = [0, 3.0, 6.46];
@@ -168,7 +168,7 @@ export function Lighting() {
                 style={{ backgroundImage: `url(${POSTER})` }}
               />
             </div>
-            <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ background: "rgba(5,10,20,0.10)" }} />
+            <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ background: "rgba(5,10,20,0.20)" }} />
           </div>
 
           <div className="relative z-10 h-full max-w-[1400px] mx-auto px-5 md:px-10 flex flex-col justify-start pt-[calc(72px+36svh+18px)] pb-16 md:pt-0 md:pb-0 md:justify-center">
