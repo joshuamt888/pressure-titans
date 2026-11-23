@@ -48,9 +48,9 @@ export function WinterPortfolio() {
             <p className="mt-5 text-xl md:text-2xl text-bone/90 leading-relaxed max-w-[52ch]">Rooflines, wrapped trees and full-property displays. Warm white, purple and white, red and amber.</p>
             <div className="mt-10 md:mt-14 space-y-3 md:space-y-5">
               {[...HOUSES, [WORK_PAIR]].map((g, gi) => (
-                <div key={g[0].src} className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5 items-start">
+                <div key={g[0].src} className={`grid grid-cols-2 gap-3 md:gap-5 items-start ${["", "md:grid-cols-1 md:w-1/2 md:mx-auto", "md:grid-cols-2", "md:grid-cols-3"][Math.min(g.length, 3)]}`}>
                   {g.map((p, i) => (
-                    <figure key={p.src} className={`overflow-hidden rounded-xl bg-navy ${g.length === 1 ? "col-span-2 md:col-span-1" : ""}`}>
+                    <figure key={p.src} className="overflow-hidden rounded-xl bg-navy max-md:last:odd:col-span-2">
                       <Image src={p.src} alt={p.alt} width={p.w} height={p.h} sizes="(max-width: 768px) 50vw, 380px" priority={gi < 2 && i < 3} className="w-full h-auto" />
                     </figure>
                   ))}
