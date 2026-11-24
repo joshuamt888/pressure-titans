@@ -3,6 +3,7 @@ import { Inter, Outfit } from "next/font/google";
 import Script from "next/script";
 import MobileCallBar from "@/components/MobileCallBar";
 import Attribution from "@/components/Attribution";
+import LeadTracking from "@/components/LeadTracking"
 import "./globals.css";
 
 const inter = Inter({
@@ -178,6 +179,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${outfit.variable} antialiased`}>
+        <LeadTracking />
         {children}
         <MobileCallBar />
         <Attribution />
