@@ -6,7 +6,10 @@ export default function LeadTracking() {
   useEffect(() => {
     const g = (name: string) => (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag?.("event", name);
     const click = (e: MouseEvent) => {
-      if ((e.target as Element | null)?.closest?.("a[href^='tel:']")) g("phone_click");
+      if ((e.target as Element | null)?.closest?.("a[href^='tel:']")) {
+        g("phone_click");
+        (window as unknown as { clarity?: (...a: unknown[]) => void }).clarity?.("event", "phone_click");
+      }
     };
     const blur = () =>
       setTimeout(() => {
